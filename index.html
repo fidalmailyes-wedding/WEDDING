@@ -23,12 +23,14 @@
       color: white;
       overflow: hidden;
     }
-    header video {
+    header .video-bg {
       position: absolute;
       top: 0; left: 0;
       width: 100%; height: 100%;
       object-fit: cover;
       z-index: -1;
+      pointer-events: none;
+      display: none;
     }
     header::after {
       content: "";
@@ -102,13 +104,19 @@
       background: #eaf3dc;
       font-size: 0.9rem;
     }
+    .yt-video {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      pointer-events: none;
+    }
   </style>
 </head>
 <body>
   <header id="header">
-    <video autoplay muted loop playsinline>
-      <source src="https://cdn.jsdelivr.net/gh/username/videos/castello_marchione.mp4" type="video/mp4">
-    </video>
+    <iframe class="yt-video" id="ytVideo" src="https://www.youtube.com/embed/TON_LIEN_YOUTUBE?autoplay=1&mute=1&loop=1&playlist=TON_LIEN_YOUTUBE" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
     <div class="lang-switch">
       <button onclick="setLanguage('fr')">🇫🇷 FR</button>
       <button onclick="setLanguage('it')">🇮🇹 IT</button>
@@ -144,4 +152,12 @@
   <section class="contact">
     <h2 data-fr="Contact" data-it="Contatti">Contact</h2>
     <p data-fr="📧 Email : marieetluca.mariage@gmail.com" data-it="📧 Email: marieetluca.matrimonio@gmail.com">📧 Email : marieetluca.mariage@gmail.com</p>
-    <p data-fr="📱 Téléphone : +33 6 12 34 56
+    <p data-fr="📱 Téléphone : +33 6 12 34 56" data-it="📱 Telefono: +39 333 123 4567">📱 Téléphone : +33 6 12 34 56</p>
+  </section>
+
+  <script>
+    const ytFrame = document.getElementById('ytVideo');
+    ytFrame.style.display = 'block';
+  </script>
+</body>
+</html>
