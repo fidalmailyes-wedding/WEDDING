@@ -1,163 +1,95 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Invitation Mariage - Fidalma & Ilyes</title>
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Playfair Display', serif;
-      background-color: #fffdf8;
-      color: #333;
-    }
-    header {
-      height: 100vh;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      color: white;
-      overflow: hidden;
-    }
-    header .video-bg {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      object-fit: cover;
-      z-index: -1;
-      pointer-events: none;
-      display: none;
-    }
-    header::after {
-      content: "";
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0,0,0,0.3);
-    }
-    header h1 {
-      font-family: 'Great Vibes', cursive;
-      font-size: 4rem;
-      z-index: 1;
-    }
-    header p {
-      font-size: 1.5rem;
-      margin-top: 10px;
-      z-index: 1;
-    }
-    .lang-switch {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      z-index: 2;
-    }
-    .lang-switch button {
-      background: #fffdf8;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      padding: 6px 10px;
-      margin-left: 5px;
-      cursor: pointer;
-      font-family: 'Playfair Display', serif;
-    }
-    section {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 60px 20px;
-    }
-    section h2 {
-      text-align: center;
-      font-size: 2rem;
-      margin-bottom: 40px;
-      color: #4d6532;
-    }
-    .programme, .infos, .contact {
-      background: #f9f6f0;
-      border-radius: 12px;
-      padding: 30px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    }
-    ul {
-      list-style: none;
-      padding: 0;
-    }
-    ul li {
-      margin-bottom: 15px;
-      font-size: 1.1rem;
-    }
-    .lemon {
-      display: inline-block;
-      font-size: 1.5rem;
-      margin-right: 8px;
-    }
-    .rsvp iframe {
-      width: 100%;
-      height: 600px;
-      border: none;
-    }
-    footer {
-      text-align: center;
-      padding: 20px;
-      background: #eaf3dc;
-      font-size: 0.9rem;
-    }
-    .yt-video {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      pointer-events: none;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fidalma & Ilyes Wedding</title>
+<style>
+  /* Styles généraux */
+  body, html { margin:0; padding:0; height:100%; font-family: 'Arial', sans-serif; background:#f9f7f1; }
+  h1 { font-size:3em; margin:0.2em; color:#fff; text-shadow: 1px 1px 4px rgba(0,0,0,0.6);}
+  p { font-size:1.5em; color:#fff; text-shadow: 1px 1px 3px rgba(0,0,0,0.6);}
+  
+  /* Header / Hero */
+  .hero { position: relative; height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; overflow:hidden; }
+  .hero::after { content:""; position:absolute; inset:0; background:rgba(0,0,0,0.3); z-index:0; }
+  
+  /* Switch langue */
+  .lang-switch { position:absolute; top:20px; right:20px; z-index:2; }
+  .lang-switch button { margin:0 5px; padding:0.5em 1em; font-size:1em; cursor:pointer; border:none; border-radius:5px; background:#ffd966; color:#333; font-weight:bold; }
+  
+  /* Vidéo en background */
+  .video-bg { position:absolute; inset:0; z-index:-1; overflow:hidden; background:#000; }
+  .video-bg iframe { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+                      width:177.78vh; height:100vh; min-width:100vw; min-height:56.25vw;
+                      pointer-events:none; opacity:0; transition:opacity 0.6s ease; }
+  .video-bg.ready iframe { opacity:1; }
+</style>
 </head>
 <body>
-  <header id="header">
-    <iframe class="yt-video" id="ytVideo" src="https://www.youtube.com/embed/TON_LIEN_YOUTUBE?autoplay=1&mute=1&loop=1&playlist=TON_LIEN_YOUTUBE" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-    <div class="lang-switch">
-      <button onclick="setLanguage('fr')">🇫🇷 FR</button>
-      <button onclick="setLanguage('it')">🇮🇹 IT</button>
-    </div>
-    <h1 data-fr="Fidalma & Ilyes" data-it="Fidalma & Ilyes">Fidalma & Ilyes</h1>
-    <p data-fr="08 Août 2026 · Castello Marchione, Conversano à 17H00" data-it="08 Agosto 2026 · Castello Marchione, Conversano alle 17:00">08 Août 2026 · Castello Marchione, Conversano à 17H00</p>
-  </header>
 
-  <section class="programme">
-    <h2 data-fr="Programme" data-it="Programma">Programme</h2>
-    <ul>
-      <li data-fr="🍋 Cérémonie : 17h00 – Castello Marchione, Conversano" data-it="🍋 Cerimonia: 17:00 – Castello Marchione, Conversano">🍋 Cérémonie : 17h00 – Castello Marchione, Conversano</li>
-      <li data-fr="🍋 Cocktail & Réception : 18h00 – Masseria San Michele" data-it="🍋 Aperitivo & Ricevimento: 18:00 – Masseria San Michele">🍋 Cocktail & Réception : 18h00 – Masseria San Michele</li>
-      <li data-fr="🍋 Brunch du lendemain : 11h00 – Plage de Monopoli" data-it="🍋 Brunch del giorno dopo: 11:00 – Spiaggia di Monopoli">🍋 Brunch du lendemain : 11h00 – Plage de Monopoli</li>
-    </ul>
-  </section>
+<header id="header" class="hero">
+  <div class="video-bg" id="video-bg">
+    <div id="yt-player"></div>
+  </div>
 
-  <section class="infos">
-    <h2 data-fr="Infos pratiques" data-it="Informazioni pratiche">Infos pratiques</h2>
-    <p data-fr="🌿 Adresse : Castello Marchione, Conversano, Pouilles, Italie." data-it="🌿 Indirizzo: Castello Marchione, Conversano, Puglia, Italia.">🌿 Adresse : Castello Marchione, Conversano, Pouilles, Italie.</p>
-    <p data-fr="✈️ Transports : Aéroports Bari & Brindisi. Location de voiture recommandée." data-it="✈️ Trasporti: Aeroporti Bari & Brindisi. Consigliato noleggio auto.">✈️ Transports : Aéroports Bari & Brindisi. Location de voiture recommandée.</p>
-    <p data-fr="🏨 Hébergements : Nous partagerons bientôt une liste d’hôtels et Masserie partenaires." data-it="🏨 Alloggi: Presto condivideremo un elenco di hotel e masserie convenzionate.">🏨 Hébergements : Nous partagerons bientôt une liste d’hôtels et Masserie partenaires.</p>
-    <p data-fr="📍 Carte :" data-it="📍 Mappa:">📍 Carte :</p>
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6080102.775760295!2d12.2211673!3d40.7928396!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x13462d32b5f1d6b9%3A0x5bb5d2c8fdfc87f5!2sPouilles%2C%20Italie!5e0!3m2!1sfr!2sfr!4v1615561861832!5m2!1sfr!2sfr" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-  </section>
+  <div class="lang-switch">
+    <button onclick="setLanguage('fr')">🇫🇷 FR</button>
+    <button onclick="setLanguage('it')">🇮🇹 IT</button>
+  </div>
 
-  <section class="rsvp">
-    <h2 data-fr="RSVP" data-it="Conferma">RSVP</h2>
-    <p data-fr="Merci de confirmer votre présence avant le 1er juin 2026." data-it="Vi preghiamo di confermare la vostra presenza entro il 1° giugno 2026.">Merci de confirmer votre présence avant le 1er juin 2026.</p>
-    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdDZnXG2I/formResponse"></iframe>
-  </section>
+  <h1 data-fr="Fidalma & Ilyes" data-it="Fidalma & Ilyes">Fidalma & Ilyes</h1>
+  <p data-fr="08 Août 2026 · Castello Marchione, Conversano à 17H00"
+     data-it="08 Agosto 2026 · Castello Marchione, Conversano alle 17:00">
+     08 Août 2026 · Castello Marchione, Conversano à 17H00
+  </p>
+</header>
 
-  <section class="contact">
-    <h2 data-fr="Contact" data-it="Contatti">Contact</h2>
-    <p data-fr="📧 Email : marieetluca.mariage@gmail.com" data-it="📧 Email: marieetluca.matrimonio@gmail.com">📧 Email : marieetluca.mariage@gmail.com</p>
-    <p data-fr="📱 Téléphone : +33 6 12 34 56" data-it="📱 Telefono: +39 333 123 4567">📱 Téléphone : +33 6 12 34 56</p>
-  </section>
+<script>
+  // Fonction switch langue
+  function setLanguage(lang) {
+    document.querySelectorAll('[data-fr]').forEach(el => {
+      el.textContent = (lang==='fr') ? el.getAttribute('data-fr') : el.getAttribute('data-it');
+    });
+  }
 
-  <script>
-    const ytFrame = document.getElementById('ytVideo');
-    ytFrame.style.display = 'block';
-  </script>
+  // Charger API IFrame YouTube
+  (function(){
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScript = document.getElementsByTagName('script')[0];
+    firstScript.parentNode.insertBefore(tag, firstScript);
+  })();
+
+  var ytPlayer;
+  function onYouTubeIframeAPIReady() {
+    ytPlayer = new YT.Player('yt-player', {
+      videoId: '3cLqInMZrtc',
+      playerVars: {
+        autoplay: 1,
+        mute: 1,
+        controls: 0,
+        loop: 1,
+        playlist: '3cLqInMZrtc',
+        modestbranding: 1,
+        rel: 0,
+        showinfo: 0,
+        iv_load_policy: 3,
+        playsinline: 1,
+        fs: 0,
+        disablekb: 1
+      },
+      events: {
+        onReady: function(e){ e.target.mute(); e.target.playVideo(); },
+        onStateChange: function(e){
+          if(e.data===YT.PlayerState.PLAYING){
+            document.getElementById('video-bg').classList.add('ready');
+          }
+        }
+      }
+    });
+  }
+</script>
+
 </body>
 </html>
