@@ -21,14 +21,14 @@
       justify-content: center;
       text-align: center;
       color: white;
+      overflow: hidden;
     }
-    header iframe {
+    header video {
       position: absolute;
       top: 0; left: 0;
       width: 100%; height: 100%;
       object-fit: cover;
       z-index: -1;
-      pointer-events: none;
     }
     header::after {
       content: "";
@@ -105,8 +105,10 @@
   </style>
 </head>
 <body>
-  <header>
-    <iframe src="https://www.youtube.com/embed/3cLqInMZrtc?autoplay=1&mute=1&loop=1&playlist=3cLqInMZrtc" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+  <header id="header">
+    <video autoplay muted loop playsinline>
+      <source src="https://cdn.jsdelivr.net/gh/username/videos/castello_marchione.mp4" type="video/mp4">
+    </video>
     <div class="lang-switch">
       <button onclick="setLanguage('fr')">🇫🇷 FR</button>
       <button onclick="setLanguage('it')">🇮🇹 IT</button>
@@ -118,7 +120,7 @@
   <section class="programme">
     <h2 data-fr="Programme" data-it="Programma">Programme</h2>
     <ul>
-      <li data-fr="🍋 Cérémonie : 17h00 – Castello Marchione, Conversano" data-it="🍋 Cerimonia: 17:00 – Castello Marchione, Conversano">🍋 Cérémonie : 17h00 – Castello Marchione, Conversano</li>
+      <li data-fr="🍋 Cérémonie : 17h00 – Castello Marchione" data-it="🍋 Cerimonia: 17:00 – Castello Marchione">🍋 Cérémonie : 17h00 – Castello Marchione, Conversano</li>
       <li data-fr="🍋 Cocktail & Réception : 18h00 – Masseria San Michele" data-it="🍋 Aperitivo & Ricevimento: 18:00 – Masseria San Michele">🍋 Cocktail & Réception : 18h00 – Masseria San Michele</li>
       <li data-fr="🍋 Brunch du lendemain : 11h00 – Plage de Monopoli" data-it="🍋 Brunch del giorno dopo: 11:00 – Spiaggia di Monopoli">🍋 Brunch du lendemain : 11h00 – Plage de Monopoli</li>
     </ul>
@@ -142,8 +144,5 @@
   <section class="contact">
     <h2 data-fr="Contact" data-it="Contatti">Contact</h2>
     <p data-fr="📧 Email : marieetluca.mariage@gmail.com" data-it="📧 Email: marieetluca.matrimonio@gmail.com">📧 Email : marieetluca.mariage@gmail.com</p>
-    <p data-fr="📱 Téléphone : +33 6 12 34 56 78" data-it="📱 Telefono: +33 6 12 34 56 78">📱 Téléphone : +33 6 12 34 56 78</p>
-  </section>
+    <p data-fr="📱 Téléphone : +33 6 12 34 56
 
-  <footer>
-    <p data-fr="Fidalma & Ilyes – 08.08.2026 | Avec amour depuis les Pouilles 🍋" data-it="Fidalma & Ilyes – 08.08.2026 | Con amore dalla Puglia 🍋">Fidalma &
