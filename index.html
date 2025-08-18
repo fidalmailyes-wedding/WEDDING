@@ -4,21 +4,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Invitation — Mariage | 08·08·2026 · Castello Marchione · Conversano</title>
-    <meta name="description" content="Invitation au mariage à Castello Marchione, Conversano (Italie) — 08 août 2026. Informations, programme, accès, hébergements et RSVP. FR/IT." />
 
-    <!-- Social cards -->
-    <meta property="og:title" content="Invitation — Mariage | 08·08·2026 · Castello Marchione" />
-    <meta property="og:description" content="Mariage à Castello Marchione, Conversano (Italie). Thème méditerranéen, touche citron. FR/IT." />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://images.unsplash.com/photo-1504544750208-dc0358e63f7f?w=1600&q=80&auto=format&fit=crop" />
-    <meta name="theme-color" content="#0e4f5c" />
-
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
-
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='80'>🍋</text></svg>">
 
     <style>
       :root {
@@ -32,108 +21,137 @@
         --radius: 14px;
         --shadow: 0 10px 30px rgba(0,0,0,.08);
       }
-
-      * { box-sizing: border-box; }
-      html, body { height: 100%; margin:0; }
       body {
-        font-family: 'Work Sans', system-ui;
+        margin: 0;
+        font-family: 'Work Sans', sans-serif;
         color: var(--ink);
-        background: linear-gradient(180deg, #fcfcfa 0%, var(--sand) 100%);
+        background: var(--sand);
       }
-
       .container { width: min(1000px, 92vw); margin: 0 auto; }
-
-      header.hero {
-        position: relative;
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        color: white;
-        overflow: hidden;
-      }
-
-      header.hero .overlay {
-        position: absolute;
-        inset: 0;
-        background: rgba(0,0,0,0.35);
-        z-index: 1;
-      }
-
-      header.hero iframe.bg-video {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 120%;
-        height: 120%;
-        object-fit: cover;
-        transform: translate(-50%, -50%);
-        z-index: 0;
-        pointer-events: none;
-      }
-
-      header.hero .content {
-        position: relative;
-        z-index: 2;
-      }
-
-      h1.names {
-        font-family: 'Marcellus', serif;
-        font-size: clamp(40px, 7vw, 78px);
-        margin: 18px 0 8px;
-      }
+      header.hero { position: relative; min-height: 72vh; text-align: center; color: white; overflow: hidden; }
+      header.hero .container { position: relative; z-index: 2; padding: 90px 0 60px; }
+      h1.names { font-family: 'Marcellus', serif; font-size: clamp(40px, 7vw, 78px); margin: 0; }
       .subtitle { font-size: 18px; opacity: .9; }
-
-      .lang-switch { position: absolute; top: 16px; right: 16px; display:flex; gap:8px; z-index:3; }
-      .lang-switch button {
-        appearance:none; border:1px solid rgba(255,255,255,.6);
-        background:rgba(255,255,255,.85);
-        padding:6px 10px; border-radius:999px; cursor:pointer;
-        font-weight:600; font-size:13px;
-      }
-      .lang-switch button.active { background: var(--blue); color:white; }
-
-      .cta {
-        display:inline-flex; align-items:center; gap:10px;
-        border:none; cursor:pointer; padding:14px 18px;
-        border-radius:14px; font-weight:600; text-decoration:none;
-        background: linear-gradient(180deg, var(--lemon), #ffc400);
-        color:#3a3a00; box-shadow:0 8px 20px rgba(255,196,0,.35);
-      }
-
-      /* Rest of styles unchanged... */
+      .lang-switch { position: absolute; top: 16px; right: 16px; z-index: 3; }
+      .lang-switch button { border: 1px solid rgba(255,255,255,.5); background: rgba(255,255,255,.2); color: white; padding: 6px 10px; border-radius: 999px; cursor: pointer; font-weight: 600; margin-left: 6px; }
+      .lang-switch button.active { background: var(--blue); }
+      section { padding: 60px 0; }
+      .card { background: #fff; border-radius: var(--radius-xl); box-shadow: var(--shadow); padding: 24px; margin-bottom: 24px; }
+      h2 { font-family: 'Marcellus', serif; font-size: 32px; color: var(--blue); margin-top: 0; }
+      iframe.map { width: 100%; height: 300px; border:0; border-radius: var(--radius); }
+      .cta { display: inline-block; padding: 12px 20px; border-radius: var(--radius); background: var(--lemon); color: var(--ink); font-weight: 600; text-decoration: none; }
+      footer { text-align: center; padding: 40px 0; font-size: 14px; color: rgba(0,0,0,.6); }
+      .video-bg { position:absolute; inset:0; overflow:hidden; z-index:0; }
+      .video-bg iframe { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:120%; height:120%; border:0; pointer-events:none; }
+      .video-overlay { position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,.10) 40%, rgba(255,255,255,.0) 70%); z-index:1; pointer-events:none; }
     </style>
   </head>
   <body>
     <header class="hero">
-      <div class="lang-switch" role="group" aria-label="Language">
-        <button id="btn-fr" class="active" data-lang="fr" aria-pressed="true">FR</button>
-        <button id="btn-it" data-lang="it" aria-pressed="false">IT</button>
+      <div class="video-bg" aria-hidden="true">
+        <div class="video-overlay"></div>
+        <iframe id="bg-video" title="Castello Marchione — video"
+          src="https://www.youtube-nocookie.com/embed/3cLqInMZrtc?autoplay=1&mute=1&loop=1&playlist=3cLqInMZrtc&controls=0&rel=0&modestbranding=1&iv_load_policy=3&playsinline=1&fs=0&disablekb=1"
+          allow="autoplay; encrypted-media; picture-in-picture"></iframe>
       </div>
-
-      <!-- Background video (YouTube embed hidden controls) -->
-      <iframe class="bg-video" src="https://www.youtube.com/embed/3cLqInMZrtc?autoplay=1&mute=1&loop=1&playlist=3cLqInMZrtc&controls=0&showinfo=0&modestbranding=1&iv_load_policy=3&rel=0" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
-      <div class="overlay"></div>
-
-      <div class="content">
-        <span class="badge" data-i18n="hero.badge">Mariage • Castello Marchione • Conversano</span>
+      <div class="lang-switch">
+        <button data-lang="fr" class="active">FR</button>
+        <button data-lang="it">IT</button>
+      </div>
+      <div class="container">
         <h1 class="names">Fidalma & Ilyes</h1>
-        <p class="subtitle" data-i18n="hero.subtitle">Le 08 août 2026</p>
-        <div style="margin-top:28px">
-          <a class="cta" href="#rsvp" data-i18n="hero.cta">Confirmer ma venue</a>
-        </div>
+        <p class="subtitle" data-i18n="date">08 août 2026</p>
+        <a href="#rsvp" class="cta" data-i18n="cta">Confirmer ma venue</a>
       </div>
     </header>
 
-    <!-- le reste du contenu (sections, countdown, etc.) identique, seul le script mis à jour -->
+    <main class="container">
+      <section class="card" id="wedding">
+        <h2 data-i18n="wedding.title">Wedding — Déroulé</h2>
+        <ul>
+          <li data-i18n="wedding.ceremony">17h00 : Cérémonie</li>
+          <li data-i18n="wedding.aperitivo">18h00 : Aperitivo</li>
+          <li data-i18n="wedding.dinner">20h00 : Dîner</li>
+          <li data-i18n="wedding.party">23h00 : Festa & DJ set</li>
+        </ul>
+      </section>
+
+      <section class="card" id="localisation">
+        <h2 data-i18n="location.title">Localisation</h2>
+        $1https://www.google.com/maps?q=Castello%20Marchione%2C%2070014%20Conversano%20BA&output=embed$2
+        <p data-i18n="location.text">Castello Marchione, Conversano, Italie</p>
+      </section>
+
+      <section class="card" id="stay">
+        <h2 data-i18n="stay.title">Où dormir ?</h2>
+        <ul>
+          <li>Hotel Corte Altavilla, Conversano</li>
+          <li>Masseria Montepaolo, Conversano</li>
+          <li>Trulli e Puglia, Alberobello</li>
+        </ul>
+      </section>
+
+      <section class="card" id="rsvp">
+        <h2 data-i18n="rsvp.title">RSVP</h2>
+        <p data-i18n="rsvp.text">Merci de confirmer votre présence avant le 1er mai 2026.</p>
+        <a href="#" class="cta" target="_blank" data-i18n="rsvp.cta">Répondre au formulaire</a>
+      </section>
+    </main>
+
+    <footer>
+      <p data-i18n="footer">Fait avec amour et quelques citrons 🍋</p>
+    </footer>
 
     <script>
-      const EVENT_ISO = '2026-08-08T17:00:00+02:00';
-      document.querySelector('.names').textContent = 'Fidalma & Ilyes';
+      const I18N = {
+        fr: {
+          date: '08 août 2026',
+          cta: 'Confirmer ma venue',
+          wedding: { title: 'Wedding — Déroulé', ceremony: '17h00 : Cérémonie', aperitivo: '18h00 : Aperitivo', dinner: '20h00 : Dîner', party: '23h00 : Festa & DJ set'},
+          location: { title: 'Localisation', text: 'Castello Marchione, Conversano, Italie'},
+          stay: { title: 'Où dormir ?'},
+          rsvp: { title: 'RSVP', text: 'Merci de confirmer votre présence avant le 1er mai 2026.', cta: 'Répondre au formulaire'},
+          footer: 'Fait avec amour et quelques citrons 🍋'
+        },
+        it: {
+          date: '08 agosto 2026',
+          cta: 'Confermare la presenza',
+          wedding: { title: 'Matrimonio — Programma', ceremony: '17:00 : Cerimonia', aperitivo: '18:00 : Aperitivo', dinner: '20:00 : Cena', party: '23:00 : Festa & DJ set'},
+          location: { title: 'Località', text: 'Castello Marchione, Conversano, Italia'},
+          stay: { title: 'Dove dormire?'},
+          rsvp: { title: 'RSVP', text: 'Vi preghiamo di confermare entro il 1° maggio 2026.', cta: 'Rispondere al modulo'},
+          footer: 'Fatto con amore e qualche limone 🍋'
+        }
+      };
 
-      // ... reste du script inchangé (i18n, countdown, etc.) ...
+      function applyTranslations(lang){
+        document.documentElement.lang = lang;
+        const dict = I18N[lang];
+        document.querySelector('[data-i18n="date"]').textContent = dict.date;
+        document.querySelector('[data-i18n="cta"]').textContent = dict.cta;
+        document.querySelector('#wedding h2').textContent = dict.wedding.title;
+        const weddingLis = document.querySelectorAll('#wedding li');
+        weddingLis[0].textContent = dict.wedding.ceremony;
+        weddingLis[1].textContent = dict.wedding.aperitivo;
+        weddingLis[2].textContent = dict.wedding.dinner;
+        weddingLis[3].textContent = dict.wedding.party;
+        document.querySelector('#localisation h2').textContent = dict.location.title;
+        document.querySelector('#localisation p').textContent = dict.location.text;
+        document.querySelector('#stay h2').textContent = dict.stay.title;
+        document.querySelector('#rsvp h2').textContent = dict.rsvp.title;
+        document.querySelector('#rsvp p').textContent = dict.rsvp.text;
+        document.querySelector('#rsvp a').textContent = dict.rsvp.cta;
+        document.querySelector('footer p').textContent = dict.footer;
+        document.querySelectorAll('.lang-switch button').forEach(btn => {
+          btn.classList.toggle('active', btn.dataset.lang === lang);
+        });
+      }
+
+      document.querySelectorAll('.lang-switch button').forEach(btn => {
+        btn.addEventListener('click', () => applyTranslations(btn.dataset.lang));
+      });
+
+      applyTranslations('fr');
     </script>
   </body>
 </html>
