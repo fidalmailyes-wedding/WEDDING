@@ -11,37 +11,39 @@
 
     <style>
       :root {
-        --blue: #0e4f5c;
-        --lemon: #ffd84d;
-        --olive: #789f6a;
-        --terracotta: #c26d52;
-        --sand: #f7f3ea;
+        --blue: #1d5c63; /* bleu mer */
+        --lemon: #ffd84d; /* citron */
+        --olive: #7a9d54; /* olivier */
+        --terracotta: #c26d52; /* terre cuite */
+        --sand: #fefcf5; /* sable clair */
         --ink: #172223;
         --radius-xl: 22px;
         --radius: 14px;
         --shadow: 0 10px 30px rgba(0,0,0,.08);
       }
-      body { margin: 0; font-family: 'Work Sans', sans-serif; color: var(--ink); background:
-  linear-gradient(180deg, #fbfaf5 0%, #f6efe3 100%),
-  radial-gradient(1000px 360px at 50% -200px, rgba(255,216,77,.22), transparent 70%);
-  background-blend-mode: overlay; }
+      body {
+        margin: 0;
+        font-family: 'Work Sans', sans-serif;
+        color: var(--ink);
+        background: linear-gradient(180deg, var(--sand) 0%, #fff 100%);
+      }
       .container { width: min(1000px, 92vw); margin: 0 auto; }
       header.hero { position: relative; min-height: 72vh; text-align: center; color: white; overflow: hidden; }
       header.hero .container { position: relative; z-index: 2; padding: 90px 0 60px; }
-      h1.names { font-family: 'Marcellus', serif; font-size: clamp(40px, 7vw, 78px); margin: 0; }
+      h1.names { font-family: 'Marcellus', serif; font-size: clamp(40px, 7vw, 78px); margin: 0; color:#fff; }
       .subtitle { font-size: 18px; opacity: .9; }
       .lang-switch { position: absolute; top: 16px; right: 16px; z-index: 3; }
       .lang-switch button { border: 1px solid rgba(255,255,255,.5); background: rgba(255,255,255,.2); color: white; padding: 6px 10px; border-radius: 999px; cursor: pointer; font-weight: 600; margin-left: 6px; }
-      .lang-switch button.active { background: var(--blue); }
+      .lang-switch button.active { background: var(--lemon); color: var(--ink); }
       section { padding: 60px 0; }
       .card { background: #fff; border-radius: var(--radius-xl); box-shadow: var(--shadow); padding: 24px; margin-bottom: 24px; }
       h2 { font-family: 'Marcellus', serif; font-size: 32px; color: var(--blue); margin-top: 0; }
-      iframe.map { width: 100%; height: 300px; border:0; border-radius: var(--radius); }
-      .cta { display: inline-block; padding: 12px 20px; border-radius: var(--radius); background: linear-gradient(180deg, var(--lemon), #ffc400); color: var(--ink); font-weight: 700; text-decoration: none; box-shadow: 0 8px 20px rgba(255,196,0,.35); }
+      iframe.map { width: 100%; height: 350px; border:0; border-radius: var(--radius); box-shadow: var(--shadow); }
+      .cta { display: inline-block; padding: 12px 20px; border-radius: var(--radius); background: linear-gradient(135deg,var(--lemon),#ffc107); color: var(--ink); font-weight: 600; text-decoration: none; box-shadow:0 6px 16px rgba(0,0,0,.15); }
       footer { text-align: center; padding: 40px 0; font-size: 14px; color: rgba(0,0,0,.6); }
       .video-bg { position:absolute; inset:0; overflow:hidden; z-index:0; }
-      .video-bg iframe { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:100vw; height:56.25vw; min-width:177.78vh; min-height:100vh; border:0; pointer-events:none; }
-      .video-overlay { position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,.10) 40%, rgba(255,255,255,.0) 70%); z-index:1; pointer-events:none; }
+      .video-bg iframe { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); min-width:100%; min-height:100%; width:auto; height:auto; border:0; pointer-events:none; }
+      .video-overlay { position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,.15) 40%, rgba(255,255,255,.0) 70%); z-index:1; pointer-events:none; }
     </style>
   </head>
   <body>
@@ -76,7 +78,9 @@
 
       <section class="card" id="localisation">
         <h2 data-i18n="location.title">Localisation</h2>
-        <iframe class="map" title="Google Map — Castello Marchione" src="https://www.google.com/maps?q=Castello%20Marchione%2C%2070014%20Conversano%20BA&output=embed" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe class="map" title="Google Map — Castello Marchione"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3066.0218535464457!2d17.1235!3d40.9696!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1347a8f19c6e5c13%3A0x58e97ad7c0813a53!2sCastello%20Marchione!5e0!3m2!1sfr!2sit!4v1692200000000!5m2!1sfr!2sit"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         <p data-i18n="location.text">Castello Marchione, Conversano, Italie</p>
       </section>
 
