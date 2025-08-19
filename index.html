@@ -5,9 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Fidalma & Ilyes — Mariage 08·08·2026 · Castello Marchione</title>
 
+    <!-- Favicon branche d'olivier -->
+    <link rel="icon" type="image/svg+xml" href="olivier.svg" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
 
     <style>
       :root {
@@ -17,50 +23,220 @@
         --secondary: #8de19a;
         --accent: #71d9a8;
       }
-      *{box-sizing:border-box;}
-      body{margin:0;font-family:'Montserrat',sans-serif;color:var(--text);background:var(--background);}
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: "Montserrat", sans-serif;
+        color: var(--text);
+        background: var(--background);
+      }
 
-      header.hero{position:relative;height:100dvh;overflow:hidden;display:flex;justify-content:center;align-items:center;text-align:center;color:#fff;}
-      .video-bg{position:absolute;inset:0;overflow:hidden;z-index:0;}
-      .video-bg iframe{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:100vw;height:56.25vw;min-width:177.78dvh;min-height:100dvh;border:0;pointer-events:none;object-fit:cover;}
-      .video-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.4),rgba(0,0,0,.2));z-index:1;}
-      /* Mask visuelle pour cacher le watermark côté gauche de la vidéo */
-      .brand-mask{position:absolute;top:0;bottom:0;left:0;width:84px;z-index:2;pointer-events:none;
-        background:linear-gradient(90deg, rgba(252,251,243,0.95) 0%, rgba(252,251,243,0.6) 35%, rgba(252,251,243,0) 85%);}
-      @media (max-width:768px){ .brand-mask{width:64px;} }
+      header.hero {
+        position: relative;
+        height: 100dvh;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        color: #fff;
+      }
+      .video-bg {
+        position: absolute;
+        inset: 0;
+        overflow: hidden;
+        z-index: 0;
+      }
+      .video-bg iframe {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100vw;
+        height: 56.25vw;
+        min-width: 177.78dvh;
+        min-height: 100dvh;
+        border: 0;
+        pointer-events: none;
+        object-fit: cover;
+      }
+      .video-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2));
+        z-index: 1;
+      }
 
-      .hero-content{position:relative;z-index:3;}
-      .hero-content h1{font-family:'Great Vibes',cursive;font-size:clamp(48px,8vw,100px);margin-bottom:10px;}
-      .hero-content p{font-size:20px;margin-bottom:30px;}
-      .hero-content .cta{padding:12px 28px;border:2px solid #fff;border-radius:4px;background:transparent;color:#fff;font-weight:600;text-decoration:none;transition:.3s;display:inline-block;}
-      .hero-content .cta:hover{background:var(--primary);color:var(--text);border-color:var(--primary);}
+      .hero-content {
+        position: relative;
+        z-index: 2;
+      }
+      .hero-content h1 {
+        font-family: "Great Vibes", cursive;
+        font-size: clamp(48px, 8vw, 100px);
+        margin-bottom: 10px;
+      }
+      .hero-content p {
+        font-size: 20px;
+        margin-bottom: 30px;
+      }
+      .hero-content .cta {
+        padding: 12px 28px;
+        border: 2px solid #fff;
+        border-radius: 4px;
+        background: transparent;
+        color: #fff;
+        font-weight: 600;
+        text-decoration: none;
+        transition: 0.3s;
+      }
+      .hero-content .cta:hover {
+        background: var(--primary);
+        color: var(--text);
+        border-color: var(--primary);
+      }
 
-      .lang-switch{position:absolute;top:20px;left:20px;z-index:3;}
-      .lang-switch button{margin-right:6px;border:1px solid #fff;background:rgba(255,255,255,.2);color:#fff;padding:6px 10px;border-radius:999px;cursor:pointer;font-weight:600;}
-      .lang-switch button.active{background:var(--primary);color:var(--text);border-color:transparent;}
+      .lang-switch {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        z-index: 3;
+      }
+      .lang-switch button {
+        margin-right: 6px;
+        border: 1px solid #fff;
+        background: rgba(255, 255, 255, 0.2);
+        color: #fff;
+        padding: 6px 10px;
+        border-radius: 999px;
+        cursor: pointer;
+        font-weight: 600;
+      }
+      .lang-switch button.active {
+        background: var(--primary);
+        color: var(--text);
+        border-color: transparent;
+      }
 
-      nav.topnav{position:absolute;top:20px;right:20px;display:flex;gap:20px;z-index:3;}
-      nav.topnav a{color:#fff;text-decoration:none;font-weight:500;transition:.3s;}
-      nav.topnav a:hover,nav.topnav a.active{border-bottom:2px solid var(--primary);}      
-      nav.topnav .rsvp-btn{border:2px solid #fff;padding:6px 14px;border-radius:4px;}
-      nav.topnav .rsvp-btn:hover{background:var(--primary);color:var(--text);border-color:var(--primary);}
+      nav.topnav {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        display: flex;
+        gap: 20px;
+        z-index: 3;
+      }
+      nav.topnav a {
+        color: #fff;
+        text-decoration: none;
+        font-weight: 500;
+        transition: 0.3s;
+      }
+      nav.topnav a:hover,
+      nav.topnav a.active {
+        border-bottom: 2px solid var(--primary);
+      }
+      nav.topnav .rsvp-btn {
+        border: 2px solid #fff;
+        padding: 6px 14px;
+        border-radius: 4px;
+      }
+      nav.topnav .rsvp-btn:hover {
+        background: var(--primary);
+        color: var(--text);
+        border-color: var(--primary);
+      }
 
-      main{padding:80px 20px;max-width:900px;margin:0 auto;}
-      section{margin-bottom:80px;text-align:center;}
-      h2{font-family:'Great Vibes',cursive;font-size:40px;color:var(--accent);margin-bottom:20px;}
-      ul{list-style:none;padding-left:0;font-size:18px;}
-      ul li{padding:6px 0;}
-      iframe.map{width:100%;aspect-ratio:16/9;border:0;border-radius:12px;box-shadow:0 6px 16px rgba(0,0,0,.1);}
-      footer{text-align:center;padding:40px 0;font-size:14px;color:rgba(0,0,0,.6);}
+      main {
+        padding: 80px 20px;
+        max-width: 900px;
+        margin: 0 auto;
+      }
+      section {
+        margin-bottom: 80px;
+        text-align: center;
+      }
+      h2 {
+        font-family: "Great Vibes", cursive;
+        font-size: 40px;
+        color: var(--accent);
+        margin-bottom: 20px;
+      }
+      ul {
+        list-style: none;
+        padding-left: 0;
+        font-size: 18px;
+      }
+      ul li {
+        padding: 6px 0;
+      }
+      iframe.map {
+        width: 100%;
+        aspect-ratio: 16/9;
+        border: 0;
+        border-radius: 12px;
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+      }
+      footer {
+        text-align: center;
+        padding: 40px 0;
+        font-size: 14px;
+        color: rgba(0, 0, 0, 0.6);
+      }
       /* === Mobile hamburger menu === */
-      .hamburger{display:none;}
-      @media (max-width:768px){
-        .hamburger{display:inline-flex; align-items:center; justify-content:center; position:absolute; top:20px; right:20px; z-index:10; width:42px; height:42px; border-radius:10px; border:2px solid #fff; background:rgba(255,255,255,.2); color:#fff; cursor:pointer;}
-        .hamburger:focus-visible{outline:3px solid var(--primary); outline-offset:2px;}
-        nav.topnav{display:none; position:absolute; top:70px; right:10px; flex-direction:column; gap:12px; background:rgba(252,251,243,.96); padding:12px; border-radius:12px; box-shadow:0 8px 24px rgba(0,0,0,.18); opacity:0; transform:translateY(-10px); transition:opacity .3s ease, transform .3s ease;}
-        nav.topnav.open{display:flex; opacity:1; transform:translateY(0);}
-        nav.topnav a{color:var(--text); border-bottom:none;}
-        nav.topnav .rsvp-btn{border-color:var(--text);}
+      .hamburger {
+        display: none;
+      }
+      @media (max-width: 768px) {
+        .hamburger {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          position: absolute;
+          top: 20px;
+          right: 20px;
+          z-index: 10;
+          width: 42px;
+          height: 42px;
+          border-radius: 10px;
+          border: 2px solid #fff;
+          background: rgba(255, 255, 255, 0.2);
+          color: #fff;
+          cursor: pointer;
+        }
+        .hamburger:focus-visible {
+          outline: 3px solid var(--primary);
+          outline-offset: 2px;
+        }
+        nav.topnav {
+          display: none;
+          position: absolute;
+          top: 70px;
+          right: 10px;
+          flex-direction: column;
+          gap: 12px;
+          background: rgba(252, 251, 243, 0.96);
+          padding: 12px;
+          border-radius: 12px;
+          box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+          opacity: 0;
+          transform: translateY(-10px);
+          transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        nav.topnav.open {
+          display: flex;
+          opacity: 1;
+          transform: translateY(0);
+        }
+        nav.topnav a {
+          color: var(--text);
+          border-bottom: none;
+        }
+        nav.topnav .rsvp-btn {
+          border-color: var(--text);
+        }
       }
     </style>
   </head>
@@ -68,15 +244,36 @@
     <header class="hero">
       <div class="video-bg" aria-hidden="true">
         <div class="video-overlay"></div>
-        <div class="brand-mask" aria-hidden="true"></div>
-        <iframe src="https://www.youtube-nocookie.com/embed/3cLqInMZrtc?autoplay=1&mute=1&loop=1&playlist=3cLqInMZrtc&controls=0&rel=0&modestbranding=1&iv_load_policy=3&playsinline=1" allow="autoplay; encrypted-media; picture-in-picture"></iframe>
+        <iframe
+          src="https://www.youtube-nocookie.com/embed/3cLqInMZrtc?autoplay=1&mute=1&loop=1&playlist=3cLqInMZrtc&controls=0&rel=0&modestbranding=1&iv_load_policy=3&playsinline=1"
+          allow="autoplay; encrypted-media; picture-in-picture"
+        ></iframe>
       </div>
       <div class="lang-switch">
         <button data-lang="fr" class="active">FR</button>
         <button data-lang="it">IT</button>
       </div>
-      <button class="hamburger" aria-label="Ouvrir le menu" aria-controls="topnav" aria-expanded="false">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      <button
+        class="hamburger"
+        aria-label="Ouvrir le menu"
+        aria-controls="topnav"
+        aria-expanded="false"
+      >
+        <svg
+          width="22"
+          height="22"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+        >
+          <path
+            d="M4 7h16M4 12h16M4 17h16"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+          />
+        </svg>
       </button>
       <nav class="topnav" id="topnav">
         <a href="#wedding" data-i18n="nav.wedding">Wedding</a>
@@ -104,7 +301,12 @@
 
       <section id="localisation">
         <h2 data-i18n="location.title">Localisation</h2>
-        <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3066.0218535464457!2d17.1235!3d40.9696!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1347a8f19c6e5c13%3A0x58e97ad7c0813a53!2sCastello%20Marchione!5e0!3m2!1sfr!2sit!4v1692200000000!5m2!1sfr!2sit" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe
+          class="map"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3066.0218535464457!2d17.1235!3d40.9696!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1347a8f19c6e5c13%3A0x58e97ad7c0813a53!2sCastello%20Marchione!5e0!3m2!1sfr!2sit!4v1692200000000!5m2!1sfr!2sit"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
         <p data-i18n="location.text">Castello Marchione, Conversano, Italie</p>
       </section>
 
@@ -119,8 +321,12 @@
 
       <section id="rsvp">
         <h2 data-i18n="rsvp.title">RSVP</h2>
-        <p data-i18n="rsvp.text">Merci de confirmer votre présence avant le 1er mai 2026.</p>
-        <a href="#" class="cta" target="_blank" data-i18n="rsvp.cta">Répondre au formulaire</a>
+        <p data-i18n="rsvp.text">
+          Merci de confirmer votre présence avant le 1er mai 2026.
+        </p>
+        <a href="#" class="cta" target="_blank" data-i18n="rsvp.cta"
+          >Répondre au formulaire</a
+        >
       </section>
     </main>
 
@@ -131,72 +337,119 @@
     <script>
       const I18N = {
         fr: {
-          date: '08 août 2026 · Castello Marchione',
-          cta: 'Confirmer ma venue',
-          wedding: { title: 'Wedding — Déroulé', ceremony: '17h00 : Cérémonie', aperitivo: '18h00 : Aperitivo', dinner: '20h00 : Dîner', party: '23h00 : Festa & DJ set'},
-          location: { title: 'Localisation', text: 'Castello Marchione, Conversano, Italie'},
-          stay: { title: 'Où dormir ?'},
-          nav: { wedding: 'Wedding', location: 'Localisation', stay: 'Hébergements', rsvp: 'RSVP' },
-          rsvp: { title: 'RSVP', text: 'Merci de confirmer votre présence avant le 1er mai 2026.', cta: 'Répondre au formulaire'},
-          footer: 'Fait avec amour et quelques citrons 🍋'
+          date: "08 août 2026 · Castello Marchione",
+          cta: "Confirmer ma venue",
+          wedding: {
+            title: "Wedding — Déroulé",
+            ceremony: "17h00 : Cérémonie",
+            aperitivo: "18h00 : Aperitivo",
+            dinner: "20h00 : Dîner",
+            party: "23h00 : Festa & DJ set",
+          },
+          location: {
+            title: "Localisation",
+            text: "Castello Marchione, Conversano, Italie",
+          },
+          stay: { title: "Où dormir ?" },
+          nav: {
+            wedding: "Wedding",
+            location: "Localisation",
+            stay: "Hébergements",
+            rsvp: "RSVP",
+          },
+          rsvp: {
+            title: "RSVP",
+            text: "Merci de confirmer votre présence avant le 1er mai 2026.",
+            cta: "Répondre au formulaire",
+          },
+          footer: "Fait avec amour et quelques citrons 🍋",
         },
         it: {
-          date: '08 agosto 2026 · Castello Marchione',
-          cta: 'Confermare la presenza',
-          wedding: { title: 'Matrimonio — Programma', ceremony: '17:00 : Cerimonia', aperitivo: '18:00 : Aperitivo', dinner: '20:00 : Cena', party: '23:00 : Festa & DJ set'},
-          location: { title: 'Località', text: 'Castello Marchione, Conversano, Italia'},
-          stay: { title: 'Dove dormire?'},
-          nav: { wedding: 'Wedding', location: 'Località', stay: 'Alloggi', rsvp: 'RSVP' },
-          rsvp: { title: 'RSVP', text: 'Vi preghiamo di confermare entro il 1° maggio 2026.', cta: 'Rispondere al modulo'},
-          footer: 'Fatto con amore e qualche limone 🍋'
-        }
+          date: "08 agosto 2026 · Castello Marchione",
+          cta: "Confermare la presenza",
+          wedding: {
+            title: "Matrimonio — Programma",
+            ceremony: "17:00 : Cerimonia",
+            aperitivo: "18:00 : Aperitivo",
+            dinner: "20:00 : Cena",
+            party: "23:00 : Festa & DJ set",
+          },
+          location: {
+            title: "Località",
+            text: "Castello Marchione, Conversano, Italia",
+          },
+          stay: { title: "Dove dormire?" },
+          nav: {
+            wedding: "Wedding",
+            location: "Località",
+            stay: "Alloggi",
+            rsvp: "RSVP",
+          },
+          rsvp: {
+            title: "RSVP",
+            text: "Vi preghiamo di confermare entro il 1° maggio 2026.",
+            cta: "Rispondere al modulo",
+          },
+          footer: "Fatto con amore e qualche limone 🍋",
+        },
       };
 
-      function applyTranslations(lang){
+      function applyTranslations(lang) {
         document.documentElement.lang = lang;
         const dict = I18N[lang];
-        const setText = (sel, val) => { const el = document.querySelector(sel); if (el && typeof val === 'string') el.textContent = val; };
-
-        setText('[data-i18n="date"]', dict.date);
-        setText('[data-i18n="cta"]', dict.cta);
-        setText('#wedding h2', dict.wedding.title);
-        const wlis = document.querySelectorAll('#wedding li');
-        if (wlis[0]) wlis[0].textContent = dict.wedding.ceremony;
-        if (wlis[1]) wlis[1].textContent = dict.wedding.aperitivo;
-        if (wlis[2]) wlis[2].textContent = dict.wedding.dinner;
-        if (wlis[3]) wlis[3].textContent = dict.wedding.party;
-        setText('#localisation h2', dict.location.title);
-        setText('#localisation p', dict.location.text);
-        setText('#stay h2', dict.stay.title);
-        setText('#rsvp h2', dict.rsvp.title);
-        setText('#rsvp p', dict.rsvp.text);
-        setText('#rsvp a', dict.rsvp.cta);
-        setText('footer p', dict.footer);
+        if (document.querySelector('[data-i18n="date"]'))
+          document.querySelector('[data-i18n="date"]').textContent = dict.date;
+        if (document.querySelector('[data-i18n="cta"]'))
+          document.querySelector('[data-i18n="cta"]').textContent = dict.cta;
+        document.querySelector("#wedding h2").textContent = dict.wedding.title;
+        const weddingLis = document.querySelectorAll("#wedding li");
+        weddingLis[0].textContent = dict.wedding.ceremony;
+        weddingLis[1].textContent = dict.wedding.aperitivo;
+        weddingLis[2].textContent = dict.wedding.dinner;
+        weddingLis[3].textContent = dict.wedding.party;
+        document.querySelector("#localisation h2").textContent =
+          dict.location.title;
+        document.querySelector("#localisation p").textContent =
+          dict.location.text;
+        document.querySelector("#stay h2").textContent = dict.stay.title;
+        document.querySelector("#rsvp h2").textContent = dict.rsvp.title;
+        document.querySelector("#rsvp p").textContent = dict.rsvp.text;
+        document.querySelector("#rsvp a").textContent = dict.rsvp.cta;
+        document.querySelector("footer p").textContent = dict.footer;
         const nav = dict.nav || {};
-        document.querySelectorAll('nav.topnav a').forEach(a=>{
-          const key = a.getAttribute('data-i18n');
-          const k = key && key.split('.')[1];
-          if (k && nav[k]) a.textContent = nav[k];
+        document.querySelectorAll("nav.topnav a").forEach((a) => {
+          const key = a.getAttribute("data-i18n");
+          if (nav[key.split(".")[1]]) a.textContent = nav[key.split(".")[1]];
         });
-        document.querySelectorAll('.lang-switch button').forEach(btn => btn.classList.toggle('active',btn.dataset.lang===lang));
+        document
+          .querySelectorAll(".lang-switch button")
+          .forEach((btn) =>
+            btn.classList.toggle("active", btn.dataset.lang === lang)
+          );
       }
 
-      document.querySelectorAll('.lang-switch button').forEach(btn=>btn.addEventListener('click',()=>applyTranslations(btn.dataset.lang)));
+      document
+        .querySelectorAll(".lang-switch button")
+        .forEach((btn) =>
+          btn.addEventListener("click", () => applyTranslations(btn.dataset.lang))
+        );
 
-      applyTranslations('fr');
+      applyTranslations("fr");
 
       // Hamburger toggle (mobile)
-      const burger = document.querySelector('.hamburger');
-      const topnav = document.getElementById('topnav');
-      if (burger && topnav){
-        burger.addEventListener('click', ()=>{
-          const open = topnav.classList.toggle('open');
-          burger.setAttribute('aria-expanded', String(open));
+      const burger = document.querySelector(".hamburger");
+      const topnav = document.getElementById("topnav");
+      if (burger && topnav) {
+        burger.addEventListener("click", () => {
+          const open = topnav.classList.toggle("open");
+          burger.setAttribute("aria-expanded", String(open));
         });
-        topnav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
-          topnav.classList.remove('open');
-          burger.setAttribute('aria-expanded','false');
-        }));
+        topnav.querySelectorAll("a").forEach((a) =>
+          a.addEventListener("click", () => {
+            topnav.classList.remove("open");
+            burger.setAttribute("aria-expanded", "false");
+          })
+        );
       }
     </script>
   </body>
