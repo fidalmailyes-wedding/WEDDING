@@ -11,15 +11,14 @@
 
     <style>
       :root {
-        --blue: #1d5c63;
-        --lemon: #ffd84d;
-        --olive: #7a9d54;
-        --terracotta: #c26d52;
-        --sand: #fffdf6;
-        --ink: #172223;
+        --text: #1b1807;
+        --background: #fcfbf3;
+        --primary: #f5e259;
+        --secondary: #8de19a;
+        --accent: #71d9a8;
       }
       *{box-sizing:border-box;}
-      body{margin:0;font-family:'Montserrat',sans-serif;color:var(--ink);background:linear-gradient(180deg,#fffef6 0%,#fff6cc 100%);}
+      body{margin:0;font-family:'Montserrat',sans-serif;color:var(--text);background:var(--background);}
 
       header.hero{position:relative;height:100vh;overflow:hidden;display:flex;justify-content:center;align-items:center;text-align:center;color:#fff;}
       .video-bg{position:absolute;inset:0;overflow:hidden;z-index:0;}
@@ -30,29 +29,52 @@
       .hero-content h1{font-family:'Great Vibes',cursive;font-size:clamp(48px,8vw,100px);margin-bottom:10px;}
       .hero-content p{font-size:20px;margin-bottom:30px;}
       .hero-content .cta{padding:12px 28px;border:2px solid #fff;border-radius:4px;background:transparent;color:#fff;font-weight:600;text-decoration:none;transition:.3s;}
-      .hero-content .cta:hover{background:var(--lemon);color:var(--ink);border-color:var(--lemon);}
+      .hero-content .cta:hover{background:var(--primary);color:var(--text);border-color:var(--primary);}
 
       .lang-switch{position:absolute;top:20px;left:20px;z-index:3;}
       .lang-switch button{margin-right:6px;border:1px solid #fff;background:rgba(255,255,255,.2);color:#fff;padding:6px 10px;border-radius:999px;cursor:pointer;font-weight:600;}
-      .lang-switch button.active{background:var(--lemon);color:var(--ink);border-color:transparent;}
+      .lang-switch button.active{background:var(--primary);color:var(--text);border-color:transparent;}
 
       nav.topnav{position:absolute;top:20px;right:20px;display:flex;gap:20px;z-index:3;}
       nav.topnav a{color:#fff;text-decoration:none;font-weight:500;transition:.3s;}
-      nav.topnav a:hover,nav.topnav a.active{border-bottom:2px solid var(--lemon);}
+      nav.topnav a:hover,nav.topnav a.active{border-bottom:2px solid var(--primary);}
       nav.topnav .rsvp-btn{border:2px solid #fff;padding:6px 14px;border-radius:4px;}
-      nav.topnav .rsvp-btn:hover{background:var(--lemon);color:var(--ink);border-color:var(--lemon);}
+      nav.topnav .rsvp-btn:hover{background:var(--primary);color:var(--text);border-color:var(--primary);}
 
       main{padding:80px 20px;max-width:900px;margin:0 auto;}
       section{margin-bottom:80px;text-align:center;}
-      h2{font-family:'Great Vibes',cursive;font-size:40px;color:var(--blue);margin-bottom:20px;}
+      h2{font-family:'Great Vibes',cursive;font-size:40px;color:var(--accent);margin-bottom:20px;}
       ul{list-style:none;padding-left:0;font-size:18px;}
       ul li{padding:6px 0;}
       iframe.map{width:100%;aspect-ratio:16/9;border:0;border-radius:12px;box-shadow:0 6px 16px rgba(0,0,0,.1);}
       footer{text-align:center;padding:40px 0;font-size:14px;color:rgba(0,0,0,.6);}
+      /* Countdown + subtle olive animations */
+      .countdown{margin-top:8px;font-size:14px;letter-spacing:.02em;color:var(--primary);font-weight:600;opacity:.95}
+      .countdown .num{font-variant-numeric:tabular-nums}
+      .decorations{position:absolute;inset:0;z-index:2;pointer-events:none}
+      .olive{position:absolute;opacity:.55;--ty:0px;animation:sway 6s ease-in-out infinite alternate}
+      .olive.left{left:2%;bottom:8%}
+      .olive.right{right:3%;top:12%}
+      @keyframes sway{from{transform:translateY(var(--ty)) rotate(-3deg)}to{transform:translateY(var(--ty)) rotate(3deg)}}
     </style>
   </head>
   <body>
     <header class="hero">
+      <div class="decorations" aria-hidden="true">
+        <!-- simple olive branches -->
+        <svg class="olive left" width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20 100 C 60 70, 70 50, 100 20" stroke="#7a9d54" stroke-width="3" stroke-linecap="round"/>
+          <ellipse cx="40" cy="88" rx="8" ry="14" fill="#8de19a"/>
+          <ellipse cx="58" cy="72" rx="7" ry="12" fill="#71d9a8"/>
+          <ellipse cx="78" cy="54" rx="6" ry="10" fill="#8de19a"/>
+        </svg>
+        <svg class="olive right" width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M100 20 C 70 50, 60 70, 20 100" stroke="#7a9d54" stroke-width="3" stroke-linecap="round"/>
+          <ellipse cx="80" cy="32" rx="8" ry="14" fill="#8de19a"/>
+          <ellipse cx="62" cy="48" rx="7" ry="12" fill="#71d9a8"/>
+          <ellipse cx="42" cy="66" rx="6" ry="10" fill="#8de19a"/>
+        </svg>
+      </div>
       <div class="video-bg" aria-hidden="true">
         <div class="video-overlay"></div>
         <iframe src="https://www.youtube-nocookie.com/embed/3cLqInMZrtc?autoplay=1&mute=1&loop=1&playlist=3cLqInMZrtc&controls=0&rel=0&modestbranding=1&iv_load_policy=3&playsinline=1" allow="autoplay; encrypted-media; picture-in-picture"></iframe>
@@ -69,7 +91,8 @@
       </nav>
       <div class="hero-content">
         <h1>Fidalma & Ilyes</h1>
-        <p data-i18n="date">08 août 2026 · Castello Marchione</p>
+        $1
+        <div class="countdown" id="countdown"><span data-i18n="count.label">Il reste</span> <span class="num d">—</span> j · <span class="num h">—</span>h <span class="num m">—</span>m <span class="num s">—</span>s</div>
         <a href="#rsvp" class="cta" data-i18n="cta">Confirmer ma venue</a>
       </div>
     </header>
@@ -121,7 +144,8 @@
           stay: { title: 'Où dormir ?'},
           nav: { wedding: 'Wedding', location: 'Localisation', stay: 'Hébergements', rsvp: 'RSVP' },
           rsvp: { title: 'RSVP', text: 'Merci de confirmer votre présence avant le 1er mai 2026.', cta: 'Répondre au formulaire'},
-          footer: 'Fait avec amour et quelques citrons 🍋'
+          footer: 'Fait avec amour et quelques citrons 🍋',
+          count: { label: 'Il reste' }
         },
         it: {
           date: '08 agosto 2026 · Castello Marchione',
@@ -131,7 +155,8 @@
           stay: { title: 'Dove dormire?'},
           nav: { wedding: 'Wedding', location: 'Località', stay: 'Alloggi', rsvp: 'RSVP' },
           rsvp: { title: 'RSVP', text: 'Vi preghiamo di confermare entro il 1° maggio 2026.', cta: 'Rispondere al modulo'},
-          footer: 'Fatto con amore e qualche limone 🍋'
+          footer: 'Fatto con amore e qualche limone 🍋',
+          count: { label: 'Mancano' }
         }
       };
 
@@ -164,6 +189,39 @@
       document.querySelectorAll('.lang-switch button').forEach(btn=>btn.addEventListener('click',()=>applyTranslations(btn.dataset.lang)));
 
       applyTranslations('fr');
+
+      // ===== Countdown =====
+      const EVENT_TIME = new Date('2026-08-08T17:00:00+02:00').getTime();
+      function startCountdown(){
+        const el = document.getElementById('countdown');
+        if(!el) return;
+        function tick(){
+          const now = Date.now();
+          let s = Math.max(0, Math.floor((EVENT_TIME - now)/1000));
+          const d = Math.floor(s/86400); s%=86400;
+          const h = Math.floor(s/3600); s%=3600;
+          const m = Math.floor(s/60); const sec = s%60;
+          el.querySelector('.d').textContent = d;
+          el.querySelector('.h').textContent = String(h).padStart(2,'0');
+          el.querySelector('.m').textContent = String(m).padStart(2,'0');
+          el.querySelector('.s').textContent = String(sec).padStart(2,'0');
+          // i18n label
+          const lang = document.documentElement.lang;
+          el.querySelector('[data-i18n="count.label"]').textContent = (I18N[lang]?.count?.label) || I18N.fr.count.label;
+        }
+        tick(); setInterval(tick,1000);
+      }
+      startCountdown();
+
+      // ===== Parallax for olives =====
+      const olives = document.querySelectorAll('.olive');
+      window.addEventListener('scroll', () => {
+        const y = window.scrollY || 0;
+        olives.forEach((el,i)=>{
+          const f = i===0? 0.03 : 0.06; // subtle, two speeds
+          el.style.setProperty('--ty', (y*f)+ 'px');
+        });
+      });
     </script>
   </body>
 </html>
