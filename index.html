@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Invitation — Mariage | 08·08·2026 · Castello Marchione · Conversano</title>
+    <title>Fidalma & Ilyes — Mariage 08·08·2026 · Castello Marchione</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -15,70 +15,73 @@
         --lemon: #ffd84d; /* citron */
         --olive: #7a9d54; /* olivier */
         --terracotta: #c26d52; /* terre cuite */
-        --sand: #fefcf5; /* sable clair */
+        --sand: #fffdf6; /* sable */
         --ink: #172223;
-        --radius-xl: 22px;
+        --radius-xl: 24px;
         --radius: 14px;
-        --shadow: 0 10px 30px rgba(0,0,0,.08);
+        --shadow: 0 6px 24px rgba(0,0,0,.12);
       }
+      *{box-sizing:border-box;}
       body {
-        margin: 0;
-        font-family: 'Work Sans', sans-serif;
-        color: var(--ink);
-        background: linear-gradient(180deg, var(--sand) 0%, #fff 100%);
+        margin:0;
+        font-family:'Work Sans',sans-serif;
+        color:var(--ink);
+        background:var(--sand);
       }
-      .container { width: min(1000px, 92vw); margin: 0 auto; }
-      header.hero { position: relative; min-height: 72vh; text-align: center; color: white; overflow: hidden; }
-      header.hero .container { position: relative; z-index: 2; padding: 90px 0 60px; }
-      h1.names { font-family: 'Marcellus', serif; font-size: clamp(40px, 7vw, 78px); margin: 0; color:#fff; }
-      .subtitle { font-size: 18px; opacity: .9; }
-      .lang-switch { position: absolute; top: 16px; right: 16px; z-index: 3; }
-      .lang-switch button { border: 1px solid rgba(255,255,255,.5); background: rgba(255,255,255,.2); color: white; padding: 6px 10px; border-radius: 999px; cursor: pointer; font-weight: 600; margin-left: 6px; }
-      .lang-switch button.active { background: var(--lemon); color: var(--ink); }
-      section { padding: 60px 0; }
-      .card { background: #fff; border-radius: var(--radius-xl); box-shadow: var(--shadow); padding: 24px; margin-bottom: 24px; border:2px solid rgba(194,109,82,.25); }
-      h2 { font-family: 'Marcellus', serif; font-size: 32px; color: var(--blue); margin-top: 0; }
-      iframe.map { width: 100%; height: 350px; border:0; border-radius: var(--radius); box-shadow: var(--shadow); }
-      .cta { display: inline-block; padding: 12px 20px; border-radius: var(--radius); background: linear-gradient(135deg,var(--lemon),#ffc107); color: var(--ink); font-weight: 600; text-decoration: none; box-shadow:0 6px 16px rgba(0,0,0,.15); }
-      footer { text-align: center; padding: 40px 0; font-size: 14px; color: rgba(0,0,0,.6); }
+      header.hero { position:relative; height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; overflow:hidden; }
       .video-bg { position:absolute; inset:0; overflow:hidden; z-index:0; }
-      .video-bg iframe { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); min-width:100%; min-height:100%; width:auto; height:auto; border:0; pointer-events:none; }
-      .video-overlay { position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,.15) 40%, rgba(255,255,255,.0) 70%); z-index:1; pointer-events:none; }
-      /* Nav bar */
-      .topnav { position: sticky; top: 0; z-index: 4; display: flex; gap: 12px; justify-content: center; padding: 10px 12px; margin-top: 10px; }
-      .topnav a { display: inline-block; padding: 8px 14px; border-radius: 999px; background: rgba(255,255,255,.92); color: var(--blue); border: 1px solid rgba(0,0,0,.08); text-decoration: none; font-weight: 600; box-shadow: 0 6px 16px rgba(0,0,0,.08); transition: background .2s, color .2s; }
-      .topnav a.active { background: var(--lemon); color: var(--ink); }
-      html { scroll-behavior: smooth; }
-      section { scroll-margin-top: 90px; }
+      .video-bg iframe { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:100%; height:100%; object-fit:cover; border:0; pointer-events:none; }
+      .video-overlay { position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.45), rgba(0,0,0,.25) 40%, rgba(255,255,255,0) 70%); z-index:1; }
+      header.hero .content { position:relative; z-index:2; color:white; }
+      h1.names { font-family:'Marcellus',serif; font-size:clamp(36px,7vw,80px); margin:0; }
+      .subtitle { font-size:20px; margin-bottom:20px; }
+      .cta { display:inline-block; padding:12px 24px; border-radius:var(--radius); background:linear-gradient(135deg,var(--lemon),#ffc107); color:var(--ink); font-weight:600; text-decoration:none; box-shadow:0 6px 16px rgba(0,0,0,.2); }
+
+      /* Side navigation */
+      .sidenav { position:fixed; right:20px; top:50%; transform:translateY(-50%); display:flex; flex-direction:column; gap:10px; z-index:5; }
+      .sidenav button { background:#fff; border:2px solid var(--terracotta); color:var(--blue); padding:10px 14px; border-radius:999px; cursor:pointer; font-weight:600; box-shadow:var(--shadow); transition:.2s; }
+      .sidenav button.active { background:linear-gradient(135deg,var(--lemon),#ffd84d); color:#2d2d00; border-color:transparent; }
+
+      main { padding:60px 20px; max-width:900px; margin:0 auto; }
+      .view { display:none; }
+      .view.active { display:block; animation:fadeIn .4s ease; }
+      @keyframes fadeIn { from{opacity:0; transform:translateY(10px);} to{opacity:1; transform:translateY(0);} }
+
+      h2 { font-family:'Marcellus',serif; font-size:32px; color:var(--blue); margin-top:0; border-bottom:3px solid var(--olive); display:inline-block; padding-bottom:4px; }
+      .card { background:#fff; border-radius:var(--radius-xl); box-shadow:var(--shadow); padding:24px; margin-bottom:24px; border:2px solid var(--terracotta); }
+      iframe.map { width:100%; aspect-ratio:16/9; border:0; border-radius:var(--radius); box-shadow:var(--shadow); }
+      footer { text-align:center; padding:40px 0; font-size:14px; color:rgba(0,0,0,.6); }
+      .lang-switch { position:absolute; top:16px; left:16px; z-index:3; }
+      .lang-switch button { border:2px solid #fff; background:rgba(255,255,255,.2); color:#fff; padding:6px 10px; border-radius:999px; cursor:pointer; font-weight:600; margin-right:6px; }
+      .lang-switch button.active { background:var(--lemon); color:var(--ink); border-color:transparent; }
     </style>
   </head>
   <body>
     <header class="hero">
       <div class="video-bg" aria-hidden="true">
         <div class="video-overlay"></div>
-        <iframe id="bg-video" title="Castello Marchione — video"
-          src="https://www.youtube-nocookie.com/embed/3cLqInMZrtc?autoplay=1&mute=1&loop=1&playlist=3cLqInMZrtc&controls=0&rel=0&modestbranding=1&iv_load_policy=3&playsinline=1&fs=0&disablekb=1"
-          allow="autoplay; encrypted-media; picture-in-picture"></iframe>
+        <iframe src="https://www.youtube-nocookie.com/embed/3cLqInMZrtc?autoplay=1&mute=1&loop=1&playlist=3cLqInMZrtc&controls=0&rel=0&modestbranding=1&iv_load_policy=3&playsinline=1&fs=0&disablekb=1" allow="autoplay; encrypted-media; picture-in-picture"></iframe>
       </div>
       <div class="lang-switch">
         <button data-lang="fr" class="active">FR</button>
         <button data-lang="it">IT</button>
       </div>
-      <nav class="topnav" aria-label="Sections">
-        <a href="#wedding" data-i18n="nav.wedding">Wedding</a>
-        <a href="#localisation" data-i18n="nav.location">Localisation</a>
-        <a href="#stay" data-i18n="nav.stay">Hébergements</a>
-        <a href="#rsvp" data-i18n="nav.rsvp">RSVP</a>
-      </nav>
-      <div class="container">
+      <div class="content">
         <h1 class="names">Fidalma & Ilyes</h1>
-        <p class="subtitle" data-i18n="date">08 août 2026</p>
-        <a href="#rsvp" class="cta" data-i18n="cta">Confirmer ma venue</a>
+        <p class="subtitle" data-i18n="date">08 août 2026 · Castello Marchione</p>
+        <a href="#" class="cta" data-i18n="cta">Confirmer ma venue</a>
       </div>
     </header>
 
-    <main class="container">
-      <section class="card" id="wedding">
+    <div class="sidenav">
+      <button class="active" data-view="wedding" data-i18n="nav.wedding">Wedding</button>
+      <button data-view="localisation" data-i18n="nav.location">Localisation</button>
+      <button data-view="stay" data-i18n="nav.stay">Hébergements</button>
+      <button data-view="rsvp" data-i18n="nav.rsvp">RSVP</button>
+    </div>
+
+    <main>
+      <section class="card view active" id="wedding">
         <h2 data-i18n="wedding.title">Wedding — Déroulé</h2>
         <ul>
           <li data-i18n="wedding.ceremony">17h00 : Cérémonie</li>
@@ -88,15 +91,13 @@
         </ul>
       </section>
 
-      <section class="card" id="localisation">
+      <section class="card view" id="localisation">
         <h2 data-i18n="location.title">Localisation</h2>
-        <iframe class="map" title="Google Map — Castello Marchione"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3066.0218535464457!2d17.1235!3d40.9696!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1347a8f19c6e5c13%3A0x58e97ad7c0813a53!2sCastello%20Marchione!5e0!3m2!1sfr!2sit!4v1692200000000!5m2!1sfr!2sit"
-          loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3066.0218535464457!2d17.1235!3d40.9696!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1347a8f19c6e5c13%3A0x58e97ad7c0813a53!2sCastello%20Marchione!5e0!3m2!1sfr!2sit!4v1692200000000!5m2!1sfr!2sit" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         <p data-i18n="location.text">Castello Marchione, Conversano, Italie</p>
       </section>
 
-      <section class="card" id="stay">
+      <section class="card view" id="stay">
         <h2 data-i18n="stay.title">Où dormir ?</h2>
         <ul>
           <li>Hotel Corte Altavilla, Conversano</li>
@@ -105,7 +106,7 @@
         </ul>
       </section>
 
-      <section class="card" id="rsvp">
+      <section class="card view" id="rsvp">
         <h2 data-i18n="rsvp.title">RSVP</h2>
         <p data-i18n="rsvp.text">Merci de confirmer votre présence avant le 1er mai 2026.</p>
         <a href="#" class="cta" target="_blank" data-i18n="rsvp.cta">Répondre au formulaire</a>
@@ -119,7 +120,7 @@
     <script>
       const I18N = {
         fr: {
-          date: '08 août 2026',
+          date: '08 août 2026 · Castello Marchione',
           cta: 'Confirmer ma venue',
           wedding: { title: 'Wedding — Déroulé', ceremony: '17h00 : Cérémonie', aperitivo: '18h00 : Aperitivo', dinner: '20h00 : Dîner', party: '23h00 : Festa & DJ set'},
           location: { title: 'Localisation', text: 'Castello Marchione, Conversano, Italie'},
@@ -129,7 +130,7 @@
           footer: 'Fait avec amour et quelques citrons 🍋'
         },
         it: {
-          date: '08 agosto 2026',
+          date: '08 agosto 2026 · Castello Marchione',
           cta: 'Confermare la presenza',
           wedding: { title: 'Matrimonio — Programma', ceremony: '17:00 : Cerimonia', aperitivo: '18:00 : Aperitivo', dinner: '20:00 : Cena', party: '23:00 : Festa & DJ set'},
           location: { title: 'Località', text: 'Castello Marchione, Conversano, Italia'},
@@ -158,42 +159,22 @@
         document.querySelector('#rsvp p').textContent = dict.rsvp.text;
         document.querySelector('#rsvp a').textContent = dict.rsvp.cta;
         document.querySelector('footer p').textContent = dict.footer;
-        // Nav labels
         const nav = dict.nav || {};
-        const mapNav = {
-          'nav.wedding': nav.wedding,
-          'nav.location': nav.location,
-          'nav.stay': nav.stay,
-          'nav.rsvp': nav.rsvp
-        };
-        Object.entries(mapNav).forEach(([key, val]) => {
-          const el = document.querySelector(`[data-i18n="${key}"]`);
-          if (el && val) el.textContent = val;
-        });
-        document.querySelectorAll('.lang-switch button').forEach(btn => {
+        document.querySelectorAll('.sidenav button').forEach(btn => {
+          const key = 'nav.'+btn.dataset.view;
+          if(nav[btn.dataset.view]) btn.textContent = nav[btn.dataset.view];
           btn.classList.toggle('active', btn.dataset.lang === lang);
         });
+        document.querySelectorAll('.lang-switch button').forEach(btn => btn.classList.toggle('active', btn.dataset.lang===lang));
       }
 
-      document.querySelectorAll('.lang-switch button').forEach(btn => {
-        btn.addEventListener('click', () => applyTranslations(btn.dataset.lang));
-      });
+      document.querySelectorAll('.lang-switch button').forEach(btn=>btn.addEventListener('click',()=>applyTranslations(btn.dataset.lang)));
 
-      // Scroll spy for nav highlighting
-      const sections = document.querySelectorAll('main section');
-      const navLinks = document.querySelectorAll('.topnav a');
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            navLinks.forEach(link => link.classList.remove('active'));
-            const id = entry.target.getAttribute('id');
-            const activeLink = document.querySelector(`.topnav a[href="#${id}"]`);
-            if (activeLink) activeLink.classList.add('active');
-          }
-        });
-      }, { threshold: 0.5 });
-
-      sections.forEach(section => observer.observe(section));
+      function showView(id){
+        document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active', v.id===id));
+        document.querySelectorAll('.sidenav button').forEach(b=>b.classList.toggle('active', b.dataset.view===id));
+      }
+      document.querySelectorAll('.sidenav button').forEach(btn=>btn.addEventListener('click',()=>showView(btn.dataset.view)));
 
       applyTranslations('fr');
     </script>
