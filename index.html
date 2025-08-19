@@ -44,6 +44,14 @@
       .video-bg { position:absolute; inset:0; overflow:hidden; z-index:0; }
       .video-bg iframe { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); min-width:100%; min-height:100%; width:auto; height:auto; border:0; pointer-events:none; }
       .video-overlay { position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,.15) 40%, rgba(255,255,255,.0) 70%); z-index:1; pointer-events:none; }
+      /* Anchor menu styles */
+      html { scroll-behavior: smooth; }
+      section { scroll-margin-top: 96px; }
+      .topnav { position: sticky; top: 0; z-index: 5; display: flex; gap: 12px; justify-content: center; padding: 10px 12px; margin-top: 10px;
+        backdrop-filter: saturate(1.2) blur(6px); background: rgba(255,255,255,.75); border-bottom: 1px solid rgba(0,0,0,.05); }
+      .topnav a { display: inline-block; padding: 8px 14px; border-radius: 999px; background: #fff; color: var(--blue); border: 1px solid rgba(0,0,0,.08); text-decoration: none; font-weight: 600; box-shadow: 0 6px 16px rgba(0,0,0,.08); }
+      .topnav a.active { background: var(--blue); color: #fff; border-color: transparent; }
+      .topnav a:focus-visible { outline: 3px solid rgba(255,216,77,.8); outline-offset: 2px; }
     </style>
   </head>
   <body>
@@ -58,6 +66,12 @@
         <button data-lang="fr" class="active">FR</button>
         <button data-lang="it">IT</button>
       </div>
+      <nav class="topnav" aria-label="Sections">
+        <a href="#wedding" data-i18n="nav.wedding">Wedding</a>
+        <a href="#localisation" data-i18n="nav.location">Localisation</a>
+        <a href="#stay" data-i18n="nav.stay">Hébergements</a>
+        <a href="#rsvp" data-i18n="nav.rsvp">RSVP</a>
+      </nav>
       <div class="container">
         <h1 class="names">Fidalma & Ilyes</h1>
         <p class="subtitle" data-i18n="date">08 août 2026</p>
@@ -112,6 +126,7 @@
           wedding: { title: 'Wedding — Déroulé', ceremony: '17h00 : Cérémonie', aperitivo: '18h00 : Aperitivo', dinner: '20h00 : Dîner', party: '23h00 : Festa & DJ set'},
           location: { title: 'Localisation', text: 'Castello Marchione, Conversano, Italie'},
           stay: { title: 'Où dormir ?'},
+          nav: { wedding: 'Wedding', location: 'Localisation', stay: 'Hébergements', rsvp: 'RSVP' },
           rsvp: { title: 'RSVP', text: 'Merci de confirmer votre présence avant le 1er mai 2026.', cta: 'Répondre au formulaire'},
           footer: 'Fait avec amour et quelques citrons 🍋'
         },
@@ -121,6 +136,7 @@
           wedding: { title: 'Matrimonio — Programma', ceremony: '17:00 : Cerimonia', aperitivo: '18:00 : Aperitivo', dinner: '20:00 : Cena', party: '23:00 : Festa & DJ set'},
           location: { title: 'Località', text: 'Castello Marchione, Conversano, Italia'},
           stay: { title: 'Dove dormire?'},
+          nav: { wedding: 'Wedding', location: 'Località', stay: 'Alloggi', rsvp: 'RSVP' },
           rsvp: { title: 'RSVP', text: 'Vi preghiamo di confermare entro il 1° maggio 2026.', cta: 'Rispondere al modulo'},
           footer: 'Fatto con amore e qualche limone 🍋'
         }
@@ -144,6 +160,18 @@
         document.querySelector('#rsvp p').textContent = dict.rsvp.text;
         document.querySelector('#rsvp a').textContent = dict.rsvp.cta;
         document.querySelector('footer p').textContent = dict.footer;
+        // Nav labels
+        const nav = dict.nav || {};
+        const mapNav = {
+          'nav.wedding': nav.wedding,
+          'nav.location': nav.location,
+          'nav.stay': nav.stay,
+          'nav.rsvp': nav.rsvp
+        };
+        Object.entries(mapNav).forEach(([key, val]) => {
+          const el = document.querySelector(`[data-i18n="${key}"]`);
+          if (el && val) el.textContent = val;
+        });
         document.querySelectorAll('.lang-switch button').forEach(btn => {
           btn.classList.toggle('active', btn.dataset.lang === lang);
         });
@@ -154,6 +182,24 @@
       });
 
       applyTranslations('fr');
+
+      // === Active link highlighting on scroll ===
+      const navLinks = Array.from(document.querySelectorAll('.topnav a'));
+      const sectionMap = Object.fromEntries(navLinks.map(a => {
+        const id = a.getAttribute('href').slice(1);
+        return [id, document.getElementById(id)];
+      }));
+      function setActive(id){
+        navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + id));
+      }
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) setActive(e.target.id);
+        });
+      }, { threshold: 0.55, rootMargin: '0px 0px -10% 0px' });
+      Object.values(sectionMap).forEach(sec => sec && observer.observe(sec));
+      // Also update on click for immediate feedback
+      navLinks.forEach(a => a.addEventListener('click', () => setActive(a.getAttribute('href').slice(1))));
     </script>
   </body>
 </html>
