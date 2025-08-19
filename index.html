@@ -11,7 +11,7 @@
 
     <style>
       :root {
-        --text: #196e06;
+        --text: #1b1807;
         --background: #fcfbf3;
         --primary: #f5e259;
         --secondary: #8de19a;
@@ -48,6 +48,16 @@
       ul li{padding:6px 0;}
       iframe.map{width:100%;aspect-ratio:16/9;border:0;border-radius:12px;box-shadow:0 6px 16px rgba(0,0,0,.1);}
       footer{text-align:center;padding:40px 0;font-size:14px;color:rgba(0,0,0,.6);}
+      /* === Mobile hamburger menu === */
+      .hamburger{display:none;}
+      @media (max-width:768px){
+        .hamburger{display:inline-flex; align-items:center; justify-content:center; position:absolute; top:20px; right:20px; z-index:4; width:42px; height:42px; border-radius:10px; border:2px solid #fff; background:rgba(255,255,255,.2); color:#fff; cursor:pointer;}
+        .hamburger:focus-visible{outline:3px solid var(--primary); outline-offset:2px;}
+        nav.topnav{display:none; position:absolute; top:70px; right:10px; flex-direction:column; gap:12px; background:rgba(252,251,243,.96); padding:12px; border-radius:12px; box-shadow:0 8px 24px rgba(0,0,0,.18);}
+        nav.topnav.open{display:flex;}
+        nav.topnav a{color:var(--text); border-bottom:none;}
+        nav.topnav .rsvp-btn{border-color:var(--text);}
+      }
     </style>
   </head>
   <body>
@@ -60,7 +70,11 @@
         <button data-lang="fr" class="active">FR</button>
         <button data-lang="it">IT</button>
       </div>
-      <nav class="topnav">
+      <button class="hamburger" aria-label="Ouvrir le menu" aria-controls="topnav" aria-expanded="false">
+        <!-- simple icon -->
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+      <nav class="topnav" id="topnav">
         <a href="#wedding" data-i18n="nav.wedding">Wedding</a>
         <a href="#localisation" data-i18n="nav.location">Localisation</a>
         <a href="#stay" data-i18n="nav.stay">Hébergements</a>
@@ -163,6 +177,21 @@
       document.querySelectorAll('.lang-switch button').forEach(btn=>btn.addEventListener('click',()=>applyTranslations(btn.dataset.lang)));
 
       applyTranslations('fr');
+
+      // Hamburger toggle (mobile)
+      const burger = document.querySelector('.hamburger');
+      const topnav = document.getElementById('topnav');
+      if (burger && topnav){
+        burger.addEventListener('click', ()=>{
+          const open = topnav.classList.toggle('open');
+          burger.setAttribute('aria-expanded', String(open));
+        });
+        // Close on link click (UX)
+        topnav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+          topnav.classList.remove('open');
+          burger.setAttribute('aria-expanded','false');
+        }));
+      }
     </script>
   </body>
 </html>
