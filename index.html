@@ -22,13 +22,13 @@
 
       header.hero{position:relative;height:100dvh;overflow:hidden;display:flex;justify-content:center;align-items:center;text-align:center;color:#fff;}
       .video-bg{position:absolute;inset:0;overflow:hidden;z-index:0;}
-      .video-bg iframe{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:100vw;height:56.25vw;min-width:177.78dvh;min-height:100dvh;border:0;pointer-events:none;}
+      .video-bg iframe{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:100vw;height:56.25vw;min-width:177.78dvh;min-height:100dvh;border:0;pointer-events:none;object-fit:cover;}
       .video-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.4),rgba(0,0,0,.2));z-index:1;}
 
       .hero-content{position:relative;z-index:2;}
       .hero-content h1{font-family:'Great Vibes',cursive;font-size:clamp(48px,8vw,100px);margin-bottom:10px;}
       .hero-content p{font-size:20px;margin-bottom:30px;}
-      .hero-content .cta{padding:12px 28px;border:2px solid #fff;border-radius:4px;background:transparent;color:#fff;font-weight:600;text-decoration:none;transition:.3s;}
+      .hero-content .cta{padding:12px 28px;border:2px solid #fff;border-radius:4px;background:transparent;color:#fff;font-weight:600;text-decoration:none;transition:.3s;display:inline-block;}
       .hero-content .cta:hover{background:var(--primary);color:var(--text);border-color:var(--primary);}
 
       .lang-switch{position:absolute;top:20px;left:20px;z-index:3;}
@@ -37,7 +37,7 @@
 
       nav.topnav{position:absolute;top:20px;right:20px;display:flex;gap:20px;z-index:3;}
       nav.topnav a{color:#fff;text-decoration:none;font-weight:500;transition:.3s;}
-      nav.topnav a:hover,nav.topnav a.active{border-bottom:2px solid var(--primary);}
+      nav.topnav a:hover,nav.topnav a.active{border-bottom:2px solid var(--primary);}      
       nav.topnav .rsvp-btn{border:2px solid #fff;padding:6px 14px;border-radius:4px;}
       nav.topnav .rsvp-btn:hover{background:var(--primary);color:var(--text);border-color:var(--primary);}
 
@@ -51,7 +51,7 @@
       /* === Mobile hamburger menu === */
       .hamburger{display:none;}
       @media (max-width:768px){
-        .hamburger{display:inline-flex; align-items:center; justify-content:center; position:absolute; top:20px; right:20px; z-index:4; width:42px; height:42px; border-radius:10px; border:2px solid #fff; background:rgba(255,255,255,.2); color:#fff; cursor:pointer;}
+        .hamburger{display:inline-flex; align-items:center; justify-content:center; position:absolute; top:20px; right:20px; z-index:10; width:42px; height:42px; border-radius:10px; border:2px solid #fff; background:rgba(255,255,255,.2); color:#fff; cursor:pointer;}
         .hamburger:focus-visible{outline:3px solid var(--primary); outline-offset:2px;}
         nav.topnav{display:none; position:absolute; top:70px; right:10px; flex-direction:column; gap:12px; background:rgba(252,251,243,.96); padding:12px; border-radius:12px; box-shadow:0 8px 24px rgba(0,0,0,.18); opacity:0; transform:translateY(-10px); transition:opacity .3s ease, transform .3s ease;}
         nav.topnav.open{display:flex; opacity:1; transform:translateY(0);}
@@ -71,7 +71,6 @@
         <button data-lang="it">IT</button>
       </div>
       <button class="hamburger" aria-label="Ouvrir le menu" aria-controls="topnav" aria-expanded="false">
-        <!-- simple icon -->
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
       </button>
       <nav class="topnav" id="topnav">
@@ -80,9 +79,10 @@
         <a href="#stay" data-i18n="nav.stay">Hébergements</a>
         <a href="#rsvp" class="rsvp-btn" data-i18n="nav.rsvp">RSVP</a>
       </nav>
-      $1
-        <p data-i18n=\"date\">08 août 2026 · Castello Marchione<\/p>
-        $2 class="cta" data-i18n="cta">Confirmer ma venue</a>
+      <div class="hero-content">
+        <h1>Fidalma & Ilyes</h1>
+        <p data-i18n="date">08 août 2026 · Castello Marchione</p>
+        <a href="#rsvp" class="cta" data-i18n="cta">Confirmer ma venue</a>
       </div>
     </header>
 
@@ -150,25 +150,28 @@
       function applyTranslations(lang){
         document.documentElement.lang = lang;
         const dict = I18N[lang];
-        document.querySelector('[data-i18n="date"]').textContent = dict.date;
-        document.querySelector('[data-i18n="cta"]').textContent = dict.cta;
-        document.querySelector('#wedding h2').textContent = dict.wedding.title;
-        const weddingLis = document.querySelectorAll('#wedding li');
-        weddingLis[0].textContent = dict.wedding.ceremony;
-        weddingLis[1].textContent = dict.wedding.aperitivo;
-        weddingLis[2].textContent = dict.wedding.dinner;
-        weddingLis[3].textContent = dict.wedding.party;
-        document.querySelector('#localisation h2').textContent = dict.location.title;
-        document.querySelector('#localisation p').textContent = dict.location.text;
-        document.querySelector('#stay h2').textContent = dict.stay.title;
-        document.querySelector('#rsvp h2').textContent = dict.rsvp.title;
-        document.querySelector('#rsvp p').textContent = dict.rsvp.text;
-        document.querySelector('#rsvp a').textContent = dict.rsvp.cta;
-        document.querySelector('footer p').textContent = dict.footer;
+        const setText = (sel, val) => { const el = document.querySelector(sel); if (el && typeof val === 'string') el.textContent = val; };
+
+        setText('[data-i18n="date"]', dict.date);
+        setText('[data-i18n="cta"]', dict.cta);
+        setText('#wedding h2', dict.wedding.title);
+        const wlis = document.querySelectorAll('#wedding li');
+        if (wlis[0]) wlis[0].textContent = dict.wedding.ceremony;
+        if (wlis[1]) wlis[1].textContent = dict.wedding.aperitivo;
+        if (wlis[2]) wlis[2].textContent = dict.wedding.dinner;
+        if (wlis[3]) wlis[3].textContent = dict.wedding.party;
+        setText('#localisation h2', dict.location.title);
+        setText('#localisation p', dict.location.text);
+        setText('#stay h2', dict.stay.title);
+        setText('#rsvp h2', dict.rsvp.title);
+        setText('#rsvp p', dict.rsvp.text);
+        setText('#rsvp a', dict.rsvp.cta);
+        setText('footer p', dict.footer);
         const nav = dict.nav || {};
         document.querySelectorAll('nav.topnav a').forEach(a=>{
           const key = a.getAttribute('data-i18n');
-          if(nav[key.split('.')[1]]) a.textContent = nav[key.split('.')[1]];
+          const k = key && key.split('.')[1];
+          if (k && nav[k]) a.textContent = nav[k];
         });
         document.querySelectorAll('.lang-switch button').forEach(btn => btn.classList.toggle('active',btn.dataset.lang===lang));
       }
@@ -185,7 +188,6 @@
           const open = topnav.classList.toggle('open');
           burger.setAttribute('aria-expanded', String(open));
         });
-        // Close on link click (UX)
         topnav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
           topnav.classList.remove('open');
           burger.setAttribute('aria-expanded','false');
