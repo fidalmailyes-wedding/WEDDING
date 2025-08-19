@@ -24,8 +24,12 @@
       .video-bg{position:absolute;inset:0;overflow:hidden;z-index:0;}
       .video-bg iframe{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:100vw;height:56.25vw;min-width:177.78dvh;min-height:100dvh;border:0;pointer-events:none;object-fit:cover;}
       .video-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.4),rgba(0,0,0,.2));z-index:1;}
+      /* Mask visuelle pour cacher le watermark côté gauche de la vidéo */
+      .brand-mask{position:absolute;top:0;bottom:0;left:0;width:84px;z-index:2;pointer-events:none;
+        background:linear-gradient(90deg, rgba(252,251,243,0.95) 0%, rgba(252,251,243,0.6) 35%, rgba(252,251,243,0) 85%);}
+      @media (max-width:768px){ .brand-mask{width:64px;} }
 
-      .hero-content{position:relative;z-index:2;}
+      .hero-content{position:relative;z-index:3;}
       .hero-content h1{font-family:'Great Vibes',cursive;font-size:clamp(48px,8vw,100px);margin-bottom:10px;}
       .hero-content p{font-size:20px;margin-bottom:30px;}
       .hero-content .cta{padding:12px 28px;border:2px solid #fff;border-radius:4px;background:transparent;color:#fff;font-weight:600;text-decoration:none;transition:.3s;display:inline-block;}
@@ -64,6 +68,7 @@
     <header class="hero">
       <div class="video-bg" aria-hidden="true">
         <div class="video-overlay"></div>
+        <div class="brand-mask" aria-hidden="true"></div>
         <iframe src="https://www.youtube-nocookie.com/embed/3cLqInMZrtc?autoplay=1&mute=1&loop=1&playlist=3cLqInMZrtc&controls=0&rel=0&modestbranding=1&iv_load_policy=3&playsinline=1" allow="autoplay; encrypted-media; picture-in-picture"></iframe>
       </div>
       <div class="lang-switch">
