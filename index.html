@@ -11,64 +11,61 @@
 
     <style>
       :root {
-        --blue: #1d5c63; /* bleu mer */
-        --lemon: #ffd84d; /* citron */
-        --olive: #7a9d54; /* olivier */
-        --terracotta: #c26d52; /* terre cuite */
-        --sand: #fffdf6; /* sable */
+        --blue: #1d5c63;
+        --lemon: #ffd84d;
+        --olive: #7a9d54;
+        --terracotta: #c26d52;
+        --sand: #fffdf6;
         --ink: #172223;
-        --radius-xl: 24px;
-        --radius: 14px;
-        --shadow: 0 6px 24px rgba(0,0,0,.12);
       }
       *{box-sizing:border-box;}
-      body {
-        margin:0;
-        font-family:'Work Sans',sans-serif;
-        color:var(--ink);
-        background:var(--sand);
-      }
-      header.hero { position:relative; height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; overflow:hidden; }
-      .video-bg { position:absolute; inset:0; overflow:hidden; z-index:0; }
-      .video-bg iframe { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:100%; height:100%; object-fit:cover; border:0; pointer-events:none; }
-      .video-overlay { position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.45), rgba(0,0,0,.25) 40%, rgba(255,255,255,0) 70%); z-index:1; }
-      header.hero .content { position:relative; z-index:2; color:white; }
-      h1.names { font-family:'Marcellus',serif; font-size:clamp(36px,7vw,80px); margin:0; }
-      .subtitle { font-size:20px; margin-bottom:20px; }
-      .cta { display:inline-block; padding:12px 24px; border-radius:var(--radius); background:linear-gradient(135deg,var(--lemon),#ffc107); color:var(--ink); font-weight:600; text-decoration:none; box-shadow:0 6px 16px rgba(0,0,0,.2); }
+      body{margin:0;font-family:'Work Sans',sans-serif;color:var(--ink);background:var(--sand);}
 
-      /* Side navigation */
-      .sidenav { position:fixed; right:20px; top:50%; transform:translateY(-50%); display:flex; flex-direction:column; gap:10px; z-index:5; }
-      .sidenav button { background:#fff; border:2px solid var(--terracotta); color:var(--blue); padding:10px 14px; border-radius:999px; cursor:pointer; font-weight:600; box-shadow:var(--shadow); transition:.2s; }
-      .sidenav button.active { background:linear-gradient(135deg,var(--lemon),#ffd84d); color:#2d2d00; border-color:transparent; }
+      header.hero{position:relative;height:100vh;overflow:hidden;display:flex;justify-content:center;align-items:center;text-align:center;color:#fff;}
+      .video-bg{position:absolute;inset:0;overflow:hidden;z-index:0;}
+      .video-bg iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0;pointer-events:none;}
+      .video-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.4),rgba(0,0,0,.2));z-index:1;}
 
-      main { padding:60px 20px; max-width:900px; margin:0 auto; }
-      .view { display:none; }
-      .view.active { display:block; animation:fadeIn .4s ease; }
-      @keyframes fadeIn { from{opacity:0; transform:translateY(10px);} to{opacity:1; transform:translateY(0);} }
+      .hero-content{position:relative;z-index:2;}
+      .hero-content h1{font-family:'Marcellus',serif;font-size:clamp(40px,6vw,86px);margin-bottom:12px;}
+      .hero-content p{font-size:18px;margin-bottom:24px;}
+      .hero-content .cta{padding:12px 28px;border:2px solid #fff;border-radius:40px;background:transparent;color:#fff;font-weight:600;text-decoration:none;transition:.3s;}
+      .hero-content .cta:hover{background:var(--lemon);color:var(--ink);border-color:var(--lemon);}
 
-      h2 { font-family:'Marcellus',serif; font-size:32px; color:var(--blue); margin-top:0; border-bottom:3px solid var(--olive); display:inline-block; padding-bottom:4px; }
-      .card { background:#fff; border-radius:var(--radius-xl); box-shadow:var(--shadow); padding:24px; margin-bottom:24px; border:2px solid var(--terracotta); }
-      iframe.map { width:100%; aspect-ratio:16/9; border:0; border-radius:var(--radius); box-shadow:var(--shadow); }
-      footer { text-align:center; padding:40px 0; font-size:14px; color:rgba(0,0,0,.6); }
-      .lang-switch { position:absolute; top:16px; left:16px; z-index:3; }
-      .lang-switch button { border:2px solid #fff; background:rgba(255,255,255,.2); color:#fff; padding:6px 10px; border-radius:999px; cursor:pointer; font-weight:600; margin-right:6px; }
-      .lang-switch button.active { background:var(--lemon); color:var(--ink); border-color:transparent; }
+      .lang-switch{position:absolute;top:20px;left:20px;z-index:3;}
+      .lang-switch button{margin-right:6px;border:1px solid #fff;background:rgba(255,255,255,.2);color:#fff;padding:6px 10px;border-radius:999px;cursor:pointer;font-weight:600;}
+      .lang-switch button.active{background:var(--lemon);color:var(--ink);border-color:transparent;}
+
+      .sidenav{position:fixed;right:20px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:12px;z-index:5;}
+      .sidenav button{background:rgba(255,255,255,.8);backdrop-filter:blur(6px);border:none;color:var(--blue);padding:10px 16px;border-radius:999px;cursor:pointer;font-weight:600;box-shadow:0 4px 12px rgba(0,0,0,.15);transition:.3s;}
+      .sidenav button.active{background:var(--lemon);color:var(--ink);}
+
+      main{padding:60px 20px;max-width:900px;margin:0 auto;}
+      .view{display:none;animation:fadeIn .4s ease;}
+      .view.active{display:block;}
+      @keyframes fadeIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+
+      h2{font-family:'Marcellus',serif;font-size:32px;color:var(--blue);margin-bottom:16px;}
+      section{margin-bottom:60px;}
+      ul{list-style:none;padding-left:0;}
+      ul li{padding:6px 0;}
+      iframe.map{width:100%;aspect-ratio:16/9;border:0;border-radius:12px;box-shadow:0 6px 16px rgba(0,0,0,.1);}
+      footer{text-align:center;padding:40px 0;font-size:14px;color:rgba(0,0,0,.6);}
     </style>
   </head>
   <body>
     <header class="hero">
       <div class="video-bg" aria-hidden="true">
         <div class="video-overlay"></div>
-        <iframe src="https://www.youtube-nocookie.com/embed/3cLqInMZrtc?autoplay=1&mute=1&loop=1&playlist=3cLqInMZrtc&controls=0&rel=0&modestbranding=1&iv_load_policy=3&playsinline=1&fs=0&disablekb=1" allow="autoplay; encrypted-media; picture-in-picture"></iframe>
+        <iframe src="https://www.youtube-nocookie.com/embed/3cLqInMZrtc?autoplay=1&mute=1&loop=1&playlist=3cLqInMZrtc&controls=0&rel=0&modestbranding=1&iv_load_policy=3&playsinline=1" allow="autoplay; encrypted-media; picture-in-picture"></iframe>
       </div>
       <div class="lang-switch">
         <button data-lang="fr" class="active">FR</button>
         <button data-lang="it">IT</button>
       </div>
-      <div class="content">
-        <h1 class="names">Fidalma & Ilyes</h1>
-        <p class="subtitle" data-i18n="date">08 août 2026 · Castello Marchione</p>
+      <div class="hero-content">
+        <h1>Fidalma & Ilyes</h1>
+        <p data-i18n="date">08 août 2026 · Castello Marchione</p>
         <a href="#" class="cta" data-i18n="cta">Confirmer ma venue</a>
       </div>
     </header>
@@ -81,7 +78,7 @@
     </div>
 
     <main>
-      <section class="card view active" id="wedding">
+      <section class="view active" id="wedding">
         <h2 data-i18n="wedding.title">Wedding — Déroulé</h2>
         <ul>
           <li data-i18n="wedding.ceremony">17h00 : Cérémonie</li>
@@ -91,13 +88,13 @@
         </ul>
       </section>
 
-      <section class="card view" id="localisation">
+      <section class="view" id="localisation">
         <h2 data-i18n="location.title">Localisation</h2>
         <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3066.0218535464457!2d17.1235!3d40.9696!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1347a8f19c6e5c13%3A0x58e97ad7c0813a53!2sCastello%20Marchione!5e0!3m2!1sfr!2sit!4v1692200000000!5m2!1sfr!2sit" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         <p data-i18n="location.text">Castello Marchione, Conversano, Italie</p>
       </section>
 
-      <section class="card view" id="stay">
+      <section class="view" id="stay">
         <h2 data-i18n="stay.title">Où dormir ?</h2>
         <ul>
           <li>Hotel Corte Altavilla, Conversano</li>
@@ -106,7 +103,7 @@
         </ul>
       </section>
 
-      <section class="card view" id="rsvp">
+      <section class="view" id="rsvp">
         <h2 data-i18n="rsvp.title">RSVP</h2>
         <p data-i18n="rsvp.text">Merci de confirmer votre présence avant le 1er mai 2026.</p>
         <a href="#" class="cta" target="_blank" data-i18n="rsvp.cta">Répondre au formulaire</a>
@@ -161,11 +158,9 @@
         document.querySelector('footer p').textContent = dict.footer;
         const nav = dict.nav || {};
         document.querySelectorAll('.sidenav button').forEach(btn => {
-          const key = 'nav.'+btn.dataset.view;
           if(nav[btn.dataset.view]) btn.textContent = nav[btn.dataset.view];
-          btn.classList.toggle('active', btn.dataset.lang === lang);
         });
-        document.querySelectorAll('.lang-switch button').forEach(btn => btn.classList.toggle('active', btn.dataset.lang===lang));
+        document.querySelectorAll('.lang-switch button').forEach(btn => btn.classList.toggle('active',btn.dataset.lang===lang));
       }
 
       document.querySelectorAll('.lang-switch button').forEach(btn=>btn.addEventListener('click',()=>applyTranslations(btn.dataset.lang)));
