@@ -20,9 +20,9 @@
       *{box-sizing:border-box;}
       body{margin:0;font-family:'Montserrat',sans-serif;color:var(--text);background:var(--background);}
 
-      header.hero{position:relative;height:100vh;overflow:hidden;display:flex;justify-content:center;align-items:center;text-align:center;color:#fff;}
+      header.hero{position:relative;height:100dvh;overflow:hidden;display:flex;justify-content:center;align-items:center;text-align:center;color:#fff;}
       .video-bg{position:absolute;inset:0;overflow:hidden;z-index:0;}
-      .video-bg iframe{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:120%;height:120%;min-width:100%;min-height:100%;border:0;pointer-events:none;}
+      .video-bg iframe{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:100vw;height:56.25vw;min-width:177.78dvh;min-height:100dvh;border:0;pointer-events:none;}
       .video-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.4),rgba(0,0,0,.2));z-index:1;}
 
       .hero-content{position:relative;z-index:2;}
@@ -53,8 +53,8 @@
       @media (max-width:768px){
         .hamburger{display:inline-flex; align-items:center; justify-content:center; position:absolute; top:20px; right:20px; z-index:4; width:42px; height:42px; border-radius:10px; border:2px solid #fff; background:rgba(255,255,255,.2); color:#fff; cursor:pointer;}
         .hamburger:focus-visible{outline:3px solid var(--primary); outline-offset:2px;}
-        nav.topnav{display:none; position:absolute; top:70px; right:10px; flex-direction:column; gap:12px; background:rgba(252,251,243,.96); padding:12px; border-radius:12px; box-shadow:0 8px 24px rgba(0,0,0,.18);}
-        nav.topnav.open{display:flex;}
+        nav.topnav{display:none; position:absolute; top:70px; right:10px; flex-direction:column; gap:12px; background:rgba(252,251,243,.96); padding:12px; border-radius:12px; box-shadow:0 8px 24px rgba(0,0,0,.18); opacity:0; transform:translateY(-10px); transition:opacity .3s ease, transform .3s ease;}
+        nav.topnav.open{display:flex; opacity:1; transform:translateY(0);}
         nav.topnav a{color:var(--text); border-bottom:none;}
         nav.topnav .rsvp-btn{border-color:var(--text);}
       }
@@ -80,10 +80,9 @@
         <a href="#stay" data-i18n="nav.stay">Hébergements</a>
         <a href="#rsvp" class="rsvp-btn" data-i18n="nav.rsvp">RSVP</a>
       </nav>
-      <div class="hero-content">
-        <h1>Fidalma & Ilyes</h1>
-        $1
-        <a href="#rsvp" class="cta" data-i18n="cta">Confirmer ma venue</a>
+      $1
+        <p data-i18n=\"date\">08 août 2026 · Castello Marchione<\/p>
+        $2 class="cta" data-i18n="cta">Confirmer ma venue</a>
       </div>
     </header>
 
