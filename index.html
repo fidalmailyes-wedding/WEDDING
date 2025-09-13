@@ -88,6 +88,7 @@
       </nav>
       <div class="hero-content">
         <h1>Fidalma & Ilyes</h1>
+        <p id="countdown"></p>
         <p data-i18n="date">08 août 2026 · Castello Marchione</p>
         <a href="rsvp.html" class="cta" data-i18n="cta">Confirmer ma venue</a>
       </div>
@@ -141,9 +142,27 @@
         document.querySelectorAll('.lang-switch button').forEach(btn => btn.classList.toggle('active',btn.dataset.lang===lang));
       }
 
-      document.querySelectorAll('.lang-switch button').forEach(btn=>btn.addEventListener('click',()=>applyTranslations(btn.dataset.lang)));
+      function updateCountdown(){
+        const weddingDate = new Date('2026-08-08T00:00:00');
+        const now = new Date();
+        const diff = Math.ceil((weddingDate - now) / (1000*60*60*24));
+        const lang = document.documentElement.lang || 'fr';
+        const labels = { fr: 'jours restants', it: 'giorni mancanti', en: 'days to go' };
+        const label = labels[lang] || labels['en'];
+        const el = document.getElementById('countdown');
+        if (el) {
+          el.textContent = diff + ' ' + label;
+        }
+      }
+
+      document.querySelectorAll('.lang-switch button').forEach(btn=>btn.addEventListener('click',()=>{
+        applyTranslations(btn.dataset.lang);
+        updateCountdown();
+      }));
 
       applyTranslations('fr');
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
 
       function highlightActiveLink(){
         const current = location.pathname.split('/').pop() || 'index.html';
