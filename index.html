@@ -82,6 +82,7 @@
         <a href="#wedding" data-i18n="nav.wedding">Wedding</a>
         <a href="#localisation" data-i18n="nav.location">Localisation</a>
         <a href="#stay" data-i18n="nav.stay">Hébergements</a>
+        <a href="#info" data-i18n="nav.info">Infos</a>
         <a href="#rsvp" class="rsvp-btn" data-i18n="nav.rsvp">RSVP</a>
       </nav>
       <div class="hero-content">
@@ -117,6 +118,11 @@
         </ul>
       </section>
 
+      <section id="info">
+        <h2 data-i18n="info.title">Infos</h2>
+        <p data-i18n="info.text">Quelques informations pratiques.</p>
+      </section>
+
       <section id="rsvp">
         <h2 data-i18n="rsvp.title">RSVP</h2>
         <p data-i18n="rsvp.text">Merci de confirmer votre présence avant le 1er mai 2026.</p>
@@ -136,7 +142,8 @@
           wedding: { title: 'Wedding — Déroulé', ceremony: '17h00 : Cérémonie', aperitivo: '18h00 : Aperitivo', dinner: '20h00 : Dîner', party: '23h00 : Festa & DJ set'},
           location: { title: 'Localisation', text: 'Castello Marchione, Conversano, Italie'},
           stay: { title: 'Où dormir ?'},
-          nav: { wedding: 'Wedding', location: 'Localisation', stay: 'Hébergements', rsvp: 'RSVP' },
+          info: { title: 'Infos', text: 'Quelques informations pratiques.'},
+          nav: { wedding: 'Wedding', location: 'Localisation', stay: 'Hébergements', info: 'Infos', rsvp: 'RSVP' },
           rsvp: { title: 'RSVP', text: 'Merci de confirmer votre présence avant le 1er mai 2026.', cta: 'Répondre au formulaire'},
           footer: 'Fait avec amour et quelques citrons 🍋'
         },
@@ -146,7 +153,8 @@
           wedding: { title: 'Matrimonio — Programma', ceremony: '17:00 : Cerimonia', aperitivo: '18:00 : Aperitivo', dinner: '20:00 : Cena', party: '23:00 : Festa & DJ set'},
           location: { title: 'Località', text: 'Castello Marchione, Conversano, Italia'},
           stay: { title: 'Dove dormire?'},
-          nav: { wedding: 'Wedding', location: 'Località', stay: 'Alloggi', rsvp: 'RSVP' },
+          info: { title: 'Informazioni', text: 'Alcune informazioni pratiche.'},
+          nav: { wedding: 'Wedding', location: 'Località', stay: 'Alloggi', info: 'Informazioni', rsvp: 'RSVP' },
           rsvp: { title: 'RSVP', text: 'Vi preghiamo di confermare entro il 1° maggio 2026.', cta: 'Rispondere al modulo'},
           footer: 'Fatto con amore e qualche limone 🍋'
         }
@@ -166,6 +174,8 @@
         document.querySelector('#localisation h2').textContent = dict.location.title;
         document.querySelector('#localisation p').textContent = dict.location.text;
         document.querySelector('#stay h2').textContent = dict.stay.title;
+        document.querySelector('#info h2').textContent = dict.info.title;
+        document.querySelector('#info p').textContent = dict.info.text;
         document.querySelector('#rsvp h2').textContent = dict.rsvp.title;
         document.querySelector('#rsvp p').textContent = dict.rsvp.text;
         document.querySelector('#rsvp a').textContent = dict.rsvp.cta;
