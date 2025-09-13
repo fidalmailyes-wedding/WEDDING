@@ -30,7 +30,6 @@
       section{text-align:center;}
       h2{font-family:'Great Vibes',cursive;font-size:40px;color:var(--accent);margin-bottom:20px;}
       iframe.map{width:100%;aspect-ratio:16/9;border:0;border-radius:12px;box-shadow:0 6px 16px rgba(0,0,0,.1);}
-      footer{text-align:center;padding:40px 0;font-size:14px;color:rgba(0,0,0,.6);}
       .hamburger{display:none;}
       @media (max-width:768px){
         .hamburger{display:inline-flex; align-items:center; justify-content:center; position:absolute; top:20px; right:20px; z-index:4; width:42px; height:42px; border-radius:10px; border:2px solid #fff; background:rgba(255,255,255,.2); color:#fff; cursor:pointer;}
@@ -64,9 +63,6 @@
         <p data-i18n="location.text">Castello Marchione, Conversano, Italie</p>
       </section>
     </main>
-    <footer>
-      <p data-i18n="footer">Fait avec amour et quelques citrons 🍋</p>
-    </footer>
     <script>
       const I18N = {
         fr: {
@@ -76,8 +72,7 @@
           location: { title: 'Localisation', text: 'Castello Marchione, Conversano, Italie'},
           stay: { title: 'Où dormir ?'},
           nav: { home: 'Accueil', wedding: 'Wedding', location: 'Localisation', stay: 'Hébergements', rsvp: 'RSVP' },
-          rsvp: { title: 'RSVP', text: 'Merci de confirmer votre présence avant le 1er mai 2026.', cta: 'Répondre au formulaire'},
-          footer: 'Fait avec amour et quelques citrons 🍋'
+          rsvp: { title: 'RSVP', text: 'Merci de confirmer votre présence avant le 1er mai 2026.', cta: 'Répondre au formulaire'}
         },
         it: {
           date: '08 agosto 2026 · Castello Marchione',
@@ -86,8 +81,7 @@
           location: { title: 'Località', text: 'Castello Marchione, Conversano, Italia'},
           stay: { title: 'Dove dormire?'},
           nav: { home: 'Home', wedding: 'Wedding', location: 'Località', stay: 'Alloggi', rsvp: 'RSVP' },
-          rsvp: { title: 'RSVP', text: 'Vi preghiamo di confermare entro il 1° maggio 2026.', cta: 'Rispondere al modulo'},
-          footer: 'Fatto con amore e qualche limone 🍋'
+          rsvp: { title: 'RSVP', text: 'Vi preghiamo di confermare entro il 1° maggio 2026.', cta: 'Rispondere al modulo'}
         },
         en: {
           date: '08 August 2026 · Castello Marchione',
@@ -96,8 +90,7 @@
           location: { title: 'Location', text: 'Castello Marchione, Conversano, Italy'},
           stay: { title: 'Where to stay?'},
           nav: { home: 'Home', wedding: 'Wedding', location: 'Location', stay: 'Stay', rsvp: 'RSVP' },
-          rsvp: { title: 'RSVP', text: 'Please confirm your presence before May 1, 2026.', cta: 'Fill out the form'},
-          footer: 'Made with love and some lemons 🍋'
+          rsvp: { title: 'RSVP', text: 'Please confirm your presence before May 1, 2026.', cta: 'Fill out the form'}
         }
       };
       function applyTranslations(lang){
