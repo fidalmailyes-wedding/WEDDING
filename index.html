@@ -150,10 +150,7 @@
       };
 
       const countdownUnits = [
-        { key: 'days', digits: 3 },
-        { key: 'hours', digits: 2 },
-        { key: 'minutes', digits: 2 },
-        { key: 'seconds', digits: 2 }
+        { key: 'days', digits: 3 }
       ];
       const countdownState = {};
 
@@ -236,10 +233,7 @@
         const now = new Date();
         const totalSeconds = Math.max(0, Math.floor((weddingDate - now) / 1000));
         const days = Math.floor(totalSeconds / 86400);
-        const hours = Math.floor((totalSeconds % 86400) / 3600);
-        const minutes = Math.floor((totalSeconds % 3600) / 60);
-        const seconds = totalSeconds % 60;
-        const values = { days, hours, minutes, seconds };
+        const values = { days };
         countdownUnits.forEach(unit => {
           const state = countdownState[unit.key];
           if (!state) return;
