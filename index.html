@@ -52,6 +52,22 @@
       ul{list-style:none;padding-left:0;font-size:18px;}
       ul li{padding:6px 0;}
       iframe.map{width:100%;aspect-ratio:16/9;border:0;border-radius:12px;box-shadow:0 6px 16px rgba(0,0,0,.1);}
+      .flip-clock{display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-end;gap:20px;min-height:110px;}
+      .flip-unit{display:flex;flex-direction:column;align-items:center;gap:10px;color:#fff;text-transform:uppercase;letter-spacing:.08em;font-size:12px;}
+      .flip-unit .digits{display:flex;gap:8px;}
+      .flip-card{position:relative;width:52px;height:70px;perspective:1000px;}
+      .flip-card .top,
+      .flip-card .bottom,
+      .flip-card .top-next,
+      .flip-card .bottom-next{position:absolute;left:0;width:100%;height:50%;display:flex;align-items:center;justify-content:center;font-size:34px;font-weight:600;background:rgba(0,0,0,.55);border-radius:10px;box-shadow:0 8px 18px rgba(0,0,0,.35);backface-visibility:hidden;}
+      .flip-card .top{top:0;border-bottom:1px solid rgba(255,255,255,.15);}
+      .flip-card .bottom{bottom:0;transform-origin:top;transform:rotateX(0deg);}
+      .flip-card .top-next{top:0;transform-origin:bottom;transform:rotateX(90deg);}
+      .flip-card .bottom-next{bottom:0;transform-origin:top;transform:rotateX(-90deg);}
+      .flip-card.flip .top{animation:flipTop .6s ease-in forwards;}
+      .flip-card.flip .bottom-next{animation:flipBottom .6s ease-out forwards;}
+      @keyframes flipTop{from{transform:rotateX(0deg);}to{transform:rotateX(-90deg);}}
+      @keyframes flipBottom{from{transform:rotateX(90deg);}to{transform:rotateX(0deg);}}
       /* === Mobile hamburger menu === */
       .hamburger{display:none;}
       @media (max-width:768px){
@@ -88,7 +104,7 @@
       </nav>
       <div class="hero-content">
         <h1>Fidalma & Ilyes</h1>
-        <p id="countdown"></p>
+        <div id="countdown" class="flip-clock" role="timer" aria-live="polite"></div>
         <p data-i18n="date">08 août 2026 · Castello Marchione</p>
         <a href="rsvp.html" class="cta" data-i18n="cta">Confirmer ma venue</a>
       </div>
@@ -101,6 +117,7 @@
         fr: {
           date: '08 août 2026 · Castello Marchione',
           cta: 'Confirmer ma venue',
+          countdown: { days: 'Jours', hours: 'Heures', minutes: 'Minutes', seconds: 'Secondes' },
           wedding: { title: 'Wedding — Déroulé', ceremony: '17h00 : Cérémonie', aperitivo: '18h00 : Aperitivo', dinner: '20h00 : Dîner', party: '23h00 : Festa & DJ set'},
           location: { title: 'Localisation', text: 'Castello Marchione, Conversano, Italie'},
           stay: { title: 'Où dormir ?'},
@@ -111,6 +128,7 @@
         it: {
           date: '08 agosto 2026 · Castello Marchione',
           cta: 'Confermare la presenza',
+          countdown: { days: 'Giorni', hours: 'Ore', minutes: 'Minuti', seconds: 'Secondi' },
           wedding: { title: 'Matrimonio — Programma', ceremony: '17:00 : Cerimonia', aperitivo: '18:00 : Aperitivo', dinner: '20:00 : Cena', party: '23:00 : Festa & DJ set'},
           location: { title: 'Località', text: 'Castello Marchione, Conversano, Italia'},
           stay: { title: 'Dove dormire?'},
@@ -121,6 +139,7 @@
         en: {
           date: '08 August 2026 · Castello Marchione',
           cta: 'Confirm attendance',
+          countdown: { days: 'Days', hours: 'Hours', minutes: 'Minutes', seconds: 'Seconds' },
           wedding: { title: 'Wedding — Schedule', ceremony: '17:00 : Ceremony', aperitivo: '18:00 : Aperitif', dinner: '20:00 : Dinner', party: '23:00 : Party & DJ set'},
           location: { title: 'Location', text: 'Castello Marchione, Conversano, Italy'},
           stay: { title: 'Where to stay?'},
@@ -129,6 +148,14 @@
           rsvp: { title: 'RSVP', text: 'Please confirm your presence before May 1, 2026.', cta: 'Fill out the form'}
         }
       };
+
+      const countdownUnits = [
+        { key: 'days', digits: 3 },
+        { key: 'hours', digits: 2 },
+        { key: 'minutes', digits: 2 },
+        { key: 'seconds', digits: 2 }
+      ];
+      const countdownState = {};
 
       function applyTranslations(lang){
         document.documentElement.lang = lang;
@@ -140,19 +167,88 @@
           if(text) el.textContent = text;
         });
         document.querySelectorAll('.lang-switch button').forEach(btn => btn.classList.toggle('active',btn.dataset.lang===lang));
+        updateCountdownLabels(lang);
+      }
+
+      function createFlipClock(){
+        const countdownEl = document.getElementById('countdown');
+        if (!countdownEl) return;
+        countdownEl.innerHTML = '';
+        countdownUnits.forEach(unit => {
+          const unitEl = document.createElement('div');
+          unitEl.className = 'flip-unit';
+          unitEl.dataset.unit = unit.key;
+
+          const digitsEl = document.createElement('div');
+          digitsEl.className = 'digits';
+          const cards = [];
+          for (let i = 0; i < unit.digits; i += 1){
+            const card = document.createElement('div');
+            card.className = 'flip-card';
+            card.dataset.value = '0';
+            card.innerHTML = `
+              <div class="top">0</div>
+              <div class="bottom">0</div>
+              <div class="top-next">0</div>
+              <div class="bottom-next">0</div>
+            `;
+            cards.push(card);
+            digitsEl.appendChild(card);
+          }
+
+          const label = document.createElement('div');
+          label.className = 'unit-label';
+          label.textContent = unit.key;
+
+          unitEl.appendChild(digitsEl);
+          unitEl.appendChild(label);
+          countdownEl.appendChild(unitEl);
+          countdownState[unit.key] = { cards, label };
+        });
+      }
+
+      function updateCountdownLabels(lang){
+        const dict = I18N[lang] || I18N.en;
+        Object.keys(countdownState).forEach(key => {
+          if (countdownState[key].label) {
+            countdownState[key].label.textContent = dict.countdown[key];
+          }
+        });
+      }
+
+      function flipCardTo(card, nextValue){
+        if (!card || card.dataset.value === nextValue) return;
+        card.querySelector('.top-next').textContent = nextValue;
+        card.querySelector('.bottom-next').textContent = nextValue;
+        card.classList.remove('flip');
+        void card.offsetWidth;
+        card.classList.add('flip');
+        setTimeout(() => {
+          card.querySelector('.top').textContent = nextValue;
+          card.querySelector('.bottom').textContent = nextValue;
+          card.dataset.value = nextValue;
+          card.classList.remove('flip');
+        }, 600);
       }
 
       function updateCountdown(){
         const weddingDate = new Date('2026-08-08T00:00:00');
         const now = new Date();
-        const diff = Math.ceil((weddingDate - now) / (1000*60*60*24));
-        const lang = document.documentElement.lang || 'fr';
-        const labels = { fr: 'jours avant le jour J', it: 'giorni mancanti', en: 'days to go' };
-        const label = labels[lang] || labels['en'];
-        const el = document.getElementById('countdown');
-        if (el) {
-          el.textContent = diff + ' ' + label;
-        }
+        const totalSeconds = Math.max(0, Math.floor((weddingDate - now) / 1000));
+        const days = Math.floor(totalSeconds / 86400);
+        const hours = Math.floor((totalSeconds % 86400) / 3600);
+        const minutes = Math.floor((totalSeconds % 3600) / 60);
+        const seconds = totalSeconds % 60;
+        const values = { days, hours, minutes, seconds };
+        countdownUnits.forEach(unit => {
+          const state = countdownState[unit.key];
+          if (!state) return;
+          const value = String(values[unit.key]).padStart(unit.digits, '0');
+          value.split('').forEach((digit, index) => {
+            const card = state.cards[index];
+            flipCardTo(card, digit);
+          });
+        });
       }
 
       document.querySelectorAll('.lang-switch button').forEach(btn=>btn.addEventListener('click',()=>{
@@ -160,6 +256,7 @@
         updateCountdown();
       }));
 
+      createFlipClock();
       applyTranslations('fr');
       updateCountdown();
       setInterval(updateCountdown, 1000);
