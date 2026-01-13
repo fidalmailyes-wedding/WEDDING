@@ -170,8 +170,18 @@
         updateCountdownLabels(lang);
       }
 
+      function getCountdownElement(){
+        const countdownEls = document.querySelectorAll('#countdown');
+        if (countdownEls.length > 1){
+          countdownEls.forEach((el, index) => {
+            if (index > 0) el.remove();
+          });
+        }
+        return countdownEls[0] || null;
+      }
+
       function createFlipClock(){
-        const countdownEl = document.getElementById('countdown');
+        const countdownEl = getCountdownElement();
         if (!countdownEl) return;
         countdownEl.innerHTML = '';
         countdownUnits.forEach(unit => {
