@@ -39,13 +39,9 @@
       .countdown-item{display:flex;flex-direction:column;align-items:center;gap:8px;min-width:78px;}
       .countdown-label{font-size:12px;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.85);}
       .flip{position:relative;width:78px;height:96px;perspective:1000px;font-variant-numeric:tabular-nums;}
-      .flip .top,.flip .bottom,.flip .top-flip,.flip .bottom-flip{position:absolute;left:0;width:100%;height:50%;overflow:hidden;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.45);border:1px solid rgba(255,255,255,.4);border-radius:12px;color:#fff;font-size:36px;font-weight:600;box-shadow:0 10px 25px rgba(0,0,0,.35);}
-      .flip .top{top:0;border-bottom:none;border-bottom-left-radius:6px;border-bottom-right-radius:6px;}
-      .flip .bottom{bottom:0;transform:rotateX(0deg);border-top:none;border-top-left-radius:6px;border-top-right-radius:6px;}
-      .flip .top-flip{top:0;transform-origin:bottom;animation:flip-top .6s ease-in forwards;}
-      .flip .bottom-flip{bottom:0;transform-origin:top;transform:rotateX(90deg);animation:flip-bottom .6s ease-out forwards;}
-      @keyframes flip-top{to{transform:rotateX(-90deg);}}
-      @keyframes flip-bottom{to{transform:rotateX(0deg);}}
+      .flip .top,.flip .bottom,.flip .top-flip,.flip .bottom-flip{position:absolute;left:0;width:100%;height:100%;overflow:hidden;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.45);border:1px solid rgba(255,255,255,.4);border-radius:12px;color:#fff;font-size:36px;font-weight:600;box-shadow:0 10px 25px rgba(0,0,0,.35);}
+      .flip .top{top:0;}
+      .flip .bottom,.flip .top-flip,.flip .bottom-flip{display:none;}
       @media (max-width:600px){
         .countdown{gap:12px;}
         .flip{width:64px;height:82px;}
