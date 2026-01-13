@@ -35,6 +35,22 @@
       .hero-content p{font-size:20px;margin-bottom:30px;}
       .hero-content .cta{padding:12px 28px;border:2px solid #fff;border-radius:4px;background:transparent;color:#fff;font-weight:600;text-decoration:none;transition:.3s;}
       .hero-content .cta:hover{background:var(--primary);color:var(--text);border-color:var(--primary);}
+      .countdown{display:flex;flex-wrap:wrap;justify-content:center;gap:16px;margin:18px 0 26px;}
+      .countdown-item{display:flex;flex-direction:column;align-items:center;gap:8px;min-width:78px;}
+      .countdown-label{font-size:12px;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.85);}
+      .flip{position:relative;width:78px;height:96px;perspective:1000px;font-variant-numeric:tabular-nums;}
+      .flip .top,.flip .bottom,.flip .top-flip,.flip .bottom-flip{position:absolute;left:0;width:100%;height:50%;overflow:hidden;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.45);border:1px solid rgba(255,255,255,.4);border-radius:12px;color:#fff;font-size:36px;font-weight:600;box-shadow:0 10px 25px rgba(0,0,0,.35);}
+      .flip .top{top:0;border-bottom:none;border-bottom-left-radius:6px;border-bottom-right-radius:6px;}
+      .flip .bottom{bottom:0;transform:rotateX(0deg);border-top:none;border-top-left-radius:6px;border-top-right-radius:6px;}
+      .flip .top-flip{top:0;transform-origin:bottom;animation:flip-top .6s ease-in forwards;}
+      .flip .bottom-flip{bottom:0;transform-origin:top;transform:rotateX(90deg);animation:flip-bottom .6s ease-out forwards;}
+      @keyframes flip-top{to{transform:rotateX(-90deg);}}
+      @keyframes flip-bottom{to{transform:rotateX(0deg);}}
+      @media (max-width:600px){
+        .countdown{gap:12px;}
+        .flip{width:64px;height:82px;}
+        .flip .top,.flip .bottom,.flip .top-flip,.flip .bottom-flip{font-size:28px;}
+      }
 
       .lang-switch{position:absolute;top:20px;left:20px;z-index:3;}
       .lang-switch button{margin-right:6px;border:1px solid #fff;background:rgba(255,255,255,.2);color:#fff;padding:6px 10px;border-radius:999px;cursor:pointer;font-weight:600;}
@@ -88,6 +104,36 @@
       </nav>
       <div class="hero-content">
         <h1>Fidalma & Ilyes</h1>
+        <div class="countdown" aria-label="Compte à rebours">
+          <div class="countdown-item">
+            <div class="flip" data-unit="days">
+              <div class="top">00</div>
+              <div class="bottom">00</div>
+            </div>
+            <div class="countdown-label" data-i18n="countdown.days">Jours</div>
+          </div>
+          <div class="countdown-item">
+            <div class="flip" data-unit="hours">
+              <div class="top">00</div>
+              <div class="bottom">00</div>
+            </div>
+            <div class="countdown-label" data-i18n="countdown.hours">Heures</div>
+          </div>
+          <div class="countdown-item">
+            <div class="flip" data-unit="minutes">
+              <div class="top">00</div>
+              <div class="bottom">00</div>
+            </div>
+            <div class="countdown-label" data-i18n="countdown.minutes">Minutes</div>
+          </div>
+          <div class="countdown-item">
+            <div class="flip" data-unit="seconds">
+              <div class="top">00</div>
+              <div class="bottom">00</div>
+            </div>
+            <div class="countdown-label" data-i18n="countdown.seconds">Secondes</div>
+          </div>
+        </div>
         <p data-i18n="date">08 août 2026 · Castello Marchione</p>
         <a href="rsvp.html" class="cta" data-i18n="cta">Confirmer ma venue</a>
       </div>
@@ -100,6 +146,7 @@
         fr: {
           date: '08 août 2026 · Castello Marchione',
           cta: 'Confirmer ma venue',
+          countdown: { days: 'Jours', hours: 'Heures', minutes: 'Minutes', seconds: 'Secondes' },
           wedding: { title: 'Wedding — Déroulé', ceremony: '17h00 : Cérémonie', aperitivo: '18h00 : Aperitivo', dinner: '20h00 : Dîner', party: '23h00 : Festa & DJ set'},
           location: { title: 'Localisation', text: 'Castello Marchione, Conversano, Italie'},
           stay: { title: 'Où dormir ?'},
@@ -110,6 +157,7 @@
         it: {
           date: '08 agosto 2026 · Castello Marchione',
           cta: 'Confermare la presenza',
+          countdown: { days: 'Giorni', hours: 'Ore', minutes: 'Minuti', seconds: 'Secondi' },
           wedding: { title: 'Matrimonio — Programma', ceremony: '17:00 : Cerimonia', aperitivo: '18:00 : Aperitivo', dinner: '20:00 : Cena', party: '23:00 : Festa & DJ set'},
           location: { title: 'Località', text: 'Castello Marchione, Conversano, Italia'},
           stay: { title: 'Dove dormire?'},
@@ -120,6 +168,7 @@
         en: {
           date: '08 August 2026 · Castello Marchione',
           cta: 'Confirm attendance',
+          countdown: { days: 'Days', hours: 'Hours', minutes: 'Minutes', seconds: 'Seconds' },
           wedding: { title: 'Wedding — Schedule', ceremony: '17:00 : Ceremony', aperitivo: '18:00 : Aperitif', dinner: '20:00 : Dinner', party: '23:00 : Party & DJ set'},
           location: { title: 'Location', text: 'Castello Marchione, Conversano, Italy'},
           stay: { title: 'Where to stay?'},
@@ -154,6 +203,67 @@
         });
       }
       highlightActiveLink();
+
+      const targetDate = new Date('2026-08-08T17:00:00');
+      const flipUnits = Array.from(document.querySelectorAll('.flip'));
+
+      function formatValue(value, unit){
+        const safeValue = Math.max(0, value);
+        if (unit === 'days') return String(safeValue).padStart(2, '0');
+        return String(safeValue).padStart(2, '0');
+      }
+
+      function updateFlip(flip, newValue){
+        const currentValue = flip.dataset.value;
+        if (currentValue === newValue) return;
+        const top = flip.querySelector('.top');
+        const bottom = flip.querySelector('.bottom');
+        if (!currentValue){
+          top.textContent = newValue;
+          bottom.textContent = newValue;
+          flip.dataset.value = newValue;
+          return;
+        }
+
+        const topFlip = document.createElement('div');
+        const bottomFlip = document.createElement('div');
+        topFlip.className = 'top-flip';
+        bottomFlip.className = 'bottom-flip';
+        topFlip.textContent = currentValue;
+        bottomFlip.textContent = newValue;
+        top.textContent = currentValue;
+        bottom.textContent = currentValue;
+        topFlip.addEventListener('animationend', () => {
+          top.textContent = newValue;
+          topFlip.remove();
+        });
+        bottomFlip.addEventListener('animationend', () => {
+          bottom.textContent = newValue;
+          bottomFlip.remove();
+        });
+        flip.appendChild(topFlip);
+        flip.appendChild(bottomFlip);
+        flip.dataset.value = newValue;
+      }
+
+      function updateCountdown(){
+        const now = new Date();
+        let diff = targetDate - now;
+        if (diff < 0) diff = 0;
+        const totalSeconds = Math.floor(diff / 1000);
+        const days = Math.floor(totalSeconds / 86400);
+        const hours = Math.floor((totalSeconds % 86400) / 3600);
+        const minutes = Math.floor((totalSeconds % 3600) / 60);
+        const seconds = totalSeconds % 60;
+        const values = { days, hours, minutes, seconds };
+        flipUnits.forEach(unit => {
+          const key = unit.dataset.unit;
+          updateFlip(unit, formatValue(values[key], key));
+        });
+      }
+
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
 
       // Hamburger toggle (mobile)
       const burger = document.querySelector('.hamburger');
