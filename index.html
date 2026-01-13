@@ -171,11 +171,12 @@
       }
 
       function getCountdownElement(){
-        const countdownEls = document.querySelectorAll('#countdown');
+        const heroContent = document.querySelector('.hero-content');
+        const countdownEls = heroContent
+          ? Array.from(heroContent.querySelectorAll('#countdown, .flip-clock'))
+          : Array.from(document.querySelectorAll('#countdown, .flip-clock'));
         if (countdownEls.length > 1){
-          countdownEls.forEach((el, index) => {
-            if (index > 0) el.remove();
-          });
+          countdownEls.slice(1).forEach(el => el.remove());
         }
         return countdownEls[0] || null;
       }
@@ -184,6 +185,7 @@
         const countdownEl = getCountdownElement();
         if (!countdownEl) return;
         countdownEl.innerHTML = '';
+        Object.keys(countdownState).forEach(key => delete countdownState[key]);
         countdownUnits.forEach(unit => {
           const unitEl = document.createElement('div');
           unitEl.className = 'flip-unit';
