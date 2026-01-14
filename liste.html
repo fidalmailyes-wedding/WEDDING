@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Wedding — Fidalma & Ilyes</title>
+    <title>Liste de noce — Fidalma & Ilyes</title>
     <link rel="icon" type="image/svg+xml" href="olivier.svg?v=1" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -29,8 +29,7 @@
       main{padding:80px 20px;max-width:900px;margin:0 auto;}
       section{text-align:center;}
       h2{font-family:'Great Vibes',cursive;font-size:40px;color:var(--accent);margin-bottom:20px;}
-      ul{list-style:none;padding-left:0;font-size:18px;}
-      ul li{padding:6px 0;}
+      .note{font-size:18px;max-width:640px;margin:0 auto;}
       .hamburger{display:none;}
       @media (max-width:768px){
         .hamburger{display:inline-flex; align-items:center; justify-content:center; position:absolute; top:20px; right:20px; z-index:4; width:42px; height:42px; border-radius:10px; border:2px solid #000; background:rgba(0,0,0,.05); color:#000; cursor:pointer;}
@@ -61,14 +60,9 @@
       <a href="rsvp.html" class="rsvp-btn" data-i18n="nav.rsvp">RSVP</a>
     </nav>
     <main>
-      <section id="wedding">
-        <h2 data-i18n="wedding.title">Wedding — Déroulé</h2>
-        <ul>
-          <li data-i18n="wedding.ceremony">17h00 : Cérémonie</li>
-          <li data-i18n="wedding.aperitivo">18h00 : Aperitivo</li>
-          <li data-i18n="wedding.dinner">20h00 : Dîner</li>
-          <li data-i18n="wedding.party">23h00 : Festa & DJ set</li>
-        </ul>
+      <section id="liste">
+        <h2 data-i18n="list.title">Liste de noce</h2>
+        <p class="note" data-i18n="list.text">Nous partagerons bientôt les informations pour la liste de noce.</p>
       </section>
     </main>
     <script>
@@ -79,6 +73,7 @@
           wedding: { title: 'Wedding — Déroulé', ceremony: '17h00 : Cérémonie', aperitivo: '18h00 : Aperitivo', dinner: '20h00 : Dîner', party: '23h00 : Festa & DJ set'},
           location: { title: 'Localisation', text: 'Castello Marchione, Conversano, Italie'},
           stay: { title: 'Où dormir ?'},
+          list: { title: 'Liste de noce', text: 'Nous partagerons bientôt les informations pour la liste de noce.' },
           nav: { home: 'Accueil', wedding: 'Wedding', location: 'Localisation', stay: 'Hébergements', info: 'Informations', list: 'Liste de noce', rsvp: 'RSVP' },
           rsvp: { title: 'RSVP', text: 'Merci de confirmer votre présence avant le 1er mai 2026.', cta: 'Répondre au formulaire'}
         },
@@ -88,6 +83,7 @@
           wedding: { title: 'Matrimonio — Programma', ceremony: '17:00 : Cerimonia', aperitivo: '18:00 : Aperitivo', dinner: '20:00 : Cena', party: '23:00 : Festa & DJ set'},
           location: { title: 'Località', text: 'Castello Marchione, Conversano, Italia'},
           stay: { title: 'Dove dormire?'},
+          list: { title: 'Lista nozze', text: 'Condivideremo presto le informazioni sulla lista nozze.' },
           nav: { home: 'Home', wedding: 'Wedding', location: 'Località', stay: 'Alloggi', info: 'Informazioni', list: 'Lista nozze', rsvp: 'RSVP' },
           rsvp: { title: 'RSVP', text: 'Vi preghiamo di confermare entro il 1° maggio 2026.', cta: 'Rispondere al modulo'}
         },
@@ -97,6 +93,7 @@
           wedding: { title: 'Wedding — Schedule', ceremony: '17:00 : Ceremony', aperitivo: '18:00 : Aperitif', dinner: '20:00 : Dinner', party: '23:00 : Party & DJ set'},
           location: { title: 'Location', text: 'Castello Marchione, Conversano, Italy'},
           stay: { title: 'Where to stay?'},
+          list: { title: 'Wedding registry', text: 'We will share the wedding registry details soon.' },
           nav: { home: 'Home', wedding: 'Wedding', location: 'Location', stay: 'Stay', info: 'Info', list: 'Registry', rsvp: 'RSVP' },
           rsvp: { title: 'RSVP', text: 'Please confirm your presence before May 1, 2026.', cta: 'Fill out the form'}
         }
