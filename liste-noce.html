@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Wedding — Fidalma & Ilyes</title>
+    <title>Liste de noce — Fidalma & Ilyes</title>
     <link rel="icon" type="image/svg+xml" href="olivier.svg?v=1" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -31,6 +31,7 @@
       h2{font-family:'Great Vibes',cursive;font-size:40px;color:var(--accent);margin-bottom:20px;}
       ul{list-style:none;padding-left:0;font-size:18px;}
       ul li{padding:6px 0;}
+      .note{max-width:640px;margin:0 auto 16px;line-height:1.6;font-size:18px;}
       .hamburger{display:none;}
       @media (max-width:768px){
         .hamburger{display:inline-flex; align-items:center; justify-content:center; position:absolute; top:20px; right:20px; z-index:4; width:42px; height:42px; border-radius:10px; border:2px solid #000; background:rgba(0,0,0,.05); color:#000; cursor:pointer;}
@@ -60,41 +61,51 @@
       <a href="rsvp.html" class="rsvp-btn" data-i18n="nav.rsvp">RSVP</a>
     </nav>
     <main>
-      <section id="wedding">
-        <h2 data-i18n="wedding.title">Wedding — Déroulé</h2>
+      <section id="liste-noce">
+        <h2 data-i18n="registry.title">Liste de noce</h2>
+        <p class="note" data-i18n="registry.text">Votre présence est notre plus beau cadeau. Si vous souhaitez nous gâter, voici les projets qui nous tiennent à cœur.</p>
         <ul>
-          <li data-i18n="wedding.ceremony">17h00 : Cérémonie</li>
-          <li data-i18n="wedding.aperitivo">18h00 : Aperitivo</li>
-          <li data-i18n="wedding.dinner">20h00 : Dîner</li>
-          <li data-i18n="wedding.party">23h00 : Festa & DJ set</li>
+          <li data-i18n="registry.item1">Voyage de noces au sud de l'Italie.</li>
+          <li data-i18n="registry.item2">Souvenirs et expériences à deux.</li>
+          <li data-i18n="registry.item3">Contribuer à notre futur chez-nous.</li>
         </ul>
+        <p class="note" data-i18n="registry.text2">Un lien vers la liste complète sera partagé prochainement.</p>
       </section>
     </main>
     <script>
       const I18N = {
         fr: {
-          date: '08 août 2026 · Castello Marchione',
-          cta: 'Confirmer ma venue',
-          wedding: { title: 'Wedding — Déroulé', ceremony: '17h00 : Cérémonie', aperitivo: '18h00 : Aperitivo', dinner: '20h00 : Dîner', party: '23h00 : Festa & DJ set'},
-          location: { title: 'Localisation', text: 'Castello Marchione, Conversano, Italie'},
-          nav: { home: 'Accueil', wedding: 'Wedding', location: 'Localisation', info: 'Informations', registry: 'Liste de noce', rsvp: 'RSVP' },
-          rsvp: { title: 'RSVP', text: 'Merci de confirmer votre présence avant le 1er mai 2026.', cta: 'Répondre au formulaire'}
+          registry: {
+            title: 'Liste de noce',
+            text: 'Votre présence est notre plus beau cadeau. Si vous souhaitez nous gâter, voici les projets qui nous tiennent à cœur.',
+            item1: "Voyage de noces au sud de l'Italie.",
+            item2: 'Souvenirs et expériences à deux.',
+            item3: 'Contribuer à notre futur chez-nous.',
+            text2: 'Un lien vers la liste complète sera partagé prochainement.'
+          },
+          nav: { home: 'Accueil', wedding: 'Wedding', location: 'Localisation', info: 'Informations', registry: 'Liste de noce', rsvp: 'RSVP' }
         },
         it: {
-          date: '08 agosto 2026 · Castello Marchione',
-          cta: 'Confermare la presenza',
-          wedding: { title: 'Matrimonio — Programma', ceremony: '17:00 : Cerimonia', aperitivo: '18:00 : Aperitivo', dinner: '20:00 : Cena', party: '23:00 : Festa & DJ set'},
-          location: { title: 'Località', text: 'Castello Marchione, Conversano, Italia'},
-          nav: { home: 'Home', wedding: 'Wedding', location: 'Località', info: 'Informazioni', registry: 'Lista nozze', rsvp: 'RSVP' },
-          rsvp: { title: 'RSVP', text: 'Vi preghiamo di confermare entro il 1° maggio 2026.', cta: 'Rispondere al modulo'}
+          registry: {
+            title: 'Lista nozze',
+            text: 'La vostra presenza è il nostro dono più bello. Se desiderate farci un regalo, ecco le idee che ci stanno a cuore.',
+            item1: 'Viaggio di nozze nel sud Italia.',
+            item2: 'Ricordi ed esperienze da condividere.',
+            item3: 'Contribuire alla nostra futura casa.',
+            text2: 'Condivideremo presto il link alla lista completa.'
+          },
+          nav: { home: 'Home', wedding: 'Wedding', location: 'Località', info: 'Informazioni', registry: 'Lista nozze', rsvp: 'RSVP' }
         },
         en: {
-          date: '08 August 2026 · Castello Marchione',
-          cta: 'Confirm attendance',
-          wedding: { title: 'Wedding — Schedule', ceremony: '17:00 : Ceremony', aperitivo: '18:00 : Aperitif', dinner: '20:00 : Dinner', party: '23:00 : Party & DJ set'},
-          location: { title: 'Location', text: 'Castello Marchione, Conversano, Italy'},
-          nav: { home: 'Home', wedding: 'Wedding', location: 'Location', info: 'Info', registry: 'Wedding list', rsvp: 'RSVP' },
-          rsvp: { title: 'RSVP', text: 'Please confirm your presence before May 1, 2026.', cta: 'Fill out the form'}
+          registry: {
+            title: 'Wedding list',
+            text: 'Your presence is our greatest gift. If you wish to spoil us, here are the projects closest to our hearts.',
+            item1: 'Honeymoon in southern Italy.',
+            item2: 'Shared memories and experiences.',
+            item3: 'Contributing to our future home.',
+            text2: 'We will share a link to the full list soon.'
+          },
+          nav: { home: 'Home', wedding: 'Wedding', location: 'Location', info: 'Info', registry: 'Wedding list', rsvp: 'RSVP' }
         }
       };
       function applyTranslations(lang){
