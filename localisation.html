@@ -39,8 +39,10 @@
       .location-core{line-height:1.8;color:var(--muted);}
       .location-link{display:inline-block;margin-top:8px;color:var(--accent-strong);text-decoration:none;}
       .location-link:hover{text-decoration:underline;}
+      .map-layout{display:grid;grid-template-columns:minmax(260px,320px) minmax(0,1fr);gap:18px;align-items:start;margin:24px 0 10px;}
       iframe.map{width:100%;aspect-ratio:16/9;border:1px solid var(--border);border-radius:20px;box-shadow:0 16px 30px rgba(0,0,0,.08);}
-      .map-discover{margin:24px 0 10px;}
+      .map-discover{margin:0;padding:20px;border:1px solid var(--border);border-radius:20px;background:#fff;}
+      .map-discover h3{margin-top:0;font-size:22px;}
       .map-category-buttons{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px;}
       .map-category-btn,.map-place-btn{border:1px solid var(--border);background:#fff;color:var(--text);padding:8px 14px;border-radius:999px;cursor:pointer;font:inherit;transition:all .2s ease;}
       .map-category-btn:hover,.map-place-btn:hover{border-color:var(--accent-strong);color:var(--accent-strong);}
@@ -48,6 +50,7 @@
       .map-place-list{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px;}
       .hamburger{display:none;}
       @media (max-width:768px){
+        .map-layout{grid-template-columns:1fr;}
         .hamburger{display:inline-flex; align-items:center; justify-content:center; position:absolute; top:20px; right:20px; z-index:4; width:42px; height:42px; border-radius:999px; border:1px solid var(--border); background:#fff; color:var(--text); cursor:pointer;}
         .hamburger:focus-visible{outline:3px solid var(--text); outline-offset:2px;}
         nav.topnav{display:none; position:absolute; top:70px; right:10px; flex-direction:column; gap:12px; background:#fff; padding:14px; border-radius:16px; border:1px solid var(--border); box-shadow:0 12px 30px rgba(0,0,0,.12); opacity:0; transform:translateY(-10px); transition:opacity .3s ease, transform .3s ease;}
@@ -88,17 +91,18 @@
         <p data-i18n="location.description2">Résidence noble du XVIIIe siècle, le château est considéré comme l'un des exemples les plus extraordinaires d'architecture rurale des Pouilles et conserve son charme authentique.</p>
         <p data-i18n="location.description3">Le nom « Marchione » provient de la construction d'origine — probablement datant du XVIe siècle — bâtie pour accueillir la famille Acquaviva d'Aragona lors de parties de chasse. Le toponyme « Marchione » vient de l'altération linguistique de « Macchione », en référence à la vaste forêt qui s'étendait autrefois sur 1 320 hectares. Quelques chênes majestueux, âgés jusqu'à 500 ans, subsistent encore aujourd'hui.</p>
         <p><span data-i18n="location.historyLabel">Pour plus de détails historiques :</span><br /><a class="location-link" href="https://www.castellomarchione.it/tra-storia-e-leggenda/" target="_blank" rel="noopener noreferrer">https://www.castellomarchione.it/tra-storia-e-leggenda/</a></p>
-        <iframe id="location-map" class="map" src="https://www.google.com/maps?q=Castello+Marchione+Conversano&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-
-        <div class="map-discover">
-          <h3 data-i18n="location.mapDiscover.title">🗺️ Explorer la région sur la carte</h3>
-          <p data-i18n="location.mapDiscover.description">Choisissez une catégorie puis un lieu pour l'afficher directement sur la carte.</p>
-          <div class="map-category-buttons">
-            <button type="button" class="map-category-btn active" data-category="wedding" data-i18n="location.mapDiscover.categories.wedding">Lieu de mariage</button>
-            <button type="button" class="map-category-btn" data-category="visit" data-i18n="location.mapDiscover.categories.visit">Lieux à visiter</button>
-            <button type="button" class="map-category-btn" data-category="eat" data-i18n="location.mapDiscover.categories.eat">Bonnes adresses où manger</button>
+        <div class="map-layout">
+          <div class="map-discover">
+            <h3 data-i18n="location.mapDiscover.title">🗺️ Explorer la région sur la carte</h3>
+            <p data-i18n="location.mapDiscover.description">Choisissez une catégorie puis un lieu pour l'afficher directement sur la carte.</p>
+            <div class="map-category-buttons">
+              <button type="button" class="map-category-btn active" data-category="wedding" data-i18n="location.mapDiscover.categories.wedding">Lieu de mariage</button>
+              <button type="button" class="map-category-btn" data-category="visit" data-i18n="location.mapDiscover.categories.visit">Lieux à visiter</button>
+              <button type="button" class="map-category-btn" data-category="eat" data-i18n="location.mapDiscover.categories.eat">Bonnes adresses où manger</button>
+            </div>
+            <ul class="map-place-list" id="map-place-list"></ul>
           </div>
-          <ul class="map-place-list" id="map-place-list"></ul>
+          <iframe id="location-map" class="map" src="https://www.google.com/maps?q=Castello+Marchione+Conversano&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
         <h3 data-i18n="location.transport.title">✈️ Aéroports & transports</h3>
         <p data-i18n="location.transport.description">Le château se situe :</p>
