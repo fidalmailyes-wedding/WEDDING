@@ -40,6 +40,12 @@
       .location-link{display:inline-block;margin-top:8px;color:var(--accent-strong);text-decoration:none;}
       .location-link:hover{text-decoration:underline;}
       iframe.map{width:100%;aspect-ratio:16/9;border:1px solid var(--border);border-radius:20px;box-shadow:0 16px 30px rgba(0,0,0,.08);}
+      .map-discover{margin:24px 0 10px;}
+      .map-category-buttons{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px;}
+      .map-category-btn,.map-place-btn{border:1px solid var(--border);background:#fff;color:var(--text);padding:8px 14px;border-radius:999px;cursor:pointer;font:inherit;transition:all .2s ease;}
+      .map-category-btn:hover,.map-place-btn:hover{border-color:var(--accent-strong);color:var(--accent-strong);}
+      .map-category-btn.active,.map-place-btn.active{background:var(--text);color:#fff;border-color:var(--text);}
+      .map-place-list{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px;}
       .hamburger{display:none;}
       @media (max-width:768px){
         .hamburger{display:inline-flex; align-items:center; justify-content:center; position:absolute; top:20px; right:20px; z-index:4; width:42px; height:42px; border-radius:999px; border:1px solid var(--border); background:#fff; color:var(--text); cursor:pointer;}
@@ -82,7 +88,18 @@
         <p data-i18n="location.description2">Résidence noble du XVIIIe siècle, le château est considéré comme l'un des exemples les plus extraordinaires d'architecture rurale des Pouilles et conserve son charme authentique.</p>
         <p data-i18n="location.description3">Le nom « Marchione » provient de la construction d'origine — probablement datant du XVIe siècle — bâtie pour accueillir la famille Acquaviva d'Aragona lors de parties de chasse. Le toponyme « Marchione » vient de l'altération linguistique de « Macchione », en référence à la vaste forêt qui s'étendait autrefois sur 1 320 hectares. Quelques chênes majestueux, âgés jusqu'à 500 ans, subsistent encore aujourd'hui.</p>
         <p><span data-i18n="location.historyLabel">Pour plus de détails historiques :</span><br /><a class="location-link" href="https://www.castellomarchione.it/tra-storia-e-leggenda/" target="_blank" rel="noopener noreferrer">https://www.castellomarchione.it/tra-storia-e-leggenda/</a></p>
-        <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3066.0218535464457!2d17.1235!3d40.9696!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1347a8f19c6e5c13%3A0x58e97ad7c0813a53!2sCastello%20Marchione!5e0!3m2!1sfr!2sit!4v1692200000000!5m2!1sfr!2sit" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe id="location-map" class="map" src="https://www.google.com/maps?q=Castello+Marchione+Conversano&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+        <div class="map-discover">
+          <h3 data-i18n="location.mapDiscover.title">🗺️ Explorer la région sur la carte</h3>
+          <p data-i18n="location.mapDiscover.description">Choisissez une catégorie puis un lieu pour l'afficher directement sur la carte.</p>
+          <div class="map-category-buttons">
+            <button type="button" class="map-category-btn active" data-category="wedding" data-i18n="location.mapDiscover.categories.wedding">Lieu de mariage</button>
+            <button type="button" class="map-category-btn" data-category="visit" data-i18n="location.mapDiscover.categories.visit">Lieux à visiter</button>
+            <button type="button" class="map-category-btn" data-category="eat" data-i18n="location.mapDiscover.categories.eat">Bonnes adresses où manger</button>
+          </div>
+          <ul class="map-place-list" id="map-place-list"></ul>
+        </div>
         <h3 data-i18n="location.transport.title">✈️ Aéroports & transports</h3>
         <p data-i18n="location.transport.description">Le château se situe :</p>
         <ul>
@@ -161,6 +178,15 @@
             description2: 'Résidence noble du XVIIIe siècle, le château est considéré comme l\'un des exemples les plus extraordinaires d\'architecture rurale des Pouilles et conserve son charme authentique.',
             description3: 'Le nom « Marchione » provient de la construction d\'origine — probablement datant du XVIe siècle — bâtie pour accueillir la famille Acquaviva d\'Aragona lors de parties de chasse. Le toponyme « Marchione » vient de l\'altération linguistique de « Macchione », en référence à la vaste forêt qui s\'étendait autrefois sur 1 320 hectares. Quelques chênes majestueux, âgés jusqu\'à 500 ans, subsistent encore aujourd\'hui.',
             historyLabel: 'Pour plus de détails historiques :',
+            mapDiscover: {
+              title: '🗺️ Explorer la région sur la carte',
+              description: 'Choisissez une catégorie puis un lieu pour l\'afficher directement sur la carte.',
+              categories: {
+                wedding: 'Lieu de mariage',
+                visit: 'Lieux à visiter',
+                eat: 'Bonnes adresses où manger'
+              }
+            },
             transport: {
               title: '✈️ Aéroports & transports', description: 'Le château se situe :',
               item1: 'À 35 minutes de l\'aéroport Bari Karol Wojtyla et de la gare de Bari.',
@@ -205,6 +231,15 @@
             description2: 'Residenza nobiliare del XVIII secolo, il castello è considerato uno degli esempi più straordinari di architettura rurale pugliese e conserva il suo fascino autentico.',
             description3: 'Il nome «Marchione» deriva dalla costruzione originaria — probabilmente risalente al XVI secolo — realizzata per ospitare la famiglia Acquaviva d\'Aragona durante le battute di caccia. Il toponimo «Marchione» nasce dall\'alterazione linguistica di «Macchione», riferita al vasto bosco che un tempo si estendeva su 1.320 ettari. Alcune maestose querce, fino a 500 anni di età, sopravvivono ancora oggi.',
             historyLabel: 'Per maggiori dettagli storici:',
+            mapDiscover: {
+              title: '🗺️ Esplora la regione sulla mappa',
+              description: 'Scegli una categoria e poi un luogo per visualizzarlo direttamente sulla mappa.',
+              categories: {
+                wedding: 'Luogo del matrimonio',
+                visit: 'Luoghi da visitare',
+                eat: 'Dove mangiare bene'
+              }
+            },
             transport: {
               title: '✈️ Aeroporti & trasporti', description: 'Il castello si trova:',
               item1: 'A 35 minuti dall\'Aeroporto di Bari Karol Wojtyla e dalla stazione di Bari.',
@@ -249,6 +284,15 @@
             description2: 'An 18th-century noble residence, the castle is considered one of the most extraordinary examples of rural architecture in Puglia and preserves its authentic charm.',
             description3: 'The name “Marchione” derives from the original construction — likely dating back to the 16th century — built to host the Acquaviva d\'Aragona family during hunting trips. The toponym “Marchione” comes from the linguistic alteration of “Macchione”, referring to the vast woodland that once extended over 1,320 hectares. Some majestic oak trees, up to 500 years old, still survive today.',
             historyLabel: 'For more historical details:',
+            mapDiscover: {
+              title: '🗺️ Explore the region on the map',
+              description: 'Pick a category and then a place to display it directly on the map.',
+              categories: {
+                wedding: 'Wedding venue',
+                visit: 'Places to visit',
+                eat: 'Good places to eat'
+              }
+            },
             transport: {
               title: '✈️ Airports & Transportation', description: 'The castle is located:',
               item1: '35 minutes from Bari Karol Wojtyla Airport and Bari train station.',
@@ -282,6 +326,72 @@
         }
       };
       const SUPPORTED_LANGS = Object.keys(I18N);
+      const MAP_PLACES = {
+        wedding: {
+          fr: ['Castello Marchione Conversano'],
+          it: ['Castello Marchione Conversano'],
+          en: ['Castello Marchione Conversano']
+        },
+        visit: {
+          fr: ['Polignano a Mare', 'Alberobello', 'Matera', 'Ostuni', 'Grotte di Castellana'],
+          it: ['Polignano a Mare', 'Alberobello', 'Matera', 'Ostuni', 'Grotte di Castellana'],
+          en: ['Polignano a Mare', 'Alberobello', 'Matera', 'Ostuni', 'Castellana Caves']
+        },
+        eat: {
+          fr: ['Pescaria Polignano a Mare', 'La Tana Marina di Città Monopoli', 'Antica Salumeria Del Gusto Monopoli'],
+          it: ['Pescaria Polignano a Mare', 'La Tana Marina di Città Monopoli', 'Antica Salumeria Del Gusto Monopoli'],
+          en: ['Pescaria Polignano a Mare', 'La Tana Marina di Città Monopoli', 'Antica Salumeria Del Gusto Monopoli']
+        }
+      };
+
+      let selectedMapCategory = 'wedding';
+      let selectedMapPlace = '';
+
+      function buildMapUrl(place){
+        return `https://www.google.com/maps?q=${encodeURIComponent(place)}&output=embed`;
+      }
+
+      function setMapPlace(place){
+        if (!place) return;
+        selectedMapPlace = place;
+        const map = document.getElementById('location-map');
+        if (map) map.src = buildMapUrl(place);
+        document.querySelectorAll('.map-place-btn').forEach(btn=>btn.classList.toggle('active', btn.dataset.place===place));
+      }
+
+      function renderMapPlaces(lang){
+        const list = document.getElementById('map-place-list');
+        if (!list) return;
+        const placesByLang = MAP_PLACES[selectedMapCategory] || {};
+        const places = placesByLang[lang] || placesByLang.fr || [];
+        list.innerHTML = '';
+        places.forEach((place, index)=>{
+          const li = document.createElement('li');
+          const button = document.createElement('button');
+          button.type = 'button';
+          button.className = 'map-place-btn';
+          button.dataset.place = place;
+          button.textContent = place;
+          button.addEventListener('click', ()=>setMapPlace(place));
+          li.appendChild(button);
+          list.appendChild(li);
+          if (index===0 && !selectedMapPlace) setMapPlace(place);
+        });
+        if (!places.includes(selectedMapPlace) && places[0]) setMapPlace(places[0]);
+      }
+
+      function setupMapCategories(){
+        document.querySelectorAll('.map-category-btn').forEach(btn=>{
+          btn.classList.toggle('active', btn.dataset.category===selectedMapCategory);
+          btn.addEventListener('click', ()=>{
+            selectedMapCategory = btn.dataset.category;
+            selectedMapPlace = '';
+            document.querySelectorAll('.map-category-btn').forEach(other=>other.classList.toggle('active', other===btn));
+            renderMapPlaces(document.documentElement.lang || 'fr');
+          });
+        });
+        renderMapPlaces(document.documentElement.lang || 'fr');
+      }
 
       function updateLanguageInLinks(lang){
         document.querySelectorAll('a[href]').forEach(link=>{
@@ -318,9 +428,11 @@
         const url = new URL(location.href);
         url.searchParams.set('lang', lang);
         history.replaceState(null, '', `${url.pathname.split('/').pop()}${url.search}${url.hash}`);
+        renderMapPlaces(lang);
       }
       document.querySelectorAll('.lang-switch button').forEach(btn=>btn.addEventListener('click',()=>applyTranslations(btn.dataset.lang)));
       applyTranslations(getInitialLang());
+      setupMapCategories();
 
       function highlightActiveLink(){
         const current = location.pathname.split('/').pop() || 'index.html';
