@@ -29,9 +29,16 @@
       nav.topnav .rsvp-btn{border:1px solid var(--text);padding:8px 16px;border-radius:999px;}
       nav.topnav .rsvp-btn:hover{background:var(--text);color:#fff;border-color:var(--text);opacity:1;}
       main{padding:120px 20px 80px;max-width:1000px;margin:0 auto;}
-      section{text-align:center;background:var(--surface);border:1px solid var(--border);border-radius:32px;padding:40px 32px;box-shadow:0 24px 48px rgba(0,0,0,.06);}
+      section{text-align:left;background:var(--surface);border:1px solid var(--border);border-radius:32px;padding:40px 32px;box-shadow:0 24px 48px rgba(0,0,0,.06);}
       h2{font-size:36px;color:var(--accent);margin-bottom:20px;font-weight:500;letter-spacing:-0.01em;}
       p{color:var(--muted);}
+      h3{margin-top:32px;margin-bottom:14px;font-size:24px;font-weight:500;}
+      ul{margin:8px 0 0 18px;color:var(--muted);line-height:1.7;}
+      li{margin-bottom:4px;}
+      .intro{font-size:18px;color:var(--text);margin-bottom:16px;}
+      .location-core{line-height:1.8;color:var(--muted);}
+      .location-link{display:inline-block;margin-top:8px;color:var(--accent-strong);text-decoration:none;}
+      .location-link:hover{text-decoration:underline;}
       iframe.map{width:100%;aspect-ratio:16/9;border:1px solid var(--border);border-radius:20px;box-shadow:0 16px 30px rgba(0,0,0,.08);}
       .hamburger{display:none;}
       @media (max-width:768px){
@@ -64,8 +71,79 @@
     <main>
       <section id="localisation">
         <h2 data-i18n="location.title">Localisation</h2>
+        <p class="intro" data-i18n="location.hero">Là où nous dirons « oui »</p>
+        <p class="location-core" data-i18n="location.core.line1">Castello Marchione</p>
+        <p class="location-core" data-i18n="location.core.line2">Italie du Sud</p>
+        <p class="location-core" data-i18n="location.core.line3">Strada Provinciale 101, km 6.400</p>
+        <p class="location-core" data-i18n="location.core.line4">70014 Conversano (Bari) Puglia</p>
+        <p class="location-core" data-i18n="location.core.line5">16h30</p>
+        <p><strong data-i18n="location.mapsLabel">📍 Google Maps :</strong><br /><a class="location-link" href="https://maps.google.com/?q=Castello+Marchione+Conversano" target="_blank" rel="noopener noreferrer">https://maps.google.com/?q=Castello+Marchione+Conversano</a></p>
+        <p data-i18n="location.description1">Niché dans la campagne des Pouilles, entre oliviers centenaires et murs de pierre claire, Castello Marchione sera le lieu où nous célébrerons notre mariage.</p>
+        <p data-i18n="location.description2">Résidence noble du XVIIIe siècle, le château est considéré comme l'un des exemples les plus extraordinaires d'architecture rurale des Pouilles et conserve son charme authentique.</p>
+        <p data-i18n="location.description3">Le nom « Marchione » provient de la construction d'origine — probablement datant du XVIe siècle — bâtie pour accueillir la famille Acquaviva d'Aragona lors de parties de chasse. Le toponyme « Marchione » vient de l'altération linguistique de « Macchione », en référence à la vaste forêt qui s'étendait autrefois sur 1 320 hectares. Quelques chênes majestueux, âgés jusqu'à 500 ans, subsistent encore aujourd'hui.</p>
+        <p><span data-i18n="location.historyLabel">Pour plus de détails historiques :</span><br /><a class="location-link" href="https://www.castellomarchione.it/tra-storia-e-leggenda/" target="_blank" rel="noopener noreferrer">https://www.castellomarchione.it/tra-storia-e-leggenda/</a></p>
         <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3066.0218535464457!2d17.1235!3d40.9696!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1347a8f19c6e5c13%3A0x58e97ad7c0813a53!2sCastello%20Marchione!5e0!3m2!1sfr!2sit!4v1692200000000!5m2!1sfr!2sit" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        <p data-i18n="location.text">Castello Marchione, Conversano, Italie</p>
+        <h3 data-i18n="location.transport.title">✈️ Aéroports & transports</h3>
+        <p data-i18n="location.transport.description">Le château se situe :</p>
+        <ul>
+          <li data-i18n="location.transport.item1">À 35 minutes de l'aéroport Bari Karol Wojtyla et de la gare de Bari.</li>
+          <li data-i18n="location.transport.item2">À 45 minutes de l'aéroport de Brindisi.</li>
+        </ul>
+        <p data-i18n="location.transport.tip">Nous recommandons vivement de louer une voiture pour profiter pleinement de la région.</p>
+        <p><span data-i18n="location.transport.rentalLabel">Options de location de voiture :</span><br />Booking: <a class="location-link" href="https://www.booking.com/cars" target="_blank" rel="noopener noreferrer">https://www.booking.com/cars</a><br />Wizz Air car rental: <a class="location-link" href="https://wizzair.com/en-gb/flights/car-rental" target="_blank" rel="noopener noreferrer">https://wizzair.com/en-gb/flights/car-rental</a></p>
+
+        <h3 data-i18n="location.discover.title">Découvrir les Pouilles</h3>
+        <p data-i18n="location.discover.intro">Les Pouilles sont une région à savourer lentement. Mer cristalline, villages blanchis à la chaux, traditions locales, longs dîners, musique sous les étoiles.</p>
+        <p data-i18n="location.discover.geo">Géographiquement, les Pouilles se divisent en trois grandes zones :</p>
+        <ul>
+          <li data-i18n="location.discover.geo1">Nord – La beauté sauvage du Gargano, avec Vieste et ses falaises spectaculaires.</li>
+          <li data-i18n="location.discover.geo2">Sud – La péninsule du Salento, célèbre pour ses eaux turquoise et les « Maldives du Salento ».</li>
+          <li data-i18n="location.discover.geo3">Centre – Là où nous sommes : le cœur de la région, entre campagne, mer et villages historiques.</li>
+        </ul>
+
+        <h3 data-i18n="location.seaside.title">🌊 Itinéraire bord de mer</h3>
+        <ul>
+          <li>Monopoli</li>
+          <li>Polignano a Mare</li>
+          <li>Bari</li>
+          <li>Trani</li>
+        </ul>
+        <p data-i18n="location.seaside.text">Des villes côtières sur l'Adriatique, parfaites pour prendre le soleil, se baigner, profiter de longs déjeuners de fruits de mer et d'apéritifs au coucher du soleil.</p>
+
+        <h3 data-i18n="location.villages.title">🏛️ Villages de carte postale</h3>
+        <ul>
+          <li>Alberobello</li>
+          <li>Matera</li>
+          <li>Ostuni</li>
+          <li>Locorotondo</li>
+          <li>Cisternino</li>
+        </ul>
+        <p data-i18n="location.villages.text">Maisons de pierre blanche, ruelles étroites, terrasses panoramiques et charme intemporel du sud.</p>
+
+        <h3 data-i18n="location.nature.title">🌿 Nature & merveilles</h3>
+        <ul>
+          <li>Grotte di Castellana</li>
+          <li>Gravina di Laterza</li>
+          <li>Spiaggia di Torre Guaceto</li>
+        </ul>
+
+        <h3 data-i18n="location.food.title">🎶 Traditions, fêtes & gastronomie</h3>
+        <p data-i18n="location.food.intro">En été, les Pouilles s'animent. Fêtes de village, musique traditionnelle, danse sous les étoiles et longues tablées conviviales.</p>
+        <p data-i18n="location.food.mustTry">Spécialités locales à goûter absolument :</p>
+        <ul>
+          <li>Panzerotti</li>
+          <li>Burrata</li>
+          <li data-i18n="location.food.dish1">Orecchiette aux cime di rapa</li>
+          <li data-i18n="location.food.dish2">Focaccia barese</li>
+        </ul>
+        <p data-i18n="location.food.festivalsLabel">Fêtes d'août à ne pas manquer :</p>
+        <ul>
+          <li>Festa patronale Madonna della Madia – Monopoli</li>
+          <li>Festa di Sant’Oronzo – Ostuni</li>
+          <li>Sagra del Polpo – Mola di Bari</li>
+          <li>La Notte della Taranta – Salento</li>
+        </ul>
+        <p data-i18n="location.food.outro">Musique, lumières et pure énergie du sud.</p>
       </section>
     </main>
     <script>
@@ -74,7 +152,43 @@
           date: '08 août 2026 · Castello Marchione',
           cta: 'Confirmer ma venue',
           wedding: { title: 'Wedding — Déroulé', ceremony: '17h00 : Cérémonie', aperitivo: '18h00 : Aperitivo', dinner: '20h00 : Dîner', party: '23h00 : Festa & DJ set'},
-          location: { title: 'Localisation', text: 'Castello Marchione, Conversano, Italie'},
+          location: {
+            title: 'Localisation',
+            hero: 'Là où nous dirons « oui »',
+            core: { line1: 'Castello Marchione', line2: 'Italie du Sud', line3: 'Strada Provinciale 101, km 6.400', line4: '70014 Conversano (Bari) Puglia', line5: '16h30' },
+            mapsLabel: '📍 Google Maps :',
+            description1: 'Niché dans la campagne des Pouilles, entre oliviers centenaires et murs de pierre claire, Castello Marchione sera le lieu où nous célébrerons notre mariage.',
+            description2: 'Résidence noble du XVIIIe siècle, le château est considéré comme l\'un des exemples les plus extraordinaires d\'architecture rurale des Pouilles et conserve son charme authentique.',
+            description3: 'Le nom « Marchione » provient de la construction d\'origine — probablement datant du XVIe siècle — bâtie pour accueillir la famille Acquaviva d\'Aragona lors de parties de chasse. Le toponyme « Marchione » vient de l\'altération linguistique de « Macchione », en référence à la vaste forêt qui s\'étendait autrefois sur 1 320 hectares. Quelques chênes majestueux, âgés jusqu\'à 500 ans, subsistent encore aujourd\'hui.',
+            historyLabel: 'Pour plus de détails historiques :',
+            transport: {
+              title: '✈️ Aéroports & transports', description: 'Le château se situe :',
+              item1: 'À 35 minutes de l\'aéroport Bari Karol Wojtyla et de la gare de Bari.',
+              item2: 'À 45 minutes de l\'aéroport de Brindisi.',
+              tip: 'Nous recommandons vivement de louer une voiture pour profiter pleinement de la région.',
+              rentalLabel: 'Options de location de voiture :'
+            },
+            discover: {
+              title: 'Découvrir les Pouilles',
+              intro: 'Les Pouilles sont une région à savourer lentement. Mer cristalline, villages blanchis à la chaux, traditions locales, longs dîners, musique sous les étoiles.',
+              geo: 'Géographiquement, les Pouilles se divisent en trois grandes zones :',
+              geo1: 'Nord – La beauté sauvage du Gargano, avec Vieste et ses falaises spectaculaires.',
+              geo2: 'Sud – La péninsule du Salento, célèbre pour ses eaux turquoise et les « Maldives du Salento ».',
+              geo3: 'Centre – Là où nous sommes : le cœur de la région, entre campagne, mer et villages historiques.'
+            },
+            seaside: { title: '🌊 Itinéraire bord de mer', text: 'Des villes côtières sur l\'Adriatique, parfaites pour prendre le soleil, se baigner, profiter de longs déjeuners de fruits de mer et d\'apéritifs au coucher du soleil.' },
+            villages: { title: '🏛️ Villages de carte postale', text: 'Maisons de pierre blanche, ruelles étroites, terrasses panoramiques et charme intemporel du sud.' },
+            nature: { title: '🌿 Nature & merveilles' },
+            food: {
+              title: '🎶 Traditions, fêtes & gastronomie',
+              intro: 'En été, les Pouilles s\'animent. Fêtes de village, musique traditionnelle, danse sous les étoiles et longues tablées conviviales.',
+              mustTry: 'Spécialités locales à goûter absolument :',
+              dish1: 'Orecchiette aux cime di rapa',
+              dish2: 'Focaccia barese',
+              festivalsLabel: 'Fêtes d\'août à ne pas manquer :',
+              outro: 'Musique, lumières et pure énergie du sud.'
+            }
+          },
           nav: { home: 'Accueil', wedding: 'Wedding', location: 'Localisation', info: 'Informations', registry: 'Liste de noce', rsvp: 'RSVP' },
           rsvp: { title: 'RSVP', text: 'Merci de confirmer votre présence avant le 1er mai 2026.', cta: 'Répondre au formulaire'}
         },
@@ -82,7 +196,43 @@
           date: '08 agosto 2026 · Castello Marchione',
           cta: 'Confermare la presenza',
           wedding: { title: 'Matrimonio — Programma', ceremony: '17:00 : Cerimonia', aperitivo: '18:00 : Aperitivo', dinner: '20:00 : Cena', party: '23:00 : Festa & DJ set'},
-          location: { title: 'Localizzazione', text: 'Castello Marchione, Conversano, Italia'},
+          location: {
+            title: 'Localizzazione',
+            hero: 'Dove diremo «sì»',
+            core: { line1: 'Castello Marchione', line2: 'Sud Italia', line3: 'Strada Provinciale 101, km 6.400', line4: '70014 Conversano (Bari) Puglia', line5: '16:30' },
+            mapsLabel: '📍 Google Maps:',
+            description1: 'Immerso nella campagna pugliese, tra ulivi secolari e muri in pietra chiara, Castello Marchione sarà il luogo in cui celebreremo il nostro matrimonio.',
+            description2: 'Residenza nobiliare del XVIII secolo, il castello è considerato uno degli esempi più straordinari di architettura rurale pugliese e conserva il suo fascino autentico.',
+            description3: 'Il nome «Marchione» deriva dalla costruzione originaria — probabilmente risalente al XVI secolo — realizzata per ospitare la famiglia Acquaviva d\'Aragona durante le battute di caccia. Il toponimo «Marchione» nasce dall\'alterazione linguistica di «Macchione», riferita al vasto bosco che un tempo si estendeva su 1.320 ettari. Alcune maestose querce, fino a 500 anni di età, sopravvivono ancora oggi.',
+            historyLabel: 'Per maggiori dettagli storici:',
+            transport: {
+              title: '✈️ Aeroporti & trasporti', description: 'Il castello si trova:',
+              item1: 'A 35 minuti dall\'Aeroporto di Bari Karol Wojtyla e dalla stazione di Bari.',
+              item2: 'A 45 minuti dall\'Aeroporto di Brindisi.',
+              tip: 'Consigliamo vivamente di noleggiare un\'auto per godervi al meglio la regione.',
+              rentalLabel: 'Opzioni per il noleggio auto:'
+            },
+            discover: {
+              title: 'Scoprire la Puglia',
+              intro: 'La Puglia è una regione da vivere lentamente. Mare cristallino, borghi bianchi, tradizioni locali, lunghe cene, musica sotto le stelle.',
+              geo: 'Geograficamente, la Puglia è divisa in tre aree principali:',
+              geo1: 'Nord – La bellezza selvaggia del Gargano, con Vieste e le sue scogliere spettacolari.',
+              geo2: 'Sud – La penisola del Salento, famosa per le sue acque turchesi e le “Maldive del Salento”.',
+              geo3: 'Centro – Dove siamo noi: il cuore della regione, tra campagna, mare e borghi storici.'
+            },
+            seaside: { title: '🌊 Itinerario sul mare', text: 'Città affacciate sull\'Adriatico, perfette per prendere il sole, fare il bagno, gustare lunghi pranzi di pesce e aperitivi al tramonto.' },
+            villages: { title: '🏛️ Borghi da cartolina', text: 'Case in pietra bianca, vicoli stretti, terrazze panoramiche e il fascino senza tempo del sud.' },
+            nature: { title: '🌿 Natura & meraviglie' },
+            food: {
+              title: '🎶 Tradizioni, feste & cucina',
+              intro: 'In estate, la Puglia è viva. Feste di paese, musica tradizionale, danze sotto le stelle e lunghe tavolate conviviali.',
+              mustTry: 'Specialità locali da provare assolutamente:',
+              dish1: 'Orecchiette con cime di rapa',
+              dish2: 'Focaccia barese',
+              festivalsLabel: 'Feste di agosto da non perdere:',
+              outro: 'Musica, luci e pura energia del sud.'
+            }
+          },
           nav: { home: 'Home', wedding: 'Wedding', location: 'Localizzazione', info: 'Informazioni', registry: 'Lista nozze', rsvp: 'RSVP' },
           rsvp: { title: 'RSVP', text: 'Vi preghiamo di confermare entro il 1° maggio 2026.', cta: 'Rispondere al modulo'}
         },
@@ -90,7 +240,43 @@
           date: '08 August 2026 · Castello Marchione',
           cta: 'Confirm attendance',
           wedding: { title: 'Wedding — Schedule', ceremony: '17:00 : Ceremony', aperitivo: '18:00 : Aperitif', dinner: '20:00 : Dinner', party: '23:00 : Party & DJ set'},
-          location: { title: 'Location', text: 'Castello Marchione, Conversano, Italy'},
+          location: {
+            title: 'Location',
+            hero: 'Where we will say “I do”',
+            core: { line1: 'Castello Marchione', line2: 'Southern Italy', line3: 'Strada Provinciale 101, km 6.400', line4: '70014 Conversano (Bari) Puglia', line5: '4:30 p.m.' },
+            mapsLabel: '📍 Google Maps:',
+            description1: 'Nestled in the Apulian countryside, among centuries-old olive trees and pale stone walls, Castello Marchione will be the place where we celebrate our wedding.',
+            description2: 'An 18th-century noble residence, the castle is considered one of the most extraordinary examples of rural architecture in Puglia and preserves its authentic charm.',
+            description3: 'The name “Marchione” derives from the original construction — likely dating back to the 16th century — built to host the Acquaviva d\'Aragona family during hunting trips. The toponym “Marchione” comes from the linguistic alteration of “Macchione”, referring to the vast woodland that once extended over 1,320 hectares. Some majestic oak trees, up to 500 years old, still survive today.',
+            historyLabel: 'For more historical details:',
+            transport: {
+              title: '✈️ Airports & Transportation', description: 'The castle is located:',
+              item1: '35 minutes from Bari Karol Wojtyla Airport and Bari train station.',
+              item2: '45 minutes from Brindisi Airport',
+              tip: 'We highly recommend renting a car to fully enjoy the region.',
+              rentalLabel: 'Car rental options:'
+            },
+            discover: {
+              title: 'Discover Puglia',
+              intro: 'Puglia is a region to experience slowly. Crystal-clear sea, whitewashed villages, local traditions, long dinners, music under the stars.',
+              geo: 'Geographically, Puglia is divided into three main areas:',
+              geo1: 'North – The wild beauty of the Gargano, with Vieste and dramatic cliffs.',
+              geo2: 'South – The Salento peninsula, famous for its turquoise waters and the “Maldive del Salento”.',
+              geo3: 'Centre – Where we are: the heart of the region, between countryside, sea and historic villages.'
+            },
+            seaside: { title: '🌊 Seaside Itinerary', text: 'Seaside towns overlooking the Adriatic, perfect for sunbathing, swimming, long seafood lunches and sunset aperitifs.' },
+            villages: { title: '🏛️ Postcard Villages', text: 'White stone houses, narrow streets, panoramic terraces and timeless southern charm.' },
+            nature: { title: '🌿 Nature & Wonders' },
+            food: {
+              title: '🎶 Traditions, Festivals & Food',
+              intro: 'In summer, Puglia is alive. Village festivals, traditional music, dancing under the stars and long communal tables.',
+              mustTry: 'Must-try local specialties:',
+              dish1: 'Orecchiette with cime di rapa',
+              dish2: 'Focaccia barese',
+              festivalsLabel: 'August festivals not to miss:',
+              outro: 'Music, lights and pure southern energy.'
+            }
+          },
           nav: { home: 'Home', wedding: 'Wedding', location: 'Location', info: 'Info', registry: 'Wedding list', rsvp: 'RSVP' },
           rsvp: { title: 'RSVP', text: 'Please confirm your presence before May 1, 2026.', cta: 'Fill out the form'}
         }
