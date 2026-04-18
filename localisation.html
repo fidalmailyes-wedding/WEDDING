@@ -39,15 +39,30 @@
       .location-core{line-height:1.8;color:var(--muted);}
       .location-link{display:inline-block;margin-top:8px;color:var(--accent-strong);text-decoration:none;}
       .location-link:hover{text-decoration:underline;}
-      .map-layout{display:grid;grid-template-columns:minmax(260px,320px) minmax(0,1fr);gap:18px;align-items:start;margin:24px 0 10px;}
+      .map-layout{display:grid;grid-template-columns:minmax(300px,380px) minmax(0,1fr);gap:18px;align-items:start;margin:24px 0 10px;}
       iframe.map{width:100%;aspect-ratio:16/9;border:1px solid var(--border);border-radius:20px;box-shadow:0 16px 30px rgba(0,0,0,.08);}
-      .map-discover{margin:0;padding:20px;border:1px solid var(--border);border-radius:20px;background:#fff;}
+      .map-discover{margin:0;padding:20px;border:1px solid var(--border);border-radius:20px;background:#fff;display:grid;gap:14px;}
       .map-discover h3{margin-top:0;font-size:22px;}
       .map-category-buttons{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px;}
       .map-category-btn,.map-place-btn{border:1px solid var(--border);background:#fff;color:var(--text);padding:8px 14px;border-radius:999px;cursor:pointer;font:inherit;transition:all .2s ease;}
       .map-category-btn:hover,.map-place-btn:hover{border-color:var(--accent-strong);color:var(--accent-strong);}
       .map-category-btn.active,.map-place-btn.active{background:var(--text);color:#fff;border-color:var(--text);}
-      .map-place-list{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px;}
+      .map-search{display:grid;gap:8px;margin-top:-4px;}
+      .map-search label{font-size:13px;color:var(--muted);}
+      .map-search input{width:100%;border:1px solid var(--border);border-radius:12px;padding:10px 12px;font:inherit;}
+      .map-search input:focus-visible{outline:2px solid var(--accent-strong);outline-offset:1px;border-color:var(--accent-strong);}
+      .map-toolbar{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;}
+      .map-results-count{font-size:13px;color:var(--muted);}
+      .map-nav-actions{display:flex;gap:6px;}
+      .map-nav-btn{border:1px solid var(--border);background:#fff;color:var(--text);padding:7px 10px;border-radius:999px;cursor:pointer;font:inherit;line-height:1;}
+      .map-nav-btn:hover{border-color:var(--accent-strong);color:var(--accent-strong);}
+      .map-nav-btn:disabled{opacity:.35;cursor:not-allowed;}
+      .map-place-list{list-style:none;margin:0;padding:0;display:grid;gap:8px;max-height:300px;overflow:auto;}
+      .map-place-btn{width:100%;border-radius:14px;text-align:left;padding:10px 12px;display:grid;gap:4px;}
+      .map-place-btn small{font-size:12px;color:var(--muted);}
+      .map-place-btn.active small{color:rgba(255,255,255,.75);}
+      .map-open-link{display:inline-flex;align-items:center;justify-content:center;padding:10px 14px;border-radius:999px;border:1px solid var(--text);color:var(--text);text-decoration:none;font-weight:500;}
+      .map-open-link:hover{background:var(--text);color:#fff;}
       .hamburger{display:none;}
       @media (max-width:768px){
         .map-layout{grid-template-columns:1fr;}
@@ -100,7 +115,19 @@
               <button type="button" class="map-category-btn" data-category="visit" data-i18n="location.mapDiscover.categories.visit">Lieux à visiter</button>
               <button type="button" class="map-category-btn" data-category="eat" data-i18n="location.mapDiscover.categories.eat">Bonnes adresses où manger</button>
             </div>
+            <div class="map-search">
+              <label for="map-search-input" data-i18n="location.mapDiscover.searchLabel">Rechercher un lieu</label>
+              <input id="map-search-input" type="search" data-i18n-placeholder="location.mapDiscover.searchPlaceholder" placeholder="Ex : Polignano" />
+            </div>
+            <div class="map-toolbar">
+              <span class="map-results-count" id="map-results-count">0 résultat</span>
+              <div class="map-nav-actions">
+                <button type="button" class="map-nav-btn" id="map-prev-btn" data-i18n-title="location.mapDiscover.prevTitle" title="Lieu précédent">←</button>
+                <button type="button" class="map-nav-btn" id="map-next-btn" data-i18n-title="location.mapDiscover.nextTitle" title="Lieu suivant">→</button>
+              </div>
+            </div>
             <ul class="map-place-list" id="map-place-list"></ul>
+            <a id="map-open-link" class="map-open-link" href="https://maps.google.com/?q=Castello+Marchione+Conversano" target="_blank" rel="noopener noreferrer" data-i18n="location.mapDiscover.openInMaps">Ouvrir dans Google Maps</a>
           </div>
           <iframe id="location-map" class="map" src="https://www.google.com/maps?q=Castello+Marchione+Conversano&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
@@ -185,6 +212,12 @@
             mapDiscover: {
               title: '🗺️ Explorer la région sur la carte',
               description: 'Choisissez une catégorie puis un lieu pour l\'afficher directement sur la carte.',
+              searchLabel: 'Rechercher un lieu',
+              searchPlaceholder: 'Ex : Polignano, Monopoli...',
+              openInMaps: 'Ouvrir dans Google Maps',
+              prevTitle: 'Lieu précédent',
+              nextTitle: 'Lieu suivant',
+              resultsCount: '{{count}} résultat(s)',
               categories: {
                 wedding: 'Lieu de mariage',
                 visit: 'Lieux à visiter',
@@ -238,6 +271,12 @@
             mapDiscover: {
               title: '🗺️ Esplora la regione sulla mappa',
               description: 'Scegli una categoria e poi un luogo per visualizzarlo direttamente sulla mappa.',
+              searchLabel: 'Cerca un luogo',
+              searchPlaceholder: 'Es: Polignano, Monopoli...',
+              openInMaps: 'Apri in Google Maps',
+              prevTitle: 'Luogo precedente',
+              nextTitle: 'Luogo successivo',
+              resultsCount: '{{count}} risultato/i',
               categories: {
                 wedding: 'Luogo del matrimonio',
                 visit: 'Luoghi da visitare',
@@ -291,6 +330,12 @@
             mapDiscover: {
               title: '🗺️ Explore the region on the map',
               description: 'Pick a category and then a place to display it directly on the map.',
+              searchLabel: 'Search a place',
+              searchPlaceholder: 'E.g. Polignano, Monopoli...',
+              openInMaps: 'Open in Google Maps',
+              prevTitle: 'Previous place',
+              nextTitle: 'Next place',
+              resultsCount: '{{count}} result(s)',
               categories: {
                 wedding: 'Wedding venue',
                 visit: 'Places to visit',
@@ -331,25 +376,31 @@
       };
       const SUPPORTED_LANGS = Object.keys(I18N);
       const MAP_PLACES = {
-        wedding: {
-          fr: ['Castello Marchione Conversano'],
-          it: ['Castello Marchione Conversano'],
-          en: ['Castello Marchione Conversano']
-        },
-        visit: {
-          fr: ['Polignano a Mare', 'Alberobello', 'Matera', 'Ostuni', 'Grotte di Castellana'],
-          it: ['Polignano a Mare', 'Alberobello', 'Matera', 'Ostuni', 'Grotte di Castellana'],
-          en: ['Polignano a Mare', 'Alberobello', 'Matera', 'Ostuni', 'Castellana Caves']
-        },
-        eat: {
-          fr: ['Pescaria Polignano a Mare', 'La Tana Marina di Città Monopoli', 'Antica Salumeria Del Gusto Monopoli'],
-          it: ['Pescaria Polignano a Mare', 'La Tana Marina di Città Monopoli', 'Antica Salumeria Del Gusto Monopoli'],
-          en: ['Pescaria Polignano a Mare', 'La Tana Marina di Città Monopoli', 'Antica Salumeria Del Gusto Monopoli']
-        }
+        wedding: [
+          {
+            query: 'Castello Marchione Conversano',
+            labels: { fr: 'Castello Marchione', it: 'Castello Marchione', en: 'Castello Marchione' },
+            hints: { fr: 'Lieu de la cérémonie', it: 'Luogo della cerimonia', en: 'Ceremony venue' }
+          }
+        ],
+        visit: [
+          { query: 'Polignano a Mare', labels: { fr: 'Polignano a Mare', it: 'Polignano a Mare', en: 'Polignano a Mare' }, hints: { fr: 'Falaises et centre historique', it: 'Scogliere e centro storico', en: 'Cliffs and old town' } },
+          { query: 'Alberobello', labels: { fr: 'Alberobello', it: 'Alberobello', en: 'Alberobello' }, hints: { fr: 'Village des trulli', it: 'Borgo dei trulli', en: 'Trulli village' } },
+          { query: 'Matera', labels: { fr: 'Matera', it: 'Matera', en: 'Matera' }, hints: { fr: 'Ville troglodyte classée UNESCO', it: 'Città dei Sassi UNESCO', en: 'UNESCO cave city' } },
+          { query: 'Ostuni', labels: { fr: 'Ostuni', it: 'Ostuni', en: 'Ostuni' }, hints: { fr: 'La ville blanche', it: 'La città bianca', en: 'The White City' } },
+          { query: 'Grotte di Castellana', labels: { fr: 'Grotte di Castellana', it: 'Grotte di Castellana', en: 'Castellana Caves' }, hints: { fr: 'Grottes spectaculaires', it: 'Grotte spettacolari', en: 'Spectacular cave system' } }
+        ],
+        eat: [
+          { query: 'Pescaria Polignano a Mare', labels: { fr: 'Pescaria', it: 'Pescaria', en: 'Pescaria' }, hints: { fr: 'Street-food de la mer', it: 'Street-food di mare', en: 'Seafood street food' } },
+          { query: 'La Tana Marina di Città Monopoli', labels: { fr: 'La Tana Marina di Città', it: 'La Tana Marina di Città', en: 'La Tana Marina di Città' }, hints: { fr: 'Poisson à Monopoli', it: 'Pesce a Monopoli', en: 'Seafood in Monopoli' } },
+          { query: 'Antica Salumeria Del Gusto Monopoli', labels: { fr: 'Antica Salumeria Del Gusto', it: 'Antica Salumeria Del Gusto', en: 'Antica Salumeria Del Gusto' }, hints: { fr: 'Produits locaux & panini', it: 'Prodotti locali & panini', en: 'Local products & panini' } }
+        ]
       };
 
       let selectedMapCategory = 'wedding';
       let selectedMapPlace = '';
+      let filteredPlaces = [];
+      let currentMapLang = 'fr';
 
       function buildMapUrl(place){
         return `https://www.google.com/maps?q=${encodeURIComponent(place)}&output=embed`;
@@ -360,28 +411,70 @@
         selectedMapPlace = place;
         const map = document.getElementById('location-map');
         if (map) map.src = buildMapUrl(place);
+        const openLink = document.getElementById('map-open-link');
+        if (openLink) openLink.href = `https://maps.google.com/?q=${encodeURIComponent(place)}`;
         document.querySelectorAll('.map-place-btn').forEach(btn=>btn.classList.toggle('active', btn.dataset.place===place));
+        updateMapNavButtons();
+      }
+
+      function getMapResultsLabel(lang, count){
+        const template = I18N[lang]?.location?.mapDiscover?.resultsCount || '{{count}} result(s)';
+        return template.replace('{{count}}', String(count));
+      }
+
+      function getMapPlacesForCategory(){
+        return MAP_PLACES[selectedMapCategory] || [];
+      }
+
+      function getFilteredMapPlaces(lang){
+        const query = (document.getElementById('map-search-input')?.value || '').trim().toLowerCase();
+        return getMapPlacesForCategory().filter(place=>{
+          const label = (place.labels?.[lang] || place.labels?.fr || '').toLowerCase();
+          const hint = (place.hints?.[lang] || place.hints?.fr || '').toLowerCase();
+          const rawQuery = (place.query || '').toLowerCase();
+          return !query || label.includes(query) || hint.includes(query) || rawQuery.includes(query);
+        });
+      }
+
+      function updateMapNavButtons(){
+        const currentIndex = filteredPlaces.findIndex(place=>place.query===selectedMapPlace);
+        const prevBtn = document.getElementById('map-prev-btn');
+        const nextBtn = document.getElementById('map-next-btn');
+        if (prevBtn) prevBtn.disabled = currentIndex <= 0;
+        if (nextBtn) nextBtn.disabled = currentIndex < 0 || currentIndex >= filteredPlaces.length - 1;
       }
 
       function renderMapPlaces(lang){
+        currentMapLang = lang;
         const list = document.getElementById('map-place-list');
         if (!list) return;
-        const placesByLang = MAP_PLACES[selectedMapCategory] || {};
-        const places = placesByLang[lang] || placesByLang.fr || [];
+        filteredPlaces = getFilteredMapPlaces(lang);
         list.innerHTML = '';
-        places.forEach((place, index)=>{
+        filteredPlaces.forEach((place)=>{
           const li = document.createElement('li');
           const button = document.createElement('button');
           button.type = 'button';
           button.className = 'map-place-btn';
-          button.dataset.place = place;
-          button.textContent = place;
-          button.addEventListener('click', ()=>setMapPlace(place));
+          button.dataset.place = place.query;
+          const label = place.labels?.[lang] || place.labels?.fr || place.query;
+          const hint = place.hints?.[lang] || place.hints?.fr || '';
+          button.innerHTML = `<span>${label}</span>${hint ? `<small>${hint}</small>` : ''}`;
+          button.addEventListener('click', ()=>setMapPlace(place.query));
           li.appendChild(button);
           list.appendChild(li);
-          if (index===0 && !selectedMapPlace) setMapPlace(place);
         });
-        if (!places.includes(selectedMapPlace) && places[0]) setMapPlace(places[0]);
+
+        if (!filteredPlaces.some(place=>place.query===selectedMapPlace) && filteredPlaces[0]) setMapPlace(filteredPlaces[0].query);
+        if (!filteredPlaces.length){
+          selectedMapPlace = '';
+          const map = document.getElementById('location-map');
+          if (map) map.src = buildMapUrl('Castello Marchione Conversano');
+          const openLink = document.getElementById('map-open-link');
+          if (openLink) openLink.href = 'https://maps.google.com/?q=Castello+Marchione+Conversano';
+        }
+        const resultsCount = document.getElementById('map-results-count');
+        if (resultsCount) resultsCount.textContent = getMapResultsLabel(lang, filteredPlaces.length);
+        updateMapNavButtons();
       }
 
       function setupMapCategories(){
@@ -394,6 +487,24 @@
             renderMapPlaces(document.documentElement.lang || 'fr');
           });
         });
+        const searchInput = document.getElementById('map-search-input');
+        if (searchInput) {
+          searchInput.addEventListener('input', ()=>renderMapPlaces(currentMapLang));
+        }
+        const prevBtn = document.getElementById('map-prev-btn');
+        const nextBtn = document.getElementById('map-next-btn');
+        if (prevBtn){
+          prevBtn.addEventListener('click', ()=>{
+            const currentIndex = filteredPlaces.findIndex(place=>place.query===selectedMapPlace);
+            if (currentIndex > 0) setMapPlace(filteredPlaces[currentIndex - 1].query);
+          });
+        }
+        if (nextBtn){
+          nextBtn.addEventListener('click', ()=>{
+            const currentIndex = filteredPlaces.findIndex(place=>place.query===selectedMapPlace);
+            if (currentIndex >= 0 && currentIndex < filteredPlaces.length - 1) setMapPlace(filteredPlaces[currentIndex + 1].query);
+          });
+        }
         renderMapPlaces(document.documentElement.lang || 'fr');
       }
 
@@ -425,6 +536,18 @@
           let text = dict;
           keys.forEach(k=>{ text = text && text[k]; });
           if(text) el.textContent = text;
+        });
+        document.querySelectorAll('[data-i18n-placeholder]').forEach(el=>{
+          const keys = el.dataset.i18nPlaceholder.split('.');
+          let text = dict;
+          keys.forEach(k=>{ text = text && text[k]; });
+          if(text) el.setAttribute('placeholder', text);
+        });
+        document.querySelectorAll('[data-i18n-title]').forEach(el=>{
+          const keys = el.dataset.i18nTitle.split('.');
+          let text = dict;
+          keys.forEach(k=>{ text = text && text[k]; });
+          if(text) el.setAttribute('title', text);
         });
         document.querySelectorAll('.lang-switch button').forEach(btn => btn.classList.toggle('active',btn.dataset.lang===lang));
         localStorage.setItem('lang', lang);
