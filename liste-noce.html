@@ -34,7 +34,15 @@
       ul{list-style:none;padding-left:0;font-size:18px;color:var(--text);}
       ul li{padding:8px 0;position:relative;}
       ul li::before{content:"•";color:var(--muted);display:inline-block;width:18px;margin-left:-18px;}
-      .note{max-width:640px;margin:0 auto 16px;line-height:1.6;font-size:18px;color:var(--muted);}
+      .note{max-width:680px;margin:0 auto 18px;line-height:1.7;font-size:18px;color:var(--muted);}
+      .iban-toggle-wrap{margin-top:26px;display:flex;justify-content:center;}
+      .iban-btn{border:1px solid var(--border);background:var(--surface);color:var(--text);padding:10px 18px;border-radius:999px;font-size:15px;font-weight:500;cursor:pointer;transition:all .25s ease;}
+      .iban-btn:hover{border-color:var(--accent);box-shadow:0 6px 20px rgba(0,0,0,.08);}
+      .iban-btn:focus-visible{outline:3px solid rgba(0,113,227,.35);outline-offset:2px;}
+      .iban-card{max-width:640px;margin:14px auto 0;padding:18px 20px;border:1px solid var(--border);border-radius:16px;background:linear-gradient(180deg,#fff,#f9f9fb);text-align:left;box-shadow:0 10px 25px rgba(0,0,0,.05);}
+      .iban-card[hidden]{display:none;}
+      .iban-card p{margin:0;color:var(--text);line-height:1.6;font-size:16px;}
+      .iban-card .iban-label{display:block;color:var(--muted);font-size:13px;letter-spacing:.04em;text-transform:uppercase;margin-bottom:8px;}
       .hamburger{display:none;}
       @media (max-width:768px){
         .hamburger{display:inline-flex; align-items:center; justify-content:center; position:absolute; top:20px; right:20px; z-index:4; width:42px; height:42px; border-radius:999px; border:1px solid var(--border); background:#fff; color:var(--text); cursor:pointer;}
@@ -67,12 +75,13 @@
       <section id="liste-noce">
         <h2 data-i18n="registry.title">Liste de noce</h2>
         <p class="note" data-i18n="registry.text">Votre présence est notre plus beau cadeau. Si vous souhaitez nous gâter, voici les projets qui nous tiennent à cœur.</p>
-        <ul>
-          <li data-i18n="registry.item1">Voyage de noces au sud de l'Italie.</li>
-          <li data-i18n="registry.item2">Souvenirs et expériences à deux.</li>
-          <li data-i18n="registry.item3">Contribuer à notre futur chez-nous.</li>
-        </ul>
-        <p class="note" data-i18n="registry.text2">Un lien vers la liste complète sera partagé prochainement.</p>
+        <p class="note" data-i18n="registry.text2">Les objets se perdent, se cassent, s’oublient. Un voyage est une émotion qui reste gravée pour toujours dans la mémoire.</p>
+        <div class="iban-toggle-wrap">
+          <button class="iban-btn" id="toggle-iban" type="button" data-i18n="registry.showIban">Afficher l'IBAN</button>
+        </div>
+        <div class="iban-card" id="iban-card" hidden>
+          <p><span class="iban-label" data-i18n="registry.transferTitle">Coordonnées bancaires</span>Fidalma INTINI<br />IBAN 00443534366265235363734<br />SWIFT 0CGT67</p>
+        </div>
       </section>
     </main>
     <script>
@@ -80,33 +89,33 @@
         fr: {
           registry: {
             title: 'Liste de noce',
-            text: 'Votre présence est notre plus beau cadeau. Si vous souhaitez nous gâter, voici les projets qui nous tiennent à cœur.',
-            item1: "Voyage de noces au sud de l'Italie.",
-            item2: 'Souvenirs et expériences à deux.',
-            item3: 'Contribuer à notre futur chez-nous.',
-            text2: 'Un lien vers la liste complète sera partagé prochainement.'
+            text: 'Nous voulons remercier nos familles et nos amis pour l'amour et le soutien qu'ils nous ont témoignés au début de notre avenir ensemble. Vous avoir à nos côtés pour le plus beau jour de notre vie est déjà le plus grand des cadeaux. Mais si vous souhaitez nous aider à réaliser notre lune de miel de rêve, nous vous en serons profondément reconnaissants.',
+            text2: 'Les objets se perdent, se cassent, s'oublient. Un voyage est une émotion qui reste gravée pour toujours dans la mémoire. Merci à vous qui, par votre contribution, nous aiderez à réaliser le voyage de noces de nos rêves.',
+            showIban: "Afficher l'IBAN",
+            hideIban: "Masquer l'IBAN",
+            transferTitle: 'Coordonnées bancaires'
           },
           nav: { home: 'Accueil', wedding: 'Wedding', location: 'Localisation', info: 'Informations', registry: 'Liste de noce', rsvp: 'RSVP' }
         },
         it: {
           registry: {
             title: 'Lista nozze',
-            text: 'La vostra presenza è il nostro dono più bello. Se desiderate farci un regalo, ecco le idee che ci stanno a cuore.',
-            item1: 'Viaggio di nozze nel sud Italia.',
-            item2: 'Ricordi ed esperienze da condividere.',
-            item3: 'Contribuire alla nostra futura casa.',
-            text2: 'Condivideremo presto il link alla lista completa.'
+            text: 'Vogliamo ringraziare le nostre famiglie e i nostri amici per l'amore e il sostegno che ci hanno dimostrato all'inizio del nostro futuro insieme. Averti con noi nel nostro giorno più bello è il regalo più grande che possiate farci, ma se volete aiutarci a realizzare la nostra luna di miele da sogno ve ne saremo profondamente grati.',
+            text2: 'Gli oggetti si perdono, si rompono, si dimenticano. Un viaggio è un'emozione che resta per sempre impressa nella memoria. Grazie a voi che contribuendo, ci aiuterete a realizzare il viaggio di nozze dei nostri sogni.',
+            showIban: 'Mostra IBAN',
+            hideIban: 'Nascondi IBAN',
+            transferTitle: 'Coordinate bancarie'
           },
           nav: { home: 'Home', wedding: 'Wedding', location: 'Come arrivare', info: 'Informazioni', registry: 'Lista nozze', rsvp: 'conferma' }
         },
         en: {
           registry: {
             title: 'Wedding list',
-            text: 'Your presence is our greatest gift. If you wish to spoil us, here are the projects closest to our hearts.',
-            item1: 'Honeymoon in southern Italy.',
-            item2: 'Shared memories and experiences.',
-            item3: 'Contributing to our future home.',
-            text2: 'We will share a link to the full list soon.'
+            text: 'We want to thank our families and friends for the love and support they have shown us at the beginning of our future together. Having you with us on our most beautiful day is already the greatest gift you can give us, but if you would like to help us make our dream honeymoon come true, we would be deeply grateful.',
+            text2: 'Objects get lost, broken, and forgotten. A journey is an emotion that remains forever etched in memory. Thank you for helping us bring the honeymoon of our dreams to life through your contribution.',
+            showIban: 'Show IBAN',
+            hideIban: 'Hide IBAN',
+            transferTitle: 'Bank details'
           },
           nav: { home: 'Home', wedding: 'Wedding', location: 'Location', info: 'Info', registry: 'Wedding list', rsvp: 'RSVP' }
         }
@@ -148,11 +157,38 @@
         const url = new URL(location.href);
         url.searchParams.set('lang', lang);
         history.replaceState(null, '', `${url.pathname.split('/').pop()}${url.search}${url.hash}`);
+        if (typeof syncIbanButtonLabel === 'function') syncIbanButtonLabel();
       }
       document.querySelectorAll('.lang-switch button').forEach(btn=>btn.addEventListener('click',()=>applyTranslations(btn.dataset.lang)));
       applyTranslations(getInitialLang());
 
+      const ibanToggleButton = document.getElementById('toggle-iban');
+      const ibanCard = document.getElementById('iban-card');
+
+      function syncIbanButtonLabel(){
+        const lang = document.documentElement.lang || 'fr';
+        const isOpen = ibanCard && !ibanCard.hasAttribute('hidden');
+        const labelKey = isOpen ? 'hideIban' : 'showIban';
+        if (ibanToggleButton && I18N[lang] && I18N[lang].registry[labelKey]) {
+          ibanToggleButton.textContent = I18N[lang].registry[labelKey];
+        }
+      }
+
+      if (ibanToggleButton && ibanCard){
+        ibanToggleButton.addEventListener('click', ()=>{
+          const willOpen = ibanCard.hasAttribute('hidden');
+          if (willOpen) {
+            ibanCard.removeAttribute('hidden');
+          } else {
+            ibanCard.setAttribute('hidden', '');
+          }
+          syncIbanButtonLabel();
+        });
+      }
+      syncIbanButtonLabel();
+
       function highlightActiveLink(){
+
         const current = location.pathname.split('/').pop() || 'index.html';
         document.querySelectorAll('nav.topnav a').forEach(a=>{
           const linkPath = new URL(a.getAttribute('href'), location.href).pathname.split('/').pop();
