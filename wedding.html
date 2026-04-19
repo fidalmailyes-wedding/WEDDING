@@ -101,12 +101,6 @@
         .schedule{
           padding:48px 60px;
         }
-        .timeline{
-          grid-template-columns:repeat(2,minmax(0,1fr));
-        }
-        .timeline-item{
-          padding:20px 24px;
-        }
       }
       @media (max-width:600px){
         main{padding-top:90px;}
@@ -153,25 +147,33 @@
             <article class="timeline-item">
               <div class="timeline-icon" aria-hidden="true">💍</div>
               <div class="timeline-content">
-                <div class="timeline-time">17h00</div>
+                <div class="timeline-time">16H30</div>
                 <div class="timeline-title" data-i18n="wedding.ceremony">Cérémonie</div>
-                <div class="timeline-note" data-i18n="wedding.ceremony_note">Rendez-vous au jardin pour l'échange des vœux.</div>
+                <div class="timeline-note" data-i18n="wedding.ceremony_note">Pour profiter pleinement de la cérémonie, nous vous invitons à ne pas sortir vos téléphones. Des photographes seront là pour immortaliser ces moments — laissez-vous simplement porter et vivez-les avec nous. Merci infiniment 🤍</div>
               </div>
             </article>
             <article class="timeline-item">
               <div class="timeline-icon" aria-hidden="true">🥂</div>
               <div class="timeline-content">
-                <div class="timeline-time">18h00</div>
-                <div class="timeline-title" data-i18n="wedding.aperitivo">Aperitivo</div>
+                <div class="timeline-time">17H30</div>
+                <div class="timeline-title" data-i18n="wedding.aperitivo">Apéritif de bienvenue</div>
                 <div class="timeline-note" data-i18n="wedding.aperitivo_note">Cocktails, antipasti et premières photos.</div>
               </div>
             </article>
             <article class="timeline-item">
               <div class="timeline-icon" aria-hidden="true">🍽️</div>
               <div class="timeline-content">
-                <div class="timeline-time">20h00</div>
-                <div class="timeline-title" data-i18n="wedding.dinner">Dîner</div>
-                <div class="timeline-note" data-i18n="wedding.dinner_note">Table conviviale et toasts au coucher du soleil.</div>
+                <div class="timeline-time">19H00</div>
+                <div class="timeline-title" data-i18n="wedding.dinner">Buffet</div>
+                <div class="timeline-note" data-i18n="wedding.dinner_note">Saveurs conviviales et instant gourmand à partager.</div>
+              </div>
+            </article>
+            <article class="timeline-item">
+              <div class="timeline-icon" aria-hidden="true">🍷</div>
+              <div class="timeline-content">
+                <div class="timeline-time">20H30</div>
+                <div class="timeline-title" data-i18n="wedding.supper">Dîner</div>
+                <div class="timeline-note" data-i18n="wedding.supper_note">Un dîner festif pour prolonger la soirée ensemble.</div>
               </div>
             </article>
             <article class="timeline-item">
@@ -195,11 +197,13 @@
             title: 'Wedding — Déroulé',
             subtitle: 'Une journée pensée pour partager chaque moment ensemble.',
             ceremony: 'Cérémonie',
-            ceremony_note: "Rendez-vous au jardin pour l'échange des vœux.",
-            aperitivo: 'Aperitivo',
+            ceremony_note: 'Pour profiter pleinement de la cérémonie, nous vous invitons à ne pas sortir vos téléphones. Des photographes seront là pour immortaliser ces moments — laissez-vous simplement porter et vivez-les avec nous. Merci infiniment 🤍',
+            aperitivo: 'Apéritif de bienvenue',
             aperitivo_note: 'Cocktails, antipasti et premières photos.',
-            dinner: 'Dîner',
-            dinner_note: 'Table conviviale et toasts au coucher du soleil.',
+            dinner: 'Buffet',
+            dinner_note: 'Saveurs conviviales et instant gourmand à partager.',
+            supper: 'Dîner',
+            supper_note: 'Un dîner festif pour prolonger la soirée ensemble.',
             party: 'Festa & DJ set',
             party_note: 'Dance floor ouvert jusque tard dans la nuit.'
           },
@@ -214,17 +218,19 @@
             title: 'Matrimonio — Programma',
             subtitle: 'Una giornata pensata per vivere ogni momento insieme.',
             ceremony: 'Cerimonia',
-            ceremony_note: 'Incontro in giardino per lo scambio delle promesse.',
-            aperitivo: 'Aperitivo',
+            ceremony_note: 'Per godervi pienamente la cerimonia, vi invitiamo a non usare i telefoni. Ci saranno fotografi per immortalare questi momenti — lasciatevi semplicemente trasportare e viveteli con noi. Grazie di cuore 🤍',
+            aperitivo: 'Aperitivo di benvenuto',
             aperitivo_note: 'Cocktail, antipasti e prime foto.',
-            dinner: 'Cena',
-            dinner_note: 'Cena conviviale e brindisi al tramonto.',
+            dinner: 'Buffet',
+            dinner_note: 'Sapori conviviali da condividere insieme.',
+            supper: 'Cena',
+            supper_note: 'Una cena di festa per continuare la serata insieme.',
             party: 'Festa & DJ set',
             party_note: 'Pista da ballo aperta fino a tardi.'
           },
           location: { title: 'Come arrivare', text: 'Castello Marchione, Conversano, Italia'},
-          nav: { home: 'Home', wedding: 'Wedding', location: 'Come arrivare', info: 'Informazioni', registry: 'Lista nozze', rsvp: 'confirma' },
-          rsvp: { title: 'confirma', text: 'Vi preghiamo di confermare entro il 30 giugno 2026.', cta: 'Rispondere al modulo'}
+          nav: { home: 'Home', wedding: 'Wedding', location: 'Come arrivare', info: 'Informazioni', registry: 'Lista nozze', rsvp: 'conferma' },
+          rsvp: { title: 'conferma', text: 'Vi preghiamo di confermare entro il 30 giugno 2026.', cta: 'Rispondere al modulo'}
         },
         en: {
           date: '08 August 2026 · Castello Marchione',
@@ -233,11 +239,13 @@
             title: 'Wedding — Schedule',
             subtitle: 'A day designed to enjoy every moment together.',
             ceremony: 'Ceremony',
-            ceremony_note: 'Meet in the garden for the vow exchange.',
-            aperitivo: 'Aperitivo',
+            ceremony_note: 'To fully enjoy the ceremony, we kindly invite you to keep your phones away. Photographers will be there to capture these moments — simply let yourselves be carried away and live them with us. Thank you so much 🤍',
+            aperitivo: 'Welcome aperitif',
             aperitivo_note: 'Cocktails, antipasti, and first photos.',
-            dinner: 'Dinner',
-            dinner_note: 'Long-table dinner and sunset toasts.',
+            dinner: 'Buffet',
+            dinner_note: 'A convivial buffet to share delicious moments together.',
+            supper: 'Dinner',
+            supper_note: 'A festive dinner to continue celebrating together.',
             party: 'Party & DJ set',
             party_note: 'Dance floor open late into the night.'
           },
