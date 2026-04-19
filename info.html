@@ -29,13 +29,20 @@
       nav.topnav .rsvp-btn{border:1px solid var(--text);padding:8px 16px;border-radius:999px;}
       nav.topnav .rsvp-btn:hover{background:var(--text);color:#fff;border-color:var(--text);opacity:1;}
       main{padding:120px 20px 80px;max-width:1000px;margin:0 auto;}
-      section{text-align:center;background:var(--surface);border:1px solid var(--border);border-radius:32px;padding:40px 32px;box-shadow:0 24px 48px rgba(0,0,0,.06);}
-      h2{font-size:36px;color:var(--accent);margin-bottom:20px;font-weight:500;letter-spacing:-0.01em;}
-      p{color:var(--muted);font-size:18px;line-height:1.6;margin:0;}
-      ul{list-style:none;padding-left:0;font-size:18px;}
-      ul li{padding:6px 0;}
+      section{text-align:left;background:var(--surface);border:1px solid var(--border);border-radius:32px;padding:40px 32px;box-shadow:0 24px 48px rgba(0,0,0,.06);}
+      h2{font-size:36px;color:var(--accent);margin:0 0 14px;font-weight:500;letter-spacing:-0.01em;text-align:center;}
+      .intro{color:var(--muted);font-size:18px;line-height:1.6;margin:0 0 28px;text-align:center;}
+      ul.info-list{list-style:none;padding-left:0;margin:0;display:grid;gap:12px;}
+      ul.info-list li{padding:12px 14px;border:1px solid var(--border);border-radius:14px;background:#fafafa;color:#2d2d2f;line-height:1.5;}
+      .contacts{margin-top:30px;padding-top:24px;border-top:1px solid var(--border);}
+      .contacts h3{margin:0 0 12px;font-size:24px;font-weight:500;}
+      .contact-list{list-style:none;padding:0;margin:0;display:grid;gap:8px;}
+      .contact-list li{color:#2d2d2f;line-height:1.5;}
       .hamburger{display:none;}
       @media (max-width:768px){
+        section{padding:28px 20px;}
+        h2{font-size:30px;}
+        .intro{font-size:16px;}
         .hamburger{display:inline-flex; align-items:center; justify-content:center; position:absolute; top:20px; right:20px; z-index:4; width:42px; height:42px; border-radius:999px; border:1px solid var(--border); background:#fff; color:var(--text); cursor:pointer;}
         .hamburger:focus-visible{outline:3px solid var(--text); outline-offset:2px;}
         nav.topnav{display:none; position:absolute; top:70px; right:10px; flex-direction:column; gap:12px; background:#fff; padding:14px; border-radius:16px; border:1px solid var(--border); box-shadow:0 12px 30px rgba(0,0,0,.12); opacity:0; transform:translateY(-10px); transition:opacity .3s ease, transform .3s ease;}
@@ -65,7 +72,24 @@
     <main>
       <section id="info">
         <h2 data-i18n="info.title">Informations</h2>
-        <p data-i18n="info.text">Les détails pratiques seront ajoutés prochainement.</p>
+        <p class="intro" data-i18n="info.intro">Voici quelques informations utiles pour profiter pleinement de la journée.</p>
+        <ul class="info-list">
+          <li data-i18n="info.item1">Les talons aiguilles sont fortement déconseillés : la cérémonie et le repas auront lieu sur l'herbe. Si besoin, prévoyez des protège-talons à base large.</li>
+          <li data-i18n="info.item2">Un parking privé est disponible au château.</li>
+          <li data-i18n="info.item3">Merci de confirmer votre présence avant le 30 juin 2026 via le formulaire RSVP, en indiquant également vos éventuelles restrictions alimentaires.</li>
+          <li data-i18n="info.item4">La cérémonie commence à 16h30. Merci d'arriver 15 minutes en avance.</li>
+          <li data-i18n="info.item5">Des ombrelles et des éventails seront mis à votre disposition pour vous protéger du soleil pendant la cérémonie.</li>
+          <li data-i18n="info.item6">Note vestimentaire : seule la mariée portera du blanc 😉</li>
+        </ul>
+
+        <div class="contacts">
+          <h3 data-i18n="info.contactsTitle">Contacts</h3>
+          <ul class="contact-list">
+            <li><strong data-i18n="info.contactEmailLabel">Email :</strong> <a href="mailto:fidalmailyes.wedding@gmail.com">fidalmailyes.wedding@gmail.com</a></li>
+            <li><strong>Fidalma :</strong> <a href="tel:+393894584176">+39 38 94 58 41 76</a></li>
+            <li><strong>Ilyes :</strong> <a href="tel:+330652823815">+33 06 52 82 38 15</a></li>
+          </ul>
+        </div>
       </section>
     </main>
     <script>
@@ -75,7 +99,18 @@
           cta: 'Confirmer ma venue',
           wedding: { title: 'Wedding — Déroulé', ceremony: '17h00 : Cérémonie', aperitivo: '18h00 : Aperitivo', dinner: '20h00 : Dîner', party: '23h00 : Festa & DJ set'},
           location: { title: 'Localisation', text: 'Castello Marchione, Conversano, Italie'},
-          info: { title: 'Informations', text: 'Les détails pratiques seront ajoutés prochainement.' },
+          info: {
+            title: 'Informations',
+            intro: 'Voici quelques informations utiles pour profiter pleinement de la journée.',
+            item1: "Les talons aiguilles sont fortement déconseillés : la cérémonie et le repas auront lieu sur l'herbe. Si besoin, prévoyez des protège-talons à base large.",
+            item2: 'Un parking privé est disponible au château.',
+            item3: 'Merci de confirmer votre présence avant le 30 juin 2026 via le formulaire RSVP, en indiquant également vos éventuelles restrictions alimentaires.',
+            item4: "La cérémonie commence à 16h30. Merci d'arriver 15 minutes en avance.",
+            item5: 'Des ombrelles et des éventails seront mis à votre disposition pour vous protéger du soleil pendant la cérémonie.',
+            item6: 'Note vestimentaire : seule la mariée portera du blanc 😉',
+            contactsTitle: 'Contacts',
+            contactEmailLabel: 'Email :'
+          },
           nav: { home: 'Accueil', wedding: 'Wedding', location: 'Localisation', info: 'Informations', registry: 'Liste de noce', rsvp: 'RSVP' },
           rsvp: { title: 'RSVP', text: 'Merci de confirmer votre présence avant le 30 juin 2026.', cta: 'Répondre au formulaire'}
         },
@@ -84,7 +119,18 @@
           cta: 'Confermare la presenza',
           wedding: { title: 'Matrimonio — Programma', ceremony: '17:00 : Cerimonia', aperitivo: '18:00 : Aperitivo', dinner: '20:00 : Cena', party: '23:00 : Festa & DJ set'},
           location: { title: 'Come arrivare', text: 'Castello Marchione, Conversano, Italia'},
-          info: { title: 'Informazioni', text: 'I dettagli pratici saranno aggiunti prossimamente.' },
+          info: {
+            title: 'Informazioni',
+            intro: 'Ecco alcune informazioni utili per vivere al meglio la giornata.',
+            item1: "I tacchi a spillo sono fortemente sconsigliati: la cerimonia e la cena si svolgeranno sul prato. Se necessario, portate proteggi-tacco con base larga.",
+            item2: 'È disponibile un parcheggio privato presso il castello.',
+            item3: 'Vi chiediamo di confermare la vostra presenza entro il 30 giugno 2026 tramite il modulo RSVP, indicando anche eventuali restrizioni alimentari.',
+            item4: 'La cerimonia inizia alle 16:30. Vi preghiamo di arrivare con 15 minuti di anticipo.',
+            item5: 'Durante la cerimonia metteremo a disposizione ombrellini e ventagli per proteggervi dal sole.',
+            item6: 'Nota sul dress code: solo la sposa indosserà il bianco 😉',
+            contactsTitle: 'Contatti',
+            contactEmailLabel: 'Email :'
+          },
           nav: { home: 'Home', wedding: 'Wedding', location: 'Come arrivare', info: 'Informazioni', registry: 'Lista nozze', rsvp: 'confirma' },
           rsvp: { title: 'confirma', text: 'Vi preghiamo di confermare entro il 30 giugno 2026.', cta: 'Rispondere al modulo'}
         },
@@ -93,7 +139,18 @@
           cta: 'Confirm attendance',
           wedding: { title: 'Wedding — Schedule', ceremony: '17:00 : Ceremony', aperitivo: '18:00 : Aperitif', dinner: '20:00 : Dinner', party: '23:00 : Party & DJ set'},
           location: { title: 'Location', text: 'Castello Marchione, Conversano, Italy'},
-          info: { title: 'Information', text: 'Practical details will be added soon.' },
+          info: {
+            title: 'Information',
+            intro: 'Here are a few practical details to help you enjoy the day.',
+            item1: 'Stiletto heels are strongly discouraged: both the ceremony and dinner will take place on grass. If needed, please bring wide-base heel protectors.',
+            item2: 'Private parking is available at the castle.',
+            item3: 'Please confirm your attendance before June 30, 2026 via the RSVP form, and let us know about any dietary restrictions.',
+            item4: 'The ceremony starts at 4:30 PM. Please arrive 15 minutes early.',
+            item5: 'Parasols and hand fans will be available during the ceremony to help protect you from the sun.',
+            item6: 'Dress code note: only the bride will wear white 😉',
+            contactsTitle: 'Contacts',
+            contactEmailLabel: 'Email:'
+          },
           nav: { home: 'Home', wedding: 'Wedding', location: 'Location', info: 'Info', registry: 'Wedding list', rsvp: 'RSVP' },
           rsvp: { title: 'RSVP', text: 'Please confirm your presence before June 30, 2026.', cta: 'Fill out the form'}
         }
