@@ -57,9 +57,9 @@
       .map-discover{margin:0;padding:20px;border:1px solid var(--border);border-radius:20px;background:#fff;display:flex;flex-direction:column;gap:14px;min-height:clamp(420px,62vh,640px);}
       .map-discover h3{margin-top:0;font-size:22px;}
       .map-category-buttons{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px;}
-      .map-category-btn,.map-place-btn{border:1px solid var(--border);background:#fff;color:var(--text);padding:8px 14px;border-radius:999px;cursor:pointer;font:inherit;transition:all .2s ease;}
-      .map-category-btn:hover,.map-place-btn:hover{border-color:var(--accent-strong);color:var(--accent-strong);}
-      .map-category-btn.active,.map-place-btn.active{background:var(--text);color:#fff;border-color:var(--text);}
+      .map-category-btn{border:1px solid var(--border);background:#fff;color:var(--text);padding:8px 14px;border-radius:999px;cursor:pointer;font:inherit;transition:all .2s ease;}
+      .map-category-btn:hover{border-color:var(--accent-strong);color:var(--accent-strong);}
+      .map-category-btn.active{background:var(--text);color:#fff;border-color:var(--text);}
       .map-category-btn[data-category="wedding"]{border-color:#6b8e23;color:#5f7f20;}
       .map-category-btn[data-category="visit"]{border-color:#2f76d2;color:#2f76d2;}
       .map-category-btn[data-category="eat"]{border-color:#d1851f;color:#c07511;}
@@ -76,15 +76,12 @@
       .map-nav-btn{border:1px solid var(--border);background:#fff;color:var(--text);padding:7px 10px;border-radius:999px;cursor:pointer;font:inherit;line-height:1;}
       .map-nav-btn:hover{border-color:var(--accent-strong);color:var(--accent-strong);}
       .map-nav-btn:disabled{opacity:.35;cursor:not-allowed;}
-      .map-place-list{list-style:none;margin:0;padding:0;display:grid;gap:8px;min-height:200px;flex:1;overflow:auto;}
+      .map-place-list{width:100%;min-height:220px;flex:1;border:1px solid var(--border);border-radius:14px;padding:6px;background:#fff;color:var(--text);font:inherit;}
+      .map-place-list:focus-visible{outline:2px solid var(--accent-strong);outline-offset:1px;border-color:var(--accent-strong);}
       @media (max-width:1024px){
         .map-layout{grid-template-columns:minmax(270px,320px) minmax(0,1fr);}
       }
-      .map-place-btn{width:100%;border-radius:14px;text-align:left;padding:10px 12px;display:grid;gap:4px;}
-      .map-place-btn span{display:flex;align-items:center;gap:8px;}
-      .map-place-dot{width:10px;height:10px;border-radius:50%;display:inline-block;flex:0 0 auto;}
-      .map-place-btn small{font-size:12px;color:var(--muted);}
-      .map-place-btn.active small{color:rgba(255,255,255,.75);}
+      .map-place-list option{padding:8px 10px;border-radius:8px;}
       .map-open-link{display:inline-flex;align-items:center;justify-content:center;padding:10px 14px;border-radius:999px;border:1px solid var(--text);color:var(--text);text-decoration:none;font-weight:500;}
       .map-open-link:hover{background:var(--text);color:#fff;}
       .map-mobile-toggle{display:none;}
@@ -143,7 +140,7 @@
           <button type="button" id="map-mobile-toggle" class="map-mobile-toggle" data-i18n="location.mapDiscover.openSheet">🍽️ Voir la liste des lieux</button>
           <div class="map-discover">
             <h3 data-i18n="location.mapDiscover.title">🗺️ Explorer la région sur la carte</h3>
-            <p data-i18n="location.mapDiscover.description">Choisissez une catégorie puis un lieu pour l'afficher directement sur la carte.</p>
+            <p data-i18n="location.mapDiscover.description">Choisissez un lieu à afficher sur la carte.</p>
             <div class="map-category-buttons">
               <button type="button" class="map-category-btn active" data-category="wedding" data-i18n="location.mapDiscover.categories.wedding">Lieu de mariage</button>
               <button type="button" class="map-category-btn" data-category="visit" data-i18n="location.mapDiscover.categories.visit">Lieux à visiter</button>
@@ -160,7 +157,7 @@
                 <button type="button" class="map-nav-btn" id="map-next-btn" data-i18n-title="location.mapDiscover.nextTitle" title="Lieu suivant">→</button>
               </div>
             </div>
-            <ul class="map-place-list" id="map-place-list"></ul>
+            <select class="map-place-list" id="map-place-list" size="5" aria-label="Liste des lieux"></select>
             <a id="map-open-link" class="map-open-link" href="https://maps.google.com/?q=Castello+Marchione+Conversano" target="_blank" rel="noopener noreferrer" data-i18n="location.mapDiscover.openInMaps">Ouvrir dans Google Maps</a>
           </div>
           <div id="location-map" class="map" aria-label="Carte interactive des points d'intérêt"></div>
@@ -245,7 +242,7 @@
             historyLabel: 'Pour plus de détails historiques :',
             mapDiscover: {
               title: '🗺️ Explorer la région sur la carte',
-              description: 'Choisissez une catégorie puis un lieu pour l\'afficher directement sur la carte.',
+              description: 'Choisissez un lieu à afficher sur la carte.',
               searchLabel: 'Rechercher un lieu',
               searchPlaceholder: 'Ex : Polignano, Monopoli...',
               openInMaps: 'Ouvrir dans Google Maps',
@@ -306,7 +303,7 @@
             historyLabel: 'Per maggiori dettagli storici:',
             mapDiscover: {
               title: '🗺️ Esplora la regione sulla mappa',
-              description: 'Scegli una categoria e poi un luogo per visualizzarlo direttamente sulla mappa.',
+              description: 'Scegli un luogo da visualizzare sulla mappa.',
               searchLabel: 'Cerca un luogo',
               searchPlaceholder: 'Es: Polignano, Monopoli...',
               openInMaps: 'Apri in Google Maps',
@@ -367,7 +364,7 @@
             historyLabel: 'For more historical details:',
             mapDiscover: {
               title: '🗺️ Explore the region on the map',
-              description: 'Pick a category and then a place to display it directly on the map.',
+              description: 'Pick a place to display on the map.',
               searchLabel: 'Search a place',
               searchPlaceholder: 'E.g. Polignano, Monopoli...',
               openInMaps: 'Open in Google Maps',
@@ -548,7 +545,8 @@
         selectedMapPlace = place;
         const openLink = document.getElementById('map-open-link');
         if (openLink) openLink.href = `https://maps.google.com/?q=${encodeURIComponent(place)}`;
-        document.querySelectorAll('.map-place-btn').forEach(btn=>btn.classList.toggle('active', btn.dataset.place===place));
+        const list = document.getElementById('map-place-list');
+        if (list) list.value = place;
         refreshMarkerHighlight();
         updateMapNavButtons();
         if (window.matchMedia('(max-width: 768px)').matches) setMapSheetState(false);
@@ -588,18 +586,12 @@
         filteredPlaces = getFilteredMapPlaces(lang);
         list.innerHTML = '';
         filteredPlaces.forEach((place)=>{
-          const li = document.createElement('li');
-          const button = document.createElement('button');
-          button.type = 'button';
-          button.className = 'map-place-btn';
-          button.dataset.place = place.query;
+          const option = document.createElement('option');
+          option.value = place.query;
           const label = place.labels?.[lang] || place.labels?.fr || place.query;
           const hint = place.hints?.[lang] || place.hints?.fr || '';
-          const color = CATEGORY_COLORS[selectedMapCategory] || '#1d1d1f';
-          button.innerHTML = `<span><i class="map-place-dot" style="background:${color};"></i>${label}</span>${hint ? `<small>${hint}</small>` : ''}`;
-          button.addEventListener('click', ()=>setMapPlace(place.query));
-          li.appendChild(button);
-          list.appendChild(li);
+          option.textContent = hint ? `${label} — ${hint}` : label;
+          list.appendChild(option);
         });
 
         if (!filteredPlaces.some(place=>place.query===selectedMapPlace) && filteredPlaces[0]) setMapPlace(filteredPlaces[0].query);
@@ -607,6 +599,7 @@
           selectedMapPlace = '';
           const openLink = document.getElementById('map-open-link');
           if (openLink) openLink.href = 'https://maps.google.com/?q=Castello+Marchione+Conversano';
+          list.value = '';
           refreshMarkerHighlight();
         }
         const resultsCount = document.getElementById('map-results-count');
@@ -627,6 +620,13 @@
         const searchInput = document.getElementById('map-search-input');
         if (searchInput) {
           searchInput.addEventListener('input', ()=>renderMapPlaces(currentMapLang));
+        }
+        const placeList = document.getElementById('map-place-list');
+        if (placeList){
+          placeList.addEventListener('change', (event)=>{
+            const selectedPlace = event.target.value;
+            if (selectedPlace) setMapPlace(selectedPlace);
+          });
         }
         const prevBtn = document.getElementById('map-prev-btn');
         const nextBtn = document.getElementById('map-next-btn');
