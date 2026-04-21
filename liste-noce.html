@@ -45,12 +45,14 @@
       .iban-card .iban-label{display:block;color:var(--muted);font-size:13px;letter-spacing:.04em;text-transform:uppercase;margin-bottom:8px;}
       .hamburger{display:none;}
       @media (max-width:768px){
-        .hamburger{display:inline-flex; align-items:center; justify-content:center; position:absolute; top:20px; right:20px; z-index:4; width:42px; height:42px; border-radius:999px; border:1px solid var(--border); background:#fff; color:var(--text); cursor:pointer;}
+        .lang-switch{position:fixed; top:20px; left:16px; z-index:40;}
+        .hamburger{display:inline-flex; align-items:center; justify-content:center; position:fixed; top:20px; right:16px; z-index:50; width:42px; height:42px; border-radius:999px; border:1px solid var(--border); background:#fff; color:var(--text); cursor:pointer;}
         .hamburger:focus-visible{outline:3px solid var(--text); outline-offset:2px;}
-        nav.topnav{display:none; position:absolute; top:70px; right:10px; flex-direction:column; gap:12px; background:#fff; padding:14px; border-radius:16px; border:1px solid var(--border); box-shadow:0 12px 30px rgba(0,0,0,.12); opacity:0; transform:translateY(-10px); transition:opacity .3s ease, transform .3s ease;}
+        nav.topnav{display:none; position:fixed; top:70px; right:10px; z-index:45; flex-direction:column; gap:12px; background:#fff; padding:14px; border-radius:16px; border:1px solid var(--border); box-shadow:0 12px 30px rgba(0,0,0,.12); opacity:0; transform:translateY(-10px); transition:opacity .3s ease, transform .3s ease;}
         nav.topnav.open{display:flex; opacity:1; transform:translateY(0);}
         nav.topnav a{color:var(--text); border-bottom:none;}
         nav.topnav .rsvp-btn{border-color:var(--text);}
+        main{padding-top:110px;}
       }
     </style>
   </head>
@@ -159,7 +161,13 @@
         history.replaceState(null, '', `${url.pathname.split('/').pop()}${url.search}${url.hash}`);
         if (typeof syncIbanButtonLabel === 'function') syncIbanButtonLabel();
       }
-      document.querySelectorAll('.lang-switch button').forEach(btn=>btn.addEventListener('click',()=>applyTranslations(btn.dataset.lang)));
+      document.querySelectorAll('.lang-switch button').forEach(btn=>btn.addEventListener('click',()=>{
+        applyTranslations(btn.dataset.lang);
+        if (topnav && topnav.classList.contains('open')){
+          topnav.classList.remove('open');
+          burger && burger.setAttribute('aria-expanded','false');
+        }
+      }));
       applyTranslations(getInitialLang());
 
       const ibanToggleButton = document.getElementById('toggle-iban');
