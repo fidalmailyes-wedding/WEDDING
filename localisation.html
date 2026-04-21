@@ -87,10 +87,18 @@
       .map-place-btn.active small{color:rgba(255,255,255,.75);}
       .map-open-link{display:inline-flex;align-items:center;justify-content:center;padding:10px 14px;border-radius:999px;border:1px solid var(--text);color:var(--text);text-decoration:none;font-weight:500;}
       .map-open-link:hover{background:var(--text);color:#fff;}
+      .map-mobile-toggle{display:none;}
       .hamburger{display:none;}
       @media (max-width:768px){
         .map-layout{grid-template-columns:1fr;}
-        .map,.map-discover{min-height:unset;height:420px;}
+        .map{min-height:unset;height:420px;}
+        .map-mobile-toggle{display:inline-flex;align-items:center;justify-content:center;gap:8px;margin:16px 0 8px;border:1px solid var(--text);background:var(--text);color:#fff;border-radius:999px;padding:10px 16px;font:inherit;font-weight:500;cursor:pointer;}
+        .map-mobile-toggle:hover{opacity:.92;}
+        .map-discover{position:fixed;left:0;right:0;bottom:0;z-index:9;margin:0;border-radius:24px 24px 0 0;min-height:unset;height:min(80vh,620px);transform:translateY(calc(100% - 56px));transition:transform .3s ease;box-shadow:0 -18px 36px rgba(0,0,0,.2);}
+        .map-discover::before{content:'';width:44px;height:5px;border-radius:999px;background:#d2d2d7;position:absolute;top:10px;left:50%;transform:translateX(-50%);}
+        .map-discover h3{margin-top:18px;}
+        .map-discover.is-open{transform:translateY(0);}
+        .map-discover .map-place-list{max-height:none;}
         .hamburger{display:inline-flex; align-items:center; justify-content:center; position:absolute; top:20px; right:20px; z-index:4; width:42px; height:42px; border-radius:999px; border:1px solid var(--border); background:#fff; color:var(--text); cursor:pointer;}
         .hamburger:focus-visible{outline:3px solid var(--text); outline-offset:2px;}
         nav.topnav{display:none; position:absolute; top:70px; right:10px; flex-direction:column; gap:12px; background:#fff; padding:14px; border-radius:16px; border:1px solid var(--border); box-shadow:0 12px 30px rgba(0,0,0,.12); opacity:0; transform:translateY(-10px); transition:opacity .3s ease, transform .3s ease;}
@@ -132,6 +140,7 @@
         <p data-i18n="location.description3">Le nom « Marchione » provient de la construction d'origine — probablement datant du XVIe siècle — bâtie pour accueillir la famille Acquaviva d'Aragona lors de parties de chasse. Le toponyme « Marchione » vient de l'altération linguistique de « Macchione », en référence à la vaste forêt qui s'étendait autrefois sur 1 320 hectares. Quelques chênes majestueux, âgés jusqu'à 500 ans, subsistent encore aujourd'hui.</p>
         <p><span data-i18n="location.historyLabel">Pour plus de détails historiques :</span><br /><a class="location-link" href="https://www.castellomarchione.it/tra-storia-e-leggenda/" target="_blank" rel="noopener noreferrer">https://www.castellomarchione.it/tra-storia-e-leggenda/</a></p>
         <div class="map-layout">
+          <button type="button" id="map-mobile-toggle" class="map-mobile-toggle" data-i18n="location.mapDiscover.openSheet">🍽️ Voir la liste des lieux</button>
           <div class="map-discover">
             <h3 data-i18n="location.mapDiscover.title">🗺️ Explorer la région sur la carte</h3>
             <p data-i18n="location.mapDiscover.description">Choisissez une catégorie puis un lieu pour l'afficher directement sur la carte.</p>
@@ -243,6 +252,8 @@
               prevTitle: 'Lieu précédent',
               nextTitle: 'Lieu suivant',
               resultsCount: '{{count}} résultat(s)',
+              openSheet: '🍽️ Voir la liste des lieux',
+              closeSheet: 'Fermer la liste',
               categories: {
                 wedding: 'Lieu de mariage',
                 visit: 'Lieux à visiter',
@@ -302,6 +313,8 @@
               prevTitle: 'Luogo precedente',
               nextTitle: 'Luogo successivo',
               resultsCount: '{{count}} risultato/i',
+              openSheet: '🍽️ Apri l’elenco dei luoghi',
+              closeSheet: 'Chiudi elenco',
               categories: {
                 wedding: 'Luogo del matrimonio',
                 visit: 'Luoghi da visitare',
@@ -361,6 +374,8 @@
               prevTitle: 'Previous place',
               nextTitle: 'Next place',
               resultsCount: '{{count}} result(s)',
+              openSheet: '🍽️ Open places list',
+              closeSheet: 'Close list',
               categories: {
                 wedding: 'Wedding venue',
                 visit: 'Places to visit',
@@ -465,6 +480,7 @@
       let currentMapLang = 'fr';
       let leafletMap = null;
       let fullMapBounds = null;
+      let isMapSheetOpen = false;
       const markerByPlace = new Map();
 
       function getAllMapPlaces(){
@@ -535,6 +551,7 @@
         document.querySelectorAll('.map-place-btn').forEach(btn=>btn.classList.toggle('active', btn.dataset.place===place));
         refreshMarkerHighlight();
         updateMapNavButtons();
+        if (window.matchMedia('(max-width: 768px)').matches) setMapSheetState(false);
       }
 
       function getMapResultsLabel(lang, count){
@@ -628,6 +645,26 @@
         renderMapPlaces(document.documentElement.lang || 'fr');
       }
 
+      function setMapSheetState(nextState){
+        const sheet = document.querySelector('.map-discover');
+        const toggle = document.getElementById('map-mobile-toggle');
+        if (!sheet || !toggle) return;
+        isMapSheetOpen = Boolean(nextState);
+        sheet.classList.toggle('is-open', isMapSheetOpen);
+        const i18n = I18N[currentMapLang]?.location?.mapDiscover || {};
+        const openLabel = i18n.openSheet || 'Open places list';
+        const closeLabel = i18n.closeSheet || 'Close list';
+        toggle.textContent = isMapSheetOpen ? closeLabel : openLabel;
+        toggle.setAttribute('aria-expanded', String(isMapSheetOpen));
+      }
+
+      function setupMapMobileSheet(){
+        const toggle = document.getElementById('map-mobile-toggle');
+        if (!toggle) return;
+        toggle.addEventListener('click', ()=>setMapSheetState(!isMapSheetOpen));
+        setMapSheetState(false);
+      }
+
       function updateLanguageInLinks(lang){
         document.querySelectorAll('a[href]').forEach(link=>{
           const rawHref = link.getAttribute('href');
@@ -676,11 +713,13 @@
         url.searchParams.set('lang', lang);
         history.replaceState(null, '', `${url.pathname.split('/').pop()}${url.search}${url.hash}`);
         renderMapPlaces(lang);
+        setMapSheetState(isMapSheetOpen);
       }
       document.querySelectorAll('.lang-switch button').forEach(btn=>btn.addEventListener('click',()=>applyTranslations(btn.dataset.lang)));
       initInteractiveMap();
       applyTranslations(getInitialLang());
       setupMapCategories();
+      setupMapMobileSheet();
 
       function highlightActiveLink(){
         const current = location.pathname.split('/').pop() || 'index.html';
