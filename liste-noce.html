@@ -161,12 +161,18 @@
         history.replaceState(null, '', `${url.pathname.split('/').pop()}${url.search}${url.hash}`);
         if (typeof syncIbanButtonLabel === 'function') syncIbanButtonLabel();
       }
+      const burger = document.querySelector('.hamburger');
+      const topnav = document.getElementById('topnav');
+
+      function closeMobileNav(){
+        if (!topnav) return;
+        topnav.classList.remove('open');
+        if (burger) burger.setAttribute('aria-expanded','false');
+      }
+
       document.querySelectorAll('.lang-switch button').forEach(btn=>btn.addEventListener('click',()=>{
         applyTranslations(btn.dataset.lang);
-        if (topnav && topnav.classList.contains('open')){
-          topnav.classList.remove('open');
-          burger && burger.setAttribute('aria-expanded','false');
-        }
+        closeMobileNav();
       }));
       applyTranslations(getInitialLang());
 
@@ -205,17 +211,12 @@
       }
       highlightActiveLink();
 
-      const burger = document.querySelector('.hamburger');
-      const topnav = document.getElementById('topnav');
       if (burger && topnav){
         burger.addEventListener('click', ()=>{
           const open = topnav.classList.toggle('open');
           burger.setAttribute('aria-expanded', String(open));
         });
-        topnav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
-          topnav.classList.remove('open');
-          burger.setAttribute('aria-expanded','false');
-        }));
+        topnav.querySelectorAll('a').forEach(a=>a.addEventListener('click', closeMobileNav));
       }
     </script>
   </body>
