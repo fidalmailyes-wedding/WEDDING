@@ -43,13 +43,9 @@
       .iban-card[hidden]{display:none;}
       .iban-card p{margin:0;color:var(--text);line-height:1.6;font-size:16px;}
       .iban-card .iban-label{display:block;color:var(--muted);font-size:13px;letter-spacing:.04em;text-transform:uppercase;margin-bottom:8px;}
-      .hamburger{display:none;}
       @media (max-width:768px){
         .lang-switch{position:fixed; top:20px; left:16px; z-index:40;}
-        .hamburger{display:inline-flex; align-items:center; justify-content:center; position:fixed; top:20px; right:20px; z-index:3001; touch-action:manipulation; width:42px; height:42px; border-radius:999px; border:1px solid var(--border); background:#fff; color:var(--text); cursor:pointer;}
-        .hamburger:focus-visible{outline:3px solid var(--text); outline-offset:2px;}
-        nav.topnav{display:none; position:fixed; top:70px; right:10px; z-index:3000; flex-direction:column; gap:12px; background:#fff; padding:14px; border-radius:16px; border:1px solid var(--border); box-shadow:0 12px 30px rgba(0,0,0,.12); opacity:0; transform:translateY(-10px); transition:opacity .3s ease, transform .3s ease;}
-        nav.topnav.open{display:flex; opacity:1; transform:translateY(0);}
+        nav.topnav{position:fixed; top:20px; right:16px; z-index:3000; flex-direction:column; gap:12px; background:#fff; padding:14px; border-radius:16px; border:1px solid var(--border); box-shadow:0 12px 30px rgba(0,0,0,.12);}
         nav.topnav a{color:var(--text); border-bottom:none;}
         nav.topnav .rsvp-btn{border-color:var(--text);}
         main{padding-top:110px;}
@@ -62,9 +58,6 @@
       <button data-lang="it">IT</button>
       <button data-lang="en">EN</button>
     </div>
-    <button type="button" class="hamburger" aria-label="Ouvrir le menu" aria-controls="topnav" aria-expanded="false">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-    </button>
     <nav class="topnav" id="topnav">
       <a href="index.html" data-i18n="nav.home">Accueil</a>
       <a href="wedding.html" data-i18n="nav.wedding">Wedding</a>
@@ -161,18 +154,8 @@
         history.replaceState(null, '', `${url.pathname.split('/').pop()}${url.search}${url.hash}`);
         if (typeof syncIbanButtonLabel === 'function') syncIbanButtonLabel();
       }
-      const burger = document.querySelector('.hamburger');
-      const topnav = document.getElementById('topnav');
-
-      function closeMobileNav(){
-        if (!topnav) return;
-        topnav.classList.remove('open');
-        if (burger) burger.setAttribute('aria-expanded','false');
-      }
-
       document.querySelectorAll('.lang-switch button').forEach(btn=>btn.addEventListener('click',()=>{
         applyTranslations(btn.dataset.lang);
-        closeMobileNav();
       }));
       applyTranslations(getInitialLang());
 
@@ -211,13 +194,6 @@
       }
       highlightActiveLink();
 
-      if (burger && topnav){
-        burger.addEventListener('click', ()=>{
-          const open = topnav.classList.toggle('open');
-          burger.setAttribute('aria-expanded', String(open));
-        });
-        topnav.querySelectorAll('a').forEach(a=>a.addEventListener('click', closeMobileNav));
-      }
     </script>
   </body>
 </html>
