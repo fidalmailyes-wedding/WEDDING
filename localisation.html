@@ -150,9 +150,15 @@
       .map-open-link:hover{background:var(--text);color:#fff;}
       .hamburger{display:none;}
       @media (max-width:768px){
+        main{padding:110px 14px 72px;}
+        section{padding:30px 18px;border-radius:24px;}
         .map-layout{grid-template-columns:1fr;}
         .map{min-height:unset;height:380px;}
-        .map-discover{min-height:unset;height:auto;box-shadow:0 10px 24px rgba(0,0,0,.08);}
+        .map-discover{min-height:unset;height:auto;box-shadow:0 10px 24px rgba(0,0,0,.08);padding:16px;}
+        .map-category-buttons{gap:8px;}
+        .map-category-btn{padding:7px 11px;}
+        .map-place-list{padding:6px;}
+        .map-place-item{padding:9px 10px;}
         .map-discover .map-place-list{max-height:320px;min-height:190px;}
         .location-link,
         .festival-link{max-width:26ch;}
