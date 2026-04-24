@@ -46,10 +46,10 @@
       .hamburger{display:none;}
       @media (max-width:768px){
         .lang-switch{position:fixed; top:20px; left:16px; z-index:40;}
-        .hamburger{display:inline-flex; align-items:center; justify-content:center; position:fixed; top:20px; right:16px; z-index:1000; touch-action:manipulation; width:42px; height:42px; border-radius:999px; border:1px solid var(--border); background:#fff; color:var(--text); cursor:pointer;}
+        .hamburger{display:inline-flex; align-items:center; justify-content:center; position:fixed; top:20px; right:20px; z-index:3001; touch-action:manipulation; width:42px; height:42px; border-radius:999px; border:1px solid var(--border); background:#fff; color:var(--text); cursor:pointer;}
         .hamburger:focus-visible{outline:3px solid var(--text); outline-offset:2px;}
-        nav.topnav{display:none; position:fixed; top:70px; right:10px; z-index:999; flex-direction:column; gap:12px; background:#fff; padding:14px; border-radius:16px; border:1px solid var(--border); box-shadow:0 12px 30px rgba(0,0,0,.12); opacity:0; transform:translateY(-10px); transition:opacity .3s ease, transform .3s ease;}
-        nav.topnav.open{display:flex; opacity:1; transform:translateY(0);}
+        nav.topnav{display:none; position:fixed; top:70px; right:10px; z-index:3000; flex-direction:column; gap:12px; background:#fff; padding:14px; border-radius:16px; border:1px solid var(--border); box-shadow:0 12px 30px rgba(0,0,0,.12); opacity:0; visibility:hidden; pointer-events:none; transform:translateY(-10px); transition:opacity .3s ease, transform .3s ease, visibility .3s ease;}
+        nav.topnav.open{display:flex; opacity:1; visibility:visible; pointer-events:auto; transform:translateY(0);}
         nav.topnav a{color:var(--text); border-bottom:none;}
         nav.topnav .rsvp-btn{border-color:var(--text);}
         main{padding-top:110px;}
