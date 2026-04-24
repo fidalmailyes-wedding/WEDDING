@@ -38,6 +38,16 @@
       .iban-card{max-width:640px;margin:26px auto 0;padding:18px 20px;border:1px solid var(--border);border-radius:16px;background:linear-gradient(180deg,#fff,#f9f9fb);text-align:left;box-shadow:0 10px 25px rgba(0,0,0,.05);}
       .iban-card p{margin:0;color:var(--text);line-height:1.6;font-size:16px;}
       .iban-card .iban-label{display:block;color:var(--muted);font-size:13px;letter-spacing:.04em;text-transform:uppercase;margin-bottom:8px;}
+      .iban-reveal{position:relative;overflow:hidden;border-radius:16px;}
+      .iban-reveal .iban-card{position:relative;z-index:1;margin-top:0;}
+      .iban-veil{position:absolute;inset:0 0 0 auto;left:0;z-index:2;width:100%;background:linear-gradient(135deg,rgba(29,29,31,.93),rgba(29,29,31,.78));color:#fff;display:flex;align-items:center;justify-content:center;padding:20px;text-align:center;font-size:15px;line-height:1.5;transition:width .2s ease;}
+      .iban-slider-wrap{margin:14px auto 0;max-width:640px;text-align:left;}
+      .iban-slider-label{display:block;font-size:13px;color:var(--muted);margin-bottom:6px;}
+      .iban-slider{width:100%;appearance:none;height:40px;background:transparent;cursor:ew-resize;}
+      .iban-slider::-webkit-slider-runnable-track{height:8px;border-radius:999px;background:linear-gradient(90deg,var(--accent-strong),#b4d8ff);}
+      .iban-slider::-moz-range-track{height:8px;border-radius:999px;background:linear-gradient(90deg,var(--accent-strong),#b4d8ff);}
+      .iban-slider::-webkit-slider-thumb{appearance:none;margin-top:-8px;width:24px;height:24px;border-radius:50%;background:#fff;border:2px solid var(--accent-strong);box-shadow:0 3px 10px rgba(0,0,0,.15);}
+      .iban-slider::-moz-range-thumb{width:24px;height:24px;border-radius:50%;background:#fff;border:2px solid var(--accent-strong);box-shadow:0 3px 10px rgba(0,0,0,.15);}
       .hamburger{display:none;}
       @media (max-width:768px){
         .lang-switch{position:absolute; top:20px; left:16px; z-index:3;}
@@ -73,8 +83,17 @@
         <h2 data-i18n="registry.title">Liste de noce</h2>
         <p class="note" data-i18n="registry.text">Votre présence est notre plus beau cadeau. Si vous souhaitez nous gâter, voici les projets qui nous tiennent à cœur.</p>
         <p class="note" data-i18n="registry.text2">Les objets se perdent, se cassent, s’oublient. Un voyage est une émotion qui reste gravée pour toujours dans la mémoire.</p>
-        <div class="iban-card" id="iban-card">
-          <p><span class="iban-label" data-i18n="registry.transferTitle">Coordonnées bancaires</span>Fidalma INTINI<br />IBAN 00443534366265235363734<br />SWIFT 0CGT67</p>
+        <div class="iban-reveal" id="iban-reveal" data-progress="0">
+          <div class="iban-card" id="iban-card">
+            <p><span class="iban-label" data-i18n="registry.transferTitle">Coordonnées bancaires</span>Fidalma INTINI<br />IBAN 00443534366265235363734<br />SWIFT 0CGT67</p>
+          </div>
+          <div class="iban-veil" id="iban-veil" aria-hidden="true" data-i18n="registry.revealHint">
+            Faites glisser vers la droite pour révéler les coordonnées.
+          </div>
+        </div>
+        <div class="iban-slider-wrap">
+          <label class="iban-slider-label" for="iban-slider" data-i18n="registry.revealHint">Faites glisser vers la droite pour révéler les coordonnées.</label>
+          <input id="iban-slider" class="iban-slider" type="range" min="0" max="100" value="0" aria-label="Révéler les coordonnées bancaires" />
         </div>
       </section>
     </main>
@@ -85,7 +104,9 @@
             title: 'Liste de noce',
             text: "Nous voulons remercier nos familles et nos amis pour l'amour et le soutien qu'ils nous ont témoignés au début de notre avenir ensemble. Vous avoir à nos côtés pour le plus beau jour de notre vie est déjà le plus grand des cadeaux. Mais si vous souhaitez nous aider à réaliser notre lune de miel de rêve, nous vous en serons profondément reconnaissants.",
             text2: "Les objets se perdent, se cassent, s'oublient. Un voyage est une émotion qui reste gravée pour toujours dans la mémoire. Merci à vous qui, par votre contribution, nous aiderez à réaliser le voyage de noces de nos rêves.",
-            transferTitle: 'Coordonnées bancaires'
+            transferTitle: 'Coordonnées bancaires',
+            revealHint: 'Faites glisser de gauche à droite pour dévoiler les coordonnées.',
+            revealDone: 'Coordonnées dévoilées.'
           },
           nav: { home: 'Accueil', wedding: 'Wedding', location: 'Localisation', info: 'Informations', registry: 'Liste de noce', rsvp: 'RSVP' }
         },
@@ -94,7 +115,9 @@
             title: 'Lista nozze',
             text: "Vogliamo ringraziare le nostre famiglie e i nostri amici per l'amore e il sostegno che ci hanno dimostrato all'inizio del nostro futuro insieme. Averti con noi nel nostro giorno più bello è il regalo più grande che possiate farci, ma se volete aiutarci a realizzare la nostra luna di miele da sogno ve ne saremo profondamente grati.",
             text2: "Gli oggetti si perdono, si rompono, si dimenticano. Un viaggio è un'emozione che resta per sempre impressa nella memoria. Grazie a voi che contribuendo, ci aiuterete a realizzare il viaggio di nozze dei nostri sogni.",
-            transferTitle: 'Coordinate bancarie'
+            transferTitle: 'Coordinate bancarie',
+            revealHint: 'Fai scorrere da sinistra a destra per mostrare le coordinate.',
+            revealDone: 'Coordinate mostrate.'
           },
           nav: { home: 'Home', wedding: 'Wedding', location: 'Come arrivare', info: 'Informazioni', registry: 'Lista nozze', rsvp: 'conferma' }
         },
@@ -103,7 +126,9 @@
             title: 'Wedding list',
             text: 'We want to thank our families and friends for the love and support they have shown us at the beginning of our future together. Having you with us on our most beautiful day is already the greatest gift you can give us, but if you would like to help us make our dream honeymoon come true, we would be deeply grateful.',
             text2: 'Objects get lost, broken, and forgotten. A journey is an emotion that remains forever etched in memory. Thank you for helping us bring the honeymoon of our dreams to life through your contribution.',
-            transferTitle: 'Bank details'
+            transferTitle: 'Bank details',
+            revealHint: 'Slide from left to right to reveal the bank details.',
+            revealDone: 'Details revealed.'
           },
           nav: { home: 'Home', wedding: 'Wedding', location: 'Location', info: 'Info', registry: 'Wedding list', rsvp: 'RSVP' }
         }
@@ -145,6 +170,9 @@
         const url = new URL(location.href);
         url.searchParams.set('lang', lang);
         history.replaceState(null, '', `${url.pathname.split('/').pop()}${url.search}${url.hash}`);
+        if (typeof updateIbanVeil === 'function' && document.getElementById('iban-slider')){
+          updateIbanVeil(document.getElementById('iban-slider').value);
+        }
       }
       document.querySelectorAll('.lang-switch button').forEach(btn=>btn.addEventListener('click',()=>{
         applyTranslations(btn.dataset.lang);
@@ -172,6 +200,26 @@
           topnav.classList.remove('open');
           burger.setAttribute('aria-expanded','false');
         }));
+      }
+
+      const ibanSlider = document.getElementById('iban-slider');
+      const ibanVeil = document.getElementById('iban-veil');
+      const ibanSliderLabel = document.querySelector('.iban-slider-label');
+      function updateIbanVeil(value){
+        if (!ibanVeil) return;
+        const percent = Number(value) || 0;
+        const hiddenPercent = Math.max(0, 100 - percent);
+        ibanVeil.style.width = `${hiddenPercent}%`;
+        if (ibanSliderLabel){
+          const lang = SUPPORTED_LANGS.includes(document.documentElement.lang) ? document.documentElement.lang : 'fr';
+          ibanSliderLabel.textContent = percent >= 100 ? I18N[lang].registry.revealDone : I18N[lang].registry.revealHint;
+        }
+      }
+      if (ibanSlider){
+        updateIbanVeil(ibanSlider.value);
+        ibanSlider.addEventListener('input', (e)=>{
+          updateIbanVeil(e.target.value);
+        });
       }
 
     </script>
