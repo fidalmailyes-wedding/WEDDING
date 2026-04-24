@@ -76,12 +76,64 @@
       .map-nav-btn{border:1px solid var(--border);background:#fff;color:var(--text);padding:7px 10px;border-radius:999px;cursor:pointer;font:inherit;line-height:1;}
       .map-nav-btn:hover{border-color:var(--accent-strong);color:var(--accent-strong);}
       .map-nav-btn:disabled{opacity:.35;cursor:not-allowed;}
-      .map-place-list{width:100%;min-height:220px;flex:1;border:1px solid var(--border);border-radius:14px;padding:6px;background:#fff;color:var(--text);font:inherit;}
+      .map-place-list{
+        width:100%;
+        min-height:220px;
+        flex:1;
+        border:1px solid var(--border);
+        border-radius:14px;
+        padding:8px;
+        background:#fff;
+        color:var(--text);
+        display:flex;
+        flex-direction:column;
+        gap:8px;
+        overflow:auto;
+        scrollbar-gutter:stable both-edges;
+      }
       .map-place-list:focus-visible{outline:2px solid var(--accent-strong);outline-offset:1px;border-color:var(--accent-strong);}
+      .map-place-item{
+        width:100%;
+        text-align:left;
+        border:1px solid transparent;
+        background:#fff;
+        color:var(--text);
+        border-radius:10px;
+        padding:10px 12px;
+        cursor:pointer;
+        font:inherit;
+        line-height:1.35;
+        transition:border-color .2s ease, background-color .2s ease, box-shadow .2s ease;
+      }
+      .map-place-item:hover{border-color:var(--accent-strong);background:#f7fbff;}
+      .map-place-item.is-active{
+        border-color:var(--accent-strong);
+        background:#eef5ff;
+        box-shadow:0 0 0 2px rgba(0,113,227,.1);
+      }
+      .map-place-name{
+        display:block;
+        font-weight:600;
+        white-space:normal;
+        overflow-wrap:anywhere;
+      }
+      .map-place-hint{
+        display:block;
+        margin-top:2px;
+        font-size:13px;
+        color:var(--muted);
+        white-space:normal;
+        overflow-wrap:anywhere;
+      }
+      .map-place-empty{
+        margin:0;
+        padding:12px;
+        color:var(--muted);
+        font-size:14px;
+      }
       @media (max-width:1024px){
         .map-layout{grid-template-columns:minmax(270px,320px) minmax(0,1fr);}
       }
-      .map-place-list option{padding:8px 10px;border-radius:8px;}
       .map-open-link{display:inline-flex;align-items:center;justify-content:center;padding:10px 14px;border-radius:999px;border:1px solid var(--text);color:var(--text);text-decoration:none;font-weight:500;}
       .map-open-link:hover{background:var(--text);color:#fff;}
       .hamburger{display:none;}
@@ -89,7 +141,7 @@
         .map-layout{grid-template-columns:1fr;}
         .map{min-height:unset;height:380px;}
         .map-discover{min-height:unset;height:auto;box-shadow:0 10px 24px rgba(0,0,0,.08);}
-        .map-discover .map-place-list{max-height:none;}
+        .map-discover .map-place-list{max-height:320px;min-height:190px;}
         .hamburger{display:inline-flex; align-items:center; justify-content:center; position:fixed; top:20px; right:20px; z-index:3001; touch-action:manipulation; width:42px; height:42px; border-radius:999px; border:1px solid var(--border); background:#fff; color:var(--text); cursor:pointer;}
         .hamburger:focus-visible{outline:3px solid var(--text); outline-offset:2px;}
         nav.topnav{display:none; position:fixed; top:70px; right:10px; z-index:3000; flex-direction:column; gap:12px; background:#fff; padding:14px; border-radius:16px; border:1px solid var(--border); box-shadow:0 12px 30px rgba(0,0,0,.12); opacity:0; visibility:hidden; pointer-events:none; transform:translateY(-10px); transition:opacity .3s ease, transform .3s ease, visibility .3s ease;}
@@ -150,7 +202,7 @@
                 <button type="button" class="map-nav-btn" id="map-next-btn" data-i18n-title="location.mapDiscover.nextTitle" title="Lieu suivant">→</button>
               </div>
             </div>
-            <select class="map-place-list" id="map-place-list" size="5" aria-label="Liste des lieux"></select>
+            <div class="map-place-list" id="map-place-list" role="listbox" tabindex="0" aria-label="Liste des lieux"></div>
             <a id="map-open-link" class="map-open-link" href="https://maps.google.com/?q=Castello+Marchione+Conversano" target="_blank" rel="noopener noreferrer" data-i18n="location.mapDiscover.openInMaps">Ouvrir dans Google Maps</a>
           </div>
           <div id="location-map" class="map" aria-label="Carte interactive des points d'intérêt"></div>
@@ -242,6 +294,7 @@
               prevTitle: 'Lieu précédent',
               nextTitle: 'Lieu suivant',
               resultsCount: '{{count}} résultat(s)',
+              emptyResults: 'Aucun lieu trouvé.',
               categories: {
                 wedding: 'Lieu de mariage',
                 visit: 'Lieux à visiter',
@@ -301,6 +354,7 @@
               prevTitle: 'Luogo precedente',
               nextTitle: 'Luogo successivo',
               resultsCount: '{{count}} risultato/i',
+              emptyResults: 'Nessun luogo trovato.',
               categories: {
                 wedding: 'Luogo del matrimonio',
                 visit: 'Luoghi da visitare',
@@ -360,6 +414,7 @@
               prevTitle: 'Previous place',
               nextTitle: 'Next place',
               resultsCount: '{{count}} result(s)',
+              emptyResults: 'No place found.',
               categories: {
                 wedding: 'Wedding venue',
                 visit: 'Places to visit',
@@ -531,8 +586,12 @@
         selectedMapPlace = place;
         const openLink = document.getElementById('map-open-link');
         if (openLink) openLink.href = `https://maps.google.com/?q=${encodeURIComponent(place)}`;
-        const list = document.getElementById('map-place-list');
-        if (list) list.value = place;
+        document.querySelectorAll('.map-place-item').forEach((button)=>{
+          const isActive = button.dataset.place === place;
+          button.classList.toggle('is-active', isActive);
+          button.setAttribute('aria-selected', String(isActive));
+          if (isActive) button.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+        });
         refreshMarkerHighlight();
         updateMapNavButtons();
       }
@@ -540,6 +599,10 @@
       function getMapResultsLabel(lang, count){
         const template = I18N[lang]?.location?.mapDiscover?.resultsCount || '{{count}} result(s)';
         return template.replace('{{count}}', String(count));
+      }
+
+      function getMapEmptyResultsLabel(lang){
+        return I18N[lang]?.location?.mapDiscover?.emptyResults || 'No place found.';
       }
 
       function getMapPlacesForCategory(){
@@ -571,12 +634,17 @@
         filteredPlaces = getFilteredMapPlaces(lang);
         list.innerHTML = '';
         filteredPlaces.forEach((place)=>{
-          const option = document.createElement('option');
-          option.value = place.query;
           const label = place.labels?.[lang] || place.labels?.fr || place.query;
           const hint = place.hints?.[lang] || place.hints?.fr || '';
-          option.textContent = hint ? `${label} — ${hint}` : label;
-          list.appendChild(option);
+          const item = document.createElement('button');
+          item.type = 'button';
+          item.className = 'map-place-item';
+          item.dataset.place = place.query;
+          item.setAttribute('role', 'option');
+          item.setAttribute('aria-selected', 'false');
+          item.innerHTML = `<span class="map-place-name">${label}</span>${hint ? `<span class="map-place-hint">${hint}</span>` : ''}`;
+          item.addEventListener('click', ()=>setMapPlace(place.query));
+          list.appendChild(item);
         });
 
         if (!filteredPlaces.some(place=>place.query===selectedMapPlace) && filteredPlaces[0]) setMapPlace(filteredPlaces[0].query);
@@ -584,7 +652,7 @@
           selectedMapPlace = '';
           const openLink = document.getElementById('map-open-link');
           if (openLink) openLink.href = 'https://maps.google.com/?q=Castello+Marchione+Conversano';
-          list.value = '';
+          list.innerHTML = `<p class="map-place-empty">${getMapEmptyResultsLabel(lang)}</p>`;
           refreshMarkerHighlight();
         }
         const resultsCount = document.getElementById('map-results-count');
@@ -608,9 +676,19 @@
         }
         const placeList = document.getElementById('map-place-list');
         if (placeList){
-          placeList.addEventListener('change', (event)=>{
-            const selectedPlace = event.target.value;
-            if (selectedPlace) setMapPlace(selectedPlace);
+          placeList.addEventListener('keydown', (event)=>{
+            if (!filteredPlaces.length) return;
+            const currentIndex = filteredPlaces.findIndex(place=>place.query===selectedMapPlace);
+            if (event.key === 'ArrowDown'){
+              event.preventDefault();
+              const nextIndex = Math.min(filteredPlaces.length - 1, Math.max(0, currentIndex + 1));
+              setMapPlace(filteredPlaces[nextIndex].query);
+            }
+            if (event.key === 'ArrowUp'){
+              event.preventDefault();
+              const prevIndex = Math.max(0, currentIndex <= 0 ? 0 : currentIndex - 1);
+              setMapPlace(filteredPlaces[prevIndex].query);
+            }
           });
         }
         const prevBtn = document.getElementById('map-prev-btn');
