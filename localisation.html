@@ -322,6 +322,7 @@
     <script>
       const I18N = {
         fr: {
+          pageTitle: 'Localisation — Fidalma & Ilyes',
           date: '08 août 2026 · Castello Marchione',
           cta: 'Confirmer ma venue',
           wedding: { title: 'Wedding — Déroulé', ceremony: '17h00 : Cérémonie', aperitivo: '18h00 : Aperitivo', dinner: '20h00 : Dîner', party: '23h00 : Festa & DJ set'},
@@ -387,6 +388,7 @@
           rsvp: { title: 'RSVP', text: 'Merci de confirmer votre présence avant le 30 juin 2026.', cta: 'Répondre au formulaire'}
         },
         it: {
+          pageTitle: 'Come arrivare — Fidalma & Ilyes',
           date: '08 agosto 2026 · Castello Marchione',
           cta: 'Confermare la presenza',
           wedding: { title: 'Matrimonio — Programma', ceremony: '17:00 : Cerimonia', aperitivo: '18:00 : Aperitivo', dinner: '20:00 : Cena', party: '23:00 : Festa & DJ set'},
@@ -452,6 +454,7 @@
           rsvp: { title: 'conferma', text: 'Vi preghiamo di confermare entro il 30 giugno 2026.', cta: 'Rispondere al modulo'}
         },
         en: {
+          pageTitle: 'Location — Fidalma & Ilyes',
           date: '08 August 2026 · Castello Marchione',
           cta: 'Confirm attendance',
           wedding: { title: 'Wedding — Schedule', ceremony: '17:00 : Ceremony', aperitivo: '18:00 : Aperitif', dinner: '20:00 : Dinner', party: '23:00 : Party & DJ set'},
@@ -795,6 +798,7 @@
         if (!SUPPORTED_LANGS.includes(lang)) lang = 'fr';
         document.documentElement.lang = lang;
         const dict = I18N[lang];
+        if (dict?.pageTitle) document.title = dict.pageTitle;
         document.querySelectorAll('[data-i18n]').forEach(el=>{
           const keys = el.dataset.i18n.split('.');
           let text = dict;
