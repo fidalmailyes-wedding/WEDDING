@@ -825,7 +825,13 @@
         history.replaceState(null, '', `${url.pathname.split('/').pop()}${url.search}${url.hash}`);
         renderMapPlaces(lang);
       }
-      document.querySelectorAll('.lang-switch button').forEach(btn=>btn.addEventListener('click',()=>applyTranslations(btn.dataset.lang)));
+      document.querySelectorAll('.lang-switch button').forEach(btn=>btn.addEventListener('click',()=>{
+        const lang = btn.dataset.lang;
+        applyTranslations(lang);
+        const url = new URL(location.href);
+        url.searchParams.set('lang', lang);
+        location.assign(`${url.pathname.split('/').pop()}${url.search}${url.hash}`);
+      }));
 
       function highlightActiveLink(){
         const current = location.pathname.split('/').pop() || 'index.html';
