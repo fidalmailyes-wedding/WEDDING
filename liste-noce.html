@@ -35,7 +35,9 @@
       ul li{padding:8px 0;position:relative;}
       ul li::before{content:"•";color:var(--muted);display:inline-block;width:18px;margin-left:-18px;}
       .note{max-width:680px;margin:0 auto 18px;line-height:1.7;font-size:18px;color:var(--muted);}
-      .bank-note{margin:22px auto 0;max-width:700px;padding:16px 20px;border:1px solid var(--border);border-radius:16px;background:#fff;color:var(--text);font-size:17px;line-height:1.65;}
+      .bank-toggle{margin-top:22px;border:1px solid var(--text);background:#fff;color:var(--text);padding:12px 20px;border-radius:999px;cursor:pointer;font-size:16px;font-weight:500;transition:all .25s ease;}
+      .bank-toggle:hover{background:var(--text);color:#fff;}
+      .bank-note{margin:16px auto 0;max-width:700px;padding:16px 20px;border:1px solid var(--border);border-radius:16px;background:#fff;color:var(--text);font-size:17px;line-height:1.65;}
       .hamburger{display:none;}
       @media (max-width:768px){
         .lang-switch{position:absolute; top:20px; left:16px; z-index:3;}
@@ -71,7 +73,8 @@
         <h2 data-i18n="registry.title">Liste de noce</h2>
         <p class="note" data-i18n="registry.text">Votre présence est notre plus beau cadeau. Si vous souhaitez nous gâter, voici les projets qui nous tiennent à cœur.</p>
         <p class="note" data-i18n="registry.text2">Les objets se perdent, se cassent, s’oublient. Un voyage est une émotion qui reste gravée pour toujours dans la mémoire.</p>
-        <p class="bank-note" data-i18n="registry.bankLater">Les données bancaires seront ajoutées plus tard. Merci pour votre patience et votre générosité.</p>
+        <button type="button" class="bank-toggle" data-i18n="registry.bankButton">En attendant d'ouvrir un compte commun etc...</button>
+        <p class="bank-note" data-i18n="registry.bankLater" hidden>Les données bancaires seront ajoutées plus tard. Merci pour votre patience et votre générosité.</p>
       </section>
     </main>
     <script>
@@ -81,6 +84,7 @@
             title: 'Liste de noce',
             text: "Nous voulons remercier nos familles et nos amis pour l'amour et le soutien qu'ils nous ont témoignés au début de notre avenir ensemble. Vous avoir à nos côtés pour le plus beau jour de notre vie est déjà le plus grand des cadeaux. Mais si vous souhaitez nous aider à réaliser notre lune de miel de rêve, nous vous en serons profondément reconnaissants.",
             text2: "Les objets se perdent, se cassent et s'oublient. Un voyage est une émotion qui reste gravée à jamais dans la mémoire. Merci à vous qui, par votre contribution, nous aiderez à réaliser le voyage de noces de nos rêves.",
+            bankButton: "En attendant d'ouvrir un compte commun etc...",
             bankLater: "Les données bancaires seront ajoutées plus tard. Merci pour votre patience et votre générosité."
           },
           nav: { home: 'Accueil', wedding: 'Wedding', location: 'Localisation', info: 'Informations', registry: 'Liste de noce', rsvp: 'RSVP' }
@@ -90,6 +94,7 @@
             title: 'Lista nozze',
             text: "Vogliamo ringraziare le nostre famiglie e i nostri amici per l'amore e il sostegno che ci hanno dimostrato all'inizio del nostro futuro insieme. Averti con noi nel giorno più bello della nostra vita è già il regalo più grande che possiate farci, ma se volete aiutarci a realizzare la nostra luna di miele da sogno, ve ne saremo profondamente grati.",
             text2: "Gli oggetti si perdono, si rompono e si dimenticano. Un viaggio è un'emozione che resta per sempre impressa nella memoria. Grazie a voi che, con il vostro contributo, ci aiuterete a realizzare il viaggio di nozze dei nostri sogni.",
+            bankButton: "In attesa di aprire un conto comune ecc...",
             bankLater: "I dati bancari saranno aggiunti più avanti. Grazie per la vostra pazienza e generosità."
           },
           nav: { home: 'Home', wedding: 'Wedding', location: 'Come arrivare', info: 'Informazioni', registry: 'Lista nozze', rsvp: 'Conferma' }
@@ -99,6 +104,7 @@
             title: 'Wedding list',
             text: 'We want to thank our families and friends for the love and support they have shown us at the beginning of our future together. Having you with us on our most beautiful day is already the greatest gift you can give us, but if you would like to help us make our dream honeymoon come true, we would be deeply grateful.',
             text2: 'Objects get lost, get broken, and are forgotten. A journey is an emotion that remains forever etched in memory. Thank you for helping us bring the honeymoon of our dreams to life through your contribution.',
+            bankButton: 'While we wait to open a joint account, etc...',
             bankLater: 'Bank details will be added later. Thank you for your patience and generosity.'
           },
           nav: { home: 'Home', wedding: 'Wedding', location: 'Location', info: 'Info', registry: 'Wedding list', rsvp: 'RSVP' }
@@ -159,6 +165,19 @@
 
       const burger = document.querySelector('.hamburger');
       const topnav = document.getElementById('topnav');
+      const bankToggle = document.querySelector('.bank-toggle');
+      const bankNote = document.querySelector('.bank-note');
+      if (bankToggle && bankNote){
+        bankToggle.addEventListener('click', ()=>{
+          const isHidden = bankNote.hasAttribute('hidden');
+          if (isHidden){
+            bankNote.removeAttribute('hidden');
+          } else {
+            bankNote.setAttribute('hidden','');
+          }
+        });
+      }
+
       if (burger && topnav){
         burger.addEventListener('click', ()=>{
           const open = topnav.classList.toggle('open');
