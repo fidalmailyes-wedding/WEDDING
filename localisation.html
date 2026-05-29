@@ -54,6 +54,10 @@
       .location-core{line-height:1.8;color:var(--muted);}
       .location-link{display:inline-block;max-width:31ch;margin-top:8px;color:var(--accent-strong);text-decoration:none;white-space:normal;overflow-wrap:anywhere;word-break:break-word;}
       .puglia-map-image{display:block;width:100%;height:auto;margin:24px 0 30px;border:1px solid var(--border);border-radius:20px;box-shadow:0 16px 30px rgba(0,0,0,.08);background:#fff;}
+      .puglia-beaches{margin:0 0 34px;}
+      .puglia-beaches h3{margin-top:0;}
+      .puglia-beaches h4{margin:24px 0 8px;font-size:19px;font-weight:600;}
+      .puglia-beaches p{margin:12px 0 6px;color:var(--muted);line-height:1.7;}
       .festival-link{
         display:inline-block;
         max-width:29ch;
@@ -255,6 +259,42 @@
           <li data-i18n="location.discover.geo3">Centre – Là où nous sommes : le cœur de la région, entre campagne, mer et villages historiques.</li>
         </ul>
         <img class="puglia-map-image" src="puglia-map.jpeg" alt="Carte illustrée des Pouilles" loading="lazy" />
+        <div class="puglia-beaches">
+          <h3 data-i18n="location.beaches.title">Les plus belles plages, du nord au sud</h3>
+
+          <h4 data-i18n="location.beaches.center">Centre</h4>
+          <ul>
+            <li>Riserva naturale di Torre Guaceto, Brindisi</li>
+            <li>Lama Monachile e Cala Paura, Polignano a Mare</li>
+            <li>Cala Porta Vecchia, Cala Porto Bianco e Cala Porto Rosso, Monopoli</li>
+            <li data-i18n="location.beaches.centerCapitolo">Capitolo et Monopoli, avec plusieurs lidos privés et beach clubs</li>
+          </ul>
+          <p data-i18n="location.beaches.lidosIntro">Parmi les lidos les plus connus aux alentours :</p>
+          <ul>
+            <li>Lido Santo Stefano</li>
+            <li>Macramè Apulian Beach Experience</li>
+            <li>Le Palme Beach Club</li>
+            <li>Porto Ghiacciolo Beach</li>
+            <li>Marzà</li>
+            <li>Lido Cala Paradiso</li>
+          </ul>
+
+          <h4 data-i18n="location.beaches.north">Nord</h4>
+          <ul>
+            <li>Baia delle Zagare</li>
+            <li>Spiaggia di Vignanotica</li>
+            <li>Isole Tremiti</li>
+          </ul>
+
+          <h4 data-i18n="location.beaches.south">Sud</h4>
+          <ul>
+            <li>Pescoluse</li>
+            <li data-i18n="location.beaches.gallipoli">Gallipoli et Punta della Suina</li>
+            <li>Punta Prosciutto</li>
+            <li>Torre dell’Orso</li>
+            <li>Baia dei Turchi</li>
+          </ul>
+        </div>
 
         <h3 data-i18n="location.seaside.title">🌊 Itinéraire bord de mer</h3>
         <ul>
@@ -381,6 +421,15 @@
               geo2: 'Sud – La péninsule du Salento, célèbre pour ses eaux turquoise et les « Maldives du Salento ».',
               geo3: 'Centre – Là où nous sommes : le cœur de la région, entre campagne, mer et villages historiques.'
             },
+            beaches: {
+              title: 'Les plus belles plages, du nord au sud',
+              center: 'Centre',
+              centerCapitolo: 'Capitolo et Monopoli, avec plusieurs lidos privés et beach clubs',
+              lidosIntro: 'Parmi les lidos les plus connus aux alentours :',
+              north: 'Nord',
+              south: 'Sud',
+              gallipoli: 'Gallipoli et Punta della Suina'
+            },
             seaside: { title: '🌊 Itinéraire bord de mer', text: 'Des villes côtières sur l\'Adriatique, parfaites pour prendre le soleil, se baigner, profiter de longs déjeuners de fruits de mer et d\'apéritifs au coucher du soleil.' },
             villages: { title: '🏛️ Villages de carte postale', text: 'Maisons de pierre blanche, ruelles étroites, terrasses panoramiques et charme intemporel du sud.' },
             nature: { title: '🌿 Nature & merveilles' },
@@ -451,6 +500,15 @@
               geo2: 'Sud – La penisola del Salento, famosa per le sue acque turchesi e le “Maldive del Salento”.',
               geo3: 'Centro – Dove siamo noi: il cuore della regione, tra campagna, mare e borghi storici.'
             },
+            beaches: {
+              title: 'Le spiagge più belle, da nord a sud',
+              center: 'Centro',
+              centerCapitolo: 'Capitolo e Monopoli, con diversi lidi privati e beach club',
+              lidosIntro: 'Tra i lidi più conosciuti nei dintorni:',
+              north: 'Nord',
+              south: 'Sud',
+              gallipoli: 'Gallipoli e Punta della Suina'
+            },
             seaside: { title: '🌊 Itinerario sul mare', text: 'Città affacciate sull\'Adriatico, perfette per prendere il sole, fare il bagno, gustare lunghi pranzi di pesce e aperitivi al tramonto.' },
             villages: { title: '🏛️ Borghi da cartolina', text: 'Case in pietra bianca, vicoli stretti, terrazze panoramiche e il fascino senza tempo del sud.' },
             nature: { title: '🌿 Natura & meraviglie' },
@@ -520,6 +578,15 @@
               geo1: 'North – The wild beauty of the Gargano, with Vieste and dramatic cliffs.',
               geo2: 'South – The Salento peninsula, famous for its turquoise waters and the “Maldive del Salento”.',
               geo3: 'Centre – Where we are: the heart of the region, between countryside, sea and historic villages.'
+            },
+            beaches: {
+              title: 'The most beautiful beaches, from north to south',
+              center: 'Centre',
+              centerCapitolo: 'Capitolo and Monopoli, with several private lidos and beach clubs',
+              lidosIntro: 'Among the best-known lidos nearby:',
+              north: 'North',
+              south: 'South',
+              gallipoli: 'Gallipoli and Punta della Suina'
             },
             seaside: { title: '🌊 Seaside Itinerary', text: 'Seaside towns overlooking the Adriatic, perfect for sunbathing, swimming, long seafood lunches and sunset aperitifs.' },
             villages: { title: '🏛️ Postcard Villages', text: 'White stone houses, narrow streets, panoramic terraces and timeless southern charm.' },
