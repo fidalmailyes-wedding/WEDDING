@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Localisation — Fidalma & Ilyes</title>
+    <title>PUGLIA — Fidalma & Ilyes</title>
     <link rel="icon" type="image/svg+xml" href="olivier.svg?v=1" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -47,6 +47,10 @@
       ul{margin:8px 0 0 18px;color:var(--muted);line-height:1.7;}
       li{margin-bottom:4px;}
       .intro{font-size:18px;color:var(--text);margin-bottom:16px;}
+      .puglia-intro{margin:0 0 30px;padding-bottom:24px;border-bottom:1px solid var(--border);}
+      .puglia-intro h3{margin-top:0;}
+      .puglia-intro p{font-size:17px;line-height:1.75;color:var(--text);}
+      .puglia-intro p:last-child{margin-bottom:0;}
       .location-core{line-height:1.8;color:var(--muted);}
       .location-link{display:inline-block;max-width:31ch;margin-top:8px;color:var(--accent-strong);text-decoration:none;white-space:normal;overflow-wrap:anywhere;word-break:break-word;}
       .festival-link{
@@ -183,14 +187,19 @@
     <nav class="topnav" id="topnav">
       <a href="index.html" data-i18n="nav.home">Accueil</a>
       <a href="wedding.html" data-i18n="nav.wedding">Wedding</a>
-      <a href="localisation.html" data-i18n="nav.location">Localisation</a>
+      <a href="localisation.html" data-i18n="nav.location">PUGLIA</a>
       <a href="info.html" data-i18n="nav.info">Informations</a>
       <a href="liste-noce.html" data-i18n="nav.registry">Liste de noce</a>
       <a href="rsvp.html" class="rsvp-btn" data-i18n="nav.rsvp">RSVP</a>
     </nav>
     <main>
       <section id="localisation">
-        <h2 data-i18n="location.title">Localisation</h2>
+        <h2 data-i18n="location.title">PUGLIA</h2>
+        <div class="puglia-intro">
+          <h3 data-i18n="location.puglia.title">Les Pouilles</h3>
+          <p data-i18n="location.puglia.text1">Nous sommes heureux de vous accueillir dans les Pouilles, une terre lumineuse entre soleil, oliviers, cuisine authentique, mer cristalline et villages blancs à couper le souffle.</p>
+          <p data-i18n="location.puglia.text2">Notre mariage se déroulera au Castello Marchione, à Conversano, au cœur de la région.</p>
+        </div>
         <p class="intro" data-i18n="location.hero"></p>
         <p class="location-core" data-i18n="location.core.line1">Castello Marchione</p>
         <p class="location-core" data-i18n="location.core.line2">Italie du Sud</p>
@@ -326,7 +335,12 @@
           cta: 'Confirmer ma venue',
           wedding: { title: 'Wedding — Déroulé', ceremony: '17h00 : Cérémonie', aperitivo: '18h00 : Aperitivo', dinner: '20h00 : Dîner', party: '23h00 : Festa & DJ set'},
           location: {
-            title: 'Localisation',
+            title: 'PUGLIA',
+            puglia: {
+              title: 'Les Pouilles',
+              text1: 'Nous sommes heureux de vous accueillir dans les Pouilles, une terre lumineuse entre soleil, oliviers, cuisine authentique, mer cristalline et villages blancs à couper le souffle.',
+              text2: 'Notre mariage se déroulera au Castello Marchione, à Conversano, au cœur de la région.'
+            },
             hero: '',
             core: { line1: 'Castello Marchione', line2: 'Italie du Sud', line3: 'Strada Provinciale 101, km 6.400', line4: '70014 Conversano (Bari) Puglia', line5: '16h30' },
             mapsLabel: '📍 Google Maps :',
@@ -383,7 +397,7 @@
               outro: 'Musique, lumières et pure énergie du sud.'
             }
           },
-          nav: { home: 'Accueil', wedding: 'Wedding', location: 'Localisation', info: 'Informations', registry: 'Liste de noce', rsvp: 'RSVP' },
+          nav: { home: 'Accueil', wedding: 'Wedding', location: 'PUGLIA', info: 'Informations', registry: 'Liste de noce', rsvp: 'RSVP' },
           rsvp: { title: 'RSVP', text: 'Merci de confirmer votre présence avant le 30 juin 2026.', cta: 'Répondre au formulaire'}
         },
         it: {
@@ -391,7 +405,12 @@
           cta: 'Confermare la presenza',
           wedding: { title: 'Matrimonio — Programma', ceremony: '17:00 : Cerimonia', aperitivo: '18:00 : Aperitivo', dinner: '20:00 : Cena', party: '23:00 : Festa & DJ set'},
           location: {
-            title: 'Come arrivare',
+            title: 'PUGLIA',
+            puglia: {
+              title: 'La Puglia',
+              text1: 'Siamo felici di accogliervi in Puglia, una terra luminosa tra sole, ulivi, cucina genuina, mare cristallino e borghi bianchi da togliere il fiato.',
+              text2: 'Il nostro matrimonio si svolgerà presso Castello Marchione, a Conversano, nel cuore della regione.'
+            },
             hero: 'Dove diremo «sì»',
             core: { line1: 'Castello Marchione', line2: 'Sud Italia', line3: 'Strada Provinciale 101, km 6.400', line4: '70014 Conversano (Bari) Puglia', line5: '16:30' },
             mapsLabel: '📍 Google Maps:',
@@ -448,7 +467,7 @@
               outro: 'Musica, luci e pura energia del sud.'
             }
           },
-          nav: { home: 'Home', wedding: 'Wedding', location: 'Come arrivare', info: 'Informazioni', registry: 'Lista nozze', rsvp: 'Conferma' },
+          nav: { home: 'Home', wedding: 'Wedding', location: 'PUGLIA', info: 'Informazioni', registry: 'Lista nozze', rsvp: 'Conferma' },
           rsvp: { title: 'Conferma', text: 'Vi preghiamo di confermare entro il 30 giugno 2026.', cta: 'Rispondere al modulo'}
         },
         en: {
@@ -456,7 +475,12 @@
           cta: 'Confirm attendance',
           wedding: { title: 'Wedding — Schedule', ceremony: '17:00 : Ceremony', aperitivo: '18:00 : Aperitif', dinner: '20:00 : Dinner', party: '23:00 : Party & DJ set'},
           location: {
-            title: 'Location',
+            title: 'PUGLIA',
+            puglia: {
+              title: 'Puglia',
+              text1: 'We are delighted to welcome you to Puglia, a radiant land of sunshine, olive trees, authentic cuisine, crystal-clear sea and breathtaking white villages.',
+              text2: 'Our wedding will take place at Castello Marchione, in Conversano, in the heart of the region.'
+            },
             hero: 'Where we will say “I do”',
             core: { line1: 'Castello Marchione', line2: 'Southern Italy', line3: 'Strada Provinciale 101, km 6.400', line4: '70014 Conversano (Bari) Puglia', line5: '4:30 p.m.' },
             mapsLabel: '📍 Google Maps:',
@@ -513,7 +537,7 @@
               outro: 'Music, lights and pure southern energy.'
             }
           },
-          nav: { home: 'Home', wedding: 'Wedding', location: 'Location', info: 'Info', registry: 'Wedding list', rsvp: 'RSVP' },
+          nav: { home: 'Home', wedding: 'Wedding', location: 'PUGLIA', info: 'Info', registry: 'Wedding list', rsvp: 'RSVP' },
           rsvp: { title: 'RSVP', text: 'Please confirm your presence before June 30, 2026.', cta: 'Fill out the form'}
         }
       };
