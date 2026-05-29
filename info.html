@@ -32,8 +32,10 @@
       section{text-align:left;background:var(--surface);border:1px solid var(--border);border-radius:32px;padding:40px 32px;box-shadow:0 24px 48px rgba(0,0,0,.06);}
       h2{font-size:36px;color:var(--accent);margin:0 0 14px;font-weight:500;letter-spacing:-0.01em;text-align:center;}
       .intro{color:var(--muted);font-size:18px;line-height:1.6;margin:0 0 28px;text-align:center;}
-      ul.info-list{list-style:none;padding-left:0;margin:0;display:grid;gap:12px;}
-      ul.info-list li{padding:12px 14px;border:1px solid var(--border);border-radius:14px;background:#fafafa;color:#2d2d2f;line-height:1.5;}
+      .info-content{display:grid;gap:24px;}
+      .info-block h3{margin:0 0 10px;font-size:22px;font-weight:600;color:var(--text);}
+      .info-block p{margin:0 0 10px;color:#2d2d2f;line-height:1.65;}
+      .info-block p:last-child{margin-bottom:0;}
       .contacts{margin-top:30px;padding-top:24px;border-top:1px solid var(--border);}
       .contacts h3{margin:0 0 12px;font-size:24px;font-weight:500;}
       .contact-list{list-style:none;padding:0;margin:0;display:grid;gap:8px;}
@@ -72,16 +74,57 @@
     <main>
       <section id="info">
         <h2 data-i18n="info.title">Informations</h2>
-        <p class="intro" data-i18n="info.intro">Voici quelques informations utiles pour profiter pleinement de la journée.</p>
-        <ul class="info-list">
-          <li data-i18n="info.item3">Merci de confirmer votre présence avant le 30 juin 2026 via le formulaire RSVP, en indiquant également vos éventuelles restrictions alimentaires.</li>
-          <li data-i18n="info.item4">La cérémonie commence à 16h30. Merci d'arriver 15 minutes en avance.</li>
-          <li data-i18n="info.item1">Les talons aiguilles sont fortement déconseillés : la cérémonie et le repas auront lieu sur l'herbe. Si besoin, prévoyez des protège-talons à base large.</li>
-          <li data-i18n="info.item6">Note vestimentaire : seule la mariée portera du blanc 😉</li>
-          <li data-i18n="info.item5">Des ombrelles et des éventails seront mis à votre disposition pour vous protéger du soleil pendant la cérémonie.</li>
-          <li data-i18n="info.item2">Un parking privé est disponible au château.</li>
-          <li data-i18n="info.item7">Ici, dans le sud de l’Italie, la conduite a son propre rythme… Les routes aussi ont parfois leur caractère 🌿 Prenez votre temps, restez attentifs, et laissez-vous porter par la dolce vita.</li>
-        </ul>
+        <p class="intro" data-i18n="info.intro">Voici quelques informations utiles pour profiter au mieux de la journée de notre mariage.</p>
+        <div class="info-content">
+          <article class="info-block">
+            <h3 data-i18n="info.rsvp.title">RSVP</h3>
+            <p data-i18n="info.rsvp.p1">Nous vous demandons de confirmer votre présence avant le 30 juin 2026 via le formulaire RSVP sur ce site.</p>
+            <p data-i18n="info.rsvp.p2">Un message sur WhatsApp nous fera plaisir, mais il ne remplace pas le formulaire RSVP.</p>
+            <p data-i18n="info.rsvp.p3">Dans le formulaire, vous pourrez indiquer qui viendra avec vous ainsi que d’éventuelles restrictions alimentaires, allergies ou besoins particuliers, afin que nous puissions les communiquer au chef avec le bon délai.</p>
+          </article>
+          <article class="info-block">
+            <h3 data-i18n="info.arrival.title">Heure d’arrivée</h3>
+            <p data-i18n="info.arrival.p1">La cérémonie commencera à 16h30.</p>
+            <p data-i18n="info.arrival.p2">Nous vous demandons gentiment d’arriver avec au moins 15 minutes d’avance, afin d’avoir le temps de vous garer, de rejoindre l’espace de cérémonie et de prendre place sans vous presser.</p>
+          </article>
+          <article class="info-block">
+            <h3 data-i18n="info.parking.title">Parking</h3>
+            <p data-i18n="info.parking.p1">Un parking privé sera disponible sur place pour les invités.</p>
+            <p data-i18n="info.parking.p2">Nous vous conseillons tout de même de prévoir quelques minutes supplémentaires pour votre arrivée, surtout si vous ne connaissez pas la zone ou si vous venez en voiture depuis une autre ville des Pouilles.</p>
+          </article>
+          <article class="info-block">
+            <h3 data-i18n="info.dress.title">Dress code</h3>
+            <p data-i18n="info.dress.p1">Il n’y a pas de dress code strict : choisissez quelque chose qui vous fasse vous sentir élégants, à l’aise et prêts à faire la fête avec nous.</p>
+            <p data-i18n="info.dress.p2">La cérémonie et le dîner se dérouleront principalement sur les pelouses du château, nous vous conseillons donc des talons larges ou à blocs, des compensées ou des chaussures confortables.</p>
+            <p data-i18n="info.dress.p3">Petite note : seule la mariée portera du blanc. 😉</p>
+          </article>
+          <article class="info-block">
+            <h3 data-i18n="info.outdoor.title">Cérémonie et journée en extérieur</h3>
+            <p data-i18n="info.outdoor.p1">Nous passerons une grande partie de la journée en extérieur.</p>
+            <p data-i18n="info.outdoor.p2">Pendant la cérémonie, certaines zones pourraient être au soleil, mais nous mettrons à disposition des éventails et des ombrelles pour rendre ce moment plus agréable.</p>
+            <p data-i18n="info.outdoor.p3">En soirée, comme nous serons à la campagne, l’air pourrait devenir plus frais et humide. Nous vous conseillons d’en tenir compte dans le choix de votre tenue, de vos chaussures et de vos éventuels accessoires.</p>
+          </article>
+          <article class="info-block">
+            <h3 data-i18n="info.phones.title">Téléphones pendant la cérémonie</h3>
+            <p data-i18n="info.phones.p1">Pour vivre pleinement le moment de la cérémonie, avant que la fête ne commence, nous vous demanderons de ne pas utiliser vos téléphones, surtout pendant l’arrivée de la mariée.</p>
+            <p data-i18n="info.phones.p2">Des photographes et vidéastes seront là pour immortaliser les moments les plus émouvants.</p>
+          </article>
+          <article class="info-block">
+            <h3 data-i18n="info.children.title">Enfants</h3>
+            <p data-i18n="info.children.p1">Les enfants sont des invités spéciaux et seront les bienvenus.</p>
+            <p data-i18n="info.children.p2">Nous vous demandons simplement de les indiquer dans le formulaire RSVP, afin de pouvoir organiser au mieux les places, les menus et chaque détail utile pour eux.</p>
+          </article>
+          <article class="info-block">
+            <h3 data-i18n="info.return.title">Retour après la fête</h3>
+            <p data-i18n="info.return.p1">La fête continuera jusqu’à 2h30.</p>
+            <p data-i18n="info.return.p2">Si vous ne logez pas dans les environs ou si vous n’avez pas de voiture à disposition, nous vous conseillons de vous organiser à l’avance pour le retour, car aucun service de taxi ou de transfert organisé ne sera prévu.</p>
+          </article>
+          <article class="info-block">
+            <h3 data-i18n="info.updates.title">Dernières mises à jour</h3>
+            <p data-i18n="info.updates.p1">Cette page sera mise à jour dans les mois précédant le mariage.</p>
+            <p data-i18n="info.updates.p2">Environ une semaine avant l’événement, nous ajouterons les derniers détails pratiques afin de vous aider à vivre cette journée de la meilleure façon possible.</p>
+          </article>
+        </div>
 
         <div class="contacts">
           <h3 data-i18n="info.contactsTitle">Contacts</h3>
@@ -102,14 +145,55 @@
           location: { title: 'PUGLIA', text: 'Castello Marchione, Conversano, Italie'},
           info: {
             title: 'Informations',
-            intro: 'Voici quelques informations utiles pour profiter pleinement de la journée.',
-            item1: "Les talons aiguilles sont fortement déconseillés : la cérémonie et le repas auront lieu sur l'herbe. Si besoin, prévoyez des protège-talons à base large.",
-            item2: 'Un parking privé est disponible au château.',
-            item3: 'Merci de confirmer votre présence avant le 30 juin 2026 via le formulaire RSVP, en indiquant également vos éventuelles restrictions alimentaires.',
-            item4: "La cérémonie commence à 16h30. Merci d'arriver 15 minutes en avance.",
-            item5: 'Des ombrelles et des éventails seront mis à votre disposition pour vous protéger du soleil pendant la cérémonie.',
-            item6: 'Note vestimentaire : seule la mariée portera du blanc 😉',
-            item7: 'Ici, dans le sud de l’Italie, la conduite a son propre rythme… Les routes aussi ont parfois leur caractère 🌿 Prenez votre temps, restez attentifs, et laissez-vous porter par la dolce vita.',
+            intro: 'Voici quelques informations utiles pour profiter au mieux de la journée de notre mariage.',
+            rsvp: {
+              title: 'RSVP',
+              p1: 'Nous vous demandons de confirmer votre présence avant le 30 juin 2026 via le formulaire RSVP sur ce site.',
+              p2: 'Un message sur WhatsApp nous fera plaisir, mais il ne remplace pas le formulaire RSVP.',
+              p3: 'Dans le formulaire, vous pourrez indiquer qui viendra avec vous ainsi que d’éventuelles restrictions alimentaires, allergies ou besoins particuliers, afin que nous puissions les communiquer au chef avec le bon délai.'
+            },
+            arrival: {
+              title: 'Heure d’arrivée',
+              p1: 'La cérémonie commencera à 16h30.',
+              p2: 'Nous vous demandons gentiment d’arriver avec au moins 15 minutes d’avance, afin d’avoir le temps de vous garer, de rejoindre l’espace de cérémonie et de prendre place sans vous presser.'
+            },
+            parking: {
+              title: 'Parking',
+              p1: 'Un parking privé sera disponible sur place pour les invités.',
+              p2: 'Nous vous conseillons tout de même de prévoir quelques minutes supplémentaires pour votre arrivée, surtout si vous ne connaissez pas la zone ou si vous venez en voiture depuis une autre ville des Pouilles.'
+            },
+            dress: {
+              title: 'Dress code',
+              p1: 'Il n’y a pas de dress code strict : choisissez quelque chose qui vous fasse vous sentir élégants, à l’aise et prêts à faire la fête avec nous.',
+              p2: 'La cérémonie et le dîner se dérouleront principalement sur les pelouses du château, nous vous conseillons donc des talons larges ou à blocs, des compensées ou des chaussures confortables.',
+              p3: 'Petite note : seule la mariée portera du blanc. 😉'
+            },
+            outdoor: {
+              title: 'Cérémonie et journée en extérieur',
+              p1: 'Nous passerons une grande partie de la journée en extérieur.',
+              p2: 'Pendant la cérémonie, certaines zones pourraient être au soleil, mais nous mettrons à disposition des éventails et des ombrelles pour rendre ce moment plus agréable.',
+              p3: 'En soirée, comme nous serons à la campagne, l’air pourrait devenir plus frais et humide. Nous vous conseillons d’en tenir compte dans le choix de votre tenue, de vos chaussures et de vos éventuels accessoires.'
+            },
+            phones: {
+              title: 'Téléphones pendant la cérémonie',
+              p1: 'Pour vivre pleinement le moment de la cérémonie, avant que la fête ne commence, nous vous demanderons de ne pas utiliser vos téléphones, surtout pendant l’arrivée de la mariée.',
+              p2: 'Des photographes et vidéastes seront là pour immortaliser les moments les plus émouvants.'
+            },
+            children: {
+              title: 'Enfants',
+              p1: 'Les enfants sont des invités spéciaux et seront les bienvenus.',
+              p2: 'Nous vous demandons simplement de les indiquer dans le formulaire RSVP, afin de pouvoir organiser au mieux les places, les menus et chaque détail utile pour eux.'
+            },
+            return: {
+              title: 'Retour après la fête',
+              p1: 'La fête continuera jusqu’à 2h30.',
+              p2: 'Si vous ne logez pas dans les environs ou si vous n’avez pas de voiture à disposition, nous vous conseillons de vous organiser à l’avance pour le retour, car aucun service de taxi ou de transfert organisé ne sera prévu.'
+            },
+            updates: {
+              title: 'Dernières mises à jour',
+              p1: 'Cette page sera mise à jour dans les mois précédant le mariage.',
+              p2: 'Environ une semaine avant l’événement, nous ajouterons les derniers détails pratiques afin de vous aider à vivre cette journée de la meilleure façon possible.'
+            },
             contactsTitle: 'Contacts',
             contactEmailLabel: 'Email :'
           },
@@ -123,14 +207,55 @@
           location: { title: 'PUGLIA', text: 'Castello Marchione, Conversano, Italia'},
           info: {
             title: 'Informazioni',
-            intro: 'Ecco alcune informazioni utili per vivere al meglio la giornata.',
-            item1: "I tacchi a spillo sono fortemente sconsigliati: la cerimonia e la cena si svolgeranno sul prato. Se necessario, portate proteggi-tacco con base larga.",
-            item2: 'È disponibile un parcheggio privato presso il castello.',
-            item3: 'Vi chiediamo di confermare la vostra presenza entro il 30 giugno 2026 tramite il modulo RSVP, indicando anche eventuali restrizioni alimentari.',
-            item4: 'La cerimonia inizia alle 16:30. Vi preghiamo di arrivare con 15 minuti di anticipo.',
-            item5: 'Durante la cerimonia metteremo a disposizione ombrellini e ventagli per proteggervi dal sole.',
-            item6: 'Nota sul dress code: solo la sposa indosserà il bianco 😉',
-            item7: 'Qui, nel sud Italia, la guida ha il suo ritmo… Anche le strade a volte hanno il loro carattere 🌿 Prendetevi il vostro tempo, restate attenti e lasciatevi portare dalla dolce vita.',
+            intro: 'Ecco alcune informazioni utili per vivere al meglio la giornata del nostro matrimonio.',
+            rsvp: {
+              title: 'RSVP',
+              p1: 'Vi chiediamo di confermare la vostra presenza entro il 30 giugno 2026 tramite il modulo RSVP su questo sito.',
+              p2: 'Un messaggio su WhatsApp ci farà piacere, ma non sostituisce il modulo RSVP.',
+              p3: 'Nel modulo potrete indicare chi verrà con voi ed eventuali restrizioni alimentari, allergie o esigenze particolari, così da permetterci di comunicarle allo chef con il giusto anticipo.'
+            },
+            arrival: {
+              title: 'Orario di arrivo',
+              p1: 'La cerimonia inizierà alle 16:30.',
+              p2: 'Vi chiediamo gentilmente di arrivare con almeno 15 minuti di anticipo, così da avere il tempo di parcheggiare, raggiungere l’area della cerimonia e prendere posto senza fretta.'
+            },
+            parking: {
+              title: 'Parcheggio',
+              p1: 'Sarà disponibile un parcheggio privato in loco per gli ospiti.',
+              p2: 'Vi consigliamo comunque di calcolare qualche minuto in più per l’arrivo, soprattutto se non conoscete la zona o se vi spostate in auto da altre città della Puglia.'
+            },
+            dress: {
+              title: 'Dress code',
+              p1: 'Non è previsto un dress code rigido: scegliete qualcosa che vi faccia sentire eleganti, comodi e pronti a festeggiare con noi.',
+              p2: 'La cerimonia e la cena si svolgeranno principalmente sui prati del Castello, quindi vi consigliamo tacchi larghi o a blocco, zeppe o scarpe comode.',
+              p3: 'Piccola nota: solo la sposa indosserà il bianco. 😉'
+            },
+            outdoor: {
+              title: 'Cerimonia e giornata all’aperto',
+              p1: 'Passeremo gran parte della giornata all’aperto.',
+              p2: 'Durante la cerimonia alcune zone potrebbero essere al sole, ma metteremo a disposizione ventagli e ombrellini per rendere il momento più piacevole.',
+              p3: 'In serata, essendo in campagna, potrebbe esserci un’arietta più fresca e umida. Vi consigliamo di tenerne conto nella scelta dell’abito, delle scarpe e di eventuali accessori.'
+            },
+            phones: {
+              title: 'Telefoni durante la cerimonia',
+              p1: 'Per vivere pienamente il momento della cerimonia, prima che la festa inizi, vi chiederemo di non utilizzare i telefoni, soprattutto durante l’arrivo della sposa.',
+              p2: 'Ci saranno fotografi e videografi pronti a immortalare i momenti più emozionanti.'
+            },
+            children: {
+              title: 'Bambini',
+              p1: 'I bambini sono ospiti speciali e saranno i benvenuti.',
+              p2: 'Vi chiediamo solo di indicarli nel modulo RSVP, così da poter organizzare al meglio posti, menù e ogni dettaglio utile per loro.'
+            },
+            return: {
+              title: 'Rientro dopo la festa',
+              p1: 'La festa continuerà fino alle 2:30.',
+              p2: 'Se non alloggiate nei dintorni o se non avete un’auto a disposizione, vi consigliamo di organizzarvi in anticipo per il rientro, poiché non sarà previsto un servizio taxi o transfer organizzato.'
+            },
+            updates: {
+              title: 'Ultimi aggiornamenti',
+              p1: 'Questa pagina verrà aggiornata nei mesi precedenti al matrimonio.',
+              p2: 'Circa una settimana prima dell’evento aggiungeremo gli ultimi dettagli pratici, così da aiutarvi a vivere la giornata nel miglior modo possibile.'
+            },
             contactsTitle: 'Contatti',
             contactEmailLabel: 'Email :'
           },
@@ -144,14 +269,55 @@
           location: { title: 'PUGLIA', text: 'Castello Marchione, Conversano, Italy'},
           info: {
             title: 'Information',
-            intro: 'Here are a few practical details to help you enjoy the day.',
-            item1: 'Stiletto heels are strongly discouraged: both the ceremony and dinner will take place on grass. If needed, please bring wide-base heel protectors.',
-            item2: 'Private parking is available at the castle.',
-            item3: 'Please confirm your attendance before June 30, 2026 via the RSVP form, and let us know about any dietary restrictions.',
-            item4: 'The ceremony starts at 4:30 PM. Please arrive 15 minutes early.',
-            item5: 'Parasols and hand fans will be available during the ceremony to help protect you from the sun.',
-            item6: 'Dress code note: only the bride will wear white 😉',
-            item7: 'Here in southern Italy, driving has its own rhythm… The roads can have a character of their own too 🌿 Take your time, stay attentive, and let yourself be carried by la dolce vita.',
+            intro: 'Here is some useful information to help you make the most of our wedding day.',
+            rsvp: {
+              title: 'RSVP',
+              p1: 'Please confirm your attendance by June 30, 2026 using the RSVP form on this website.',
+              p2: 'A WhatsApp message will make us happy, but it does not replace the RSVP form.',
+              p3: 'In the form, you will be able to indicate who will come with you and any dietary restrictions, allergies, or special needs, so we can share them with the chef with enough notice.'
+            },
+            arrival: {
+              title: 'Arrival time',
+              p1: 'The ceremony will begin at 4:30 PM.',
+              p2: 'We kindly ask you to arrive at least 15 minutes early, so you have time to park, reach the ceremony area, and take your seat without rushing.'
+            },
+            parking: {
+              title: 'Parking',
+              p1: 'Private on-site parking will be available for guests.',
+              p2: 'We still recommend allowing a few extra minutes for arrival, especially if you do not know the area or are driving from another city in Puglia.'
+            },
+            dress: {
+              title: 'Dress code',
+              p1: 'There is no strict dress code: choose something that makes you feel elegant, comfortable, and ready to celebrate with us.',
+              p2: 'The ceremony and dinner will mainly take place on the castle lawns, so we recommend wide or block heels, wedges, or comfortable shoes.',
+              p3: 'Small note: only the bride will wear white. 😉'
+            },
+            outdoor: {
+              title: 'Outdoor ceremony and day',
+              p1: 'We will spend most of the day outdoors.',
+              p2: 'During the ceremony, some areas may be in the sun, but we will provide fans and parasols to make the moment more comfortable.',
+              p3: 'In the evening, as we will be in the countryside, the air may become cooler and more humid. Please keep this in mind when choosing your outfit, shoes, and any accessories.'
+            },
+            phones: {
+              title: 'Phones during the ceremony',
+              p1: 'To fully experience the ceremony before the party begins, we will ask you not to use your phones, especially during the bride’s entrance.',
+              p2: 'Photographers and videographers will be ready to capture the most emotional moments.'
+            },
+            children: {
+              title: 'Children',
+              p1: 'Children are special guests and will be welcome.',
+              p2: 'We simply ask you to include them in the RSVP form, so we can best organize seats, menus, and every useful detail for them.'
+            },
+            return: {
+              title: 'Getting back after the party',
+              p1: 'The party will continue until 2:30 AM.',
+              p2: 'If you are not staying nearby or do not have a car available, we recommend arranging your return in advance, as there will not be an organized taxi or transfer service.'
+            },
+            updates: {
+              title: 'Final updates',
+              p1: 'This page will be updated in the months leading up to the wedding.',
+              p2: 'About one week before the event, we will add the final practical details to help you enjoy the day in the best possible way.'
+            },
             contactsTitle: 'Contacts',
             contactEmailLabel: 'Email:'
           },
