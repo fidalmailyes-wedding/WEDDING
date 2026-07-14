@@ -37,7 +37,7 @@
       .note{max-width:680px;margin:0 auto 18px;line-height:1.7;font-size:18px;color:var(--muted);}
       .bank-toggle{margin-top:22px;border:1px solid var(--text);background:#fff;color:var(--text);padding:12px 20px;border-radius:999px;cursor:pointer;font-size:16px;font-weight:500;transition:all .25s ease;}
       .bank-toggle:hover{background:var(--text);color:#fff;}
-      .bank-note{margin:16px auto 0;max-width:700px;padding:16px 20px;border:1px solid var(--border);border-radius:16px;background:#fff;color:var(--text);font-size:17px;line-height:1.65;}
+      .bank-note{margin:16px auto 0;max-width:700px;padding:16px 20px;border:1px solid var(--border);border-radius:16px;background:#fff;color:var(--text);font-size:17px;line-height:1.65;white-space:pre-line;}
       .hamburger{display:none;}
       @media (max-width:768px){
         .lang-switch{position:absolute; top:20px; left:16px; z-index:3;}
@@ -63,7 +63,7 @@
     <nav class="topnav" id="topnav">
       <a href="index.html" data-i18n="nav.home">Accueil</a>
       <a href="wedding.html" data-i18n="nav.wedding">Wedding</a>
-      <a href="localisation.html" data-i18n="nav.location">PUGLIA</a>
+      <a href="localisation.html" data-i18n="nav.location">Puglia</a>
       <a href="info.html" data-i18n="nav.info">Informations</a>
       <a href="liste-noce.html" data-i18n="nav.registry">Liste de noce</a>
       <a href="rsvp.html" class="rsvp-btn" data-i18n="nav.rsvp">RSVP</a>
@@ -74,8 +74,8 @@
         <p class="note" data-i18n="registry.text">Spoiler : il n’y en a pas. Pas de liste, pas de registre, pas de « troisième service d’assiettes qu’on n’utilisera jamais ».</p>
         <p class="note" data-i18n="registry.text2">Ce que nous voulons vraiment est simple : vous, là avec nous, en train de danser au château... et un voyage de noces incroyable.</p>
         <p class="note" data-i18n="registry.text3">Nous n’achèterons rien d’utile : seulement des couchers de soleil dans des endroits perdus, des cabanes sur la mer et des aventures dans le désert.</p>
-        <button type="button" class="bank-toggle" data-i18n="registry.bankButton">Pour celles et ceux qui souhaitent participer, voici les coordonnées de la mariée. Le compte commun arrive bientôt, mais nous sommes déjà opérationnels et, comme d’habitude, nos valises sont déjà prêtes.</button>
-        <p class="bank-note" data-i18n="registry.bankLater" hidden>Les données bancaires seront ajoutées plus tard. Merci pour votre patience et votre générosité.</p>
+        <button type="button" class="bank-toggle" data-i18n="registry.bankButton">Pour celles et ceux qui souhaitent participer, voici les coordonnées de la mariée en attendant d’avoir notre compte commun.</button>
+        <p class="bank-note" data-i18n="registry.bankLater" hidden>Fidalma INTINI<br>IBAN: IT81T0306941323100000004134<br>BIC/SWIFT: BCITITMM</p>
       </section>
     </main>
     <script>
@@ -86,10 +86,10 @@
             text: "Spoiler : il n’y en a pas. Pas de liste, pas de registre, pas de « troisième service d’assiettes qu’on n’utilisera jamais ».",
             text2: "Ce que nous voulons vraiment est simple : vous, là avec nous, en train de danser au château... et un voyage de noces incroyable.",
             text3: "Nous n’achèterons rien d’utile : seulement des couchers de soleil dans des endroits perdus, des cabanes sur la mer et des aventures dans le désert.",
-            bankButton: "Pour celles et ceux qui souhaitent participer, voici les coordonnées de la mariée. Le compte commun arrive bientôt, mais nous sommes déjà opérationnels et, comme d’habitude, nos valises sont déjà prêtes.",
-            bankLater: "Les données bancaires seront ajoutées plus tard. Merci pour votre patience et votre générosité."
+            bankButton: "Pour celles et ceux qui souhaitent participer, voici les coordonnées de la mariée en attendant d’avoir notre compte commun.",
+            bankLater: "Fidalma INTINI\nIBAN: IT81T0306941323100000004134\nBIC/SWIFT: BCITITMM"
           },
-          nav: { home: 'Accueil', wedding: 'Wedding', location: 'PUGLIA', info: 'Informations', registry: 'Liste de noce', rsvp: 'RSVP' }
+          nav: { home: 'Accueil', wedding: 'Wedding', location: 'Puglia', info: 'Informations', registry: 'Liste de noce', rsvp: 'RSVP' }
         },
         it: {
           registry: {
@@ -97,10 +97,10 @@
             text: "Spoiler: non c’è. Niente liste, niente registri, niente “terzo set di piatti che non useremo mai”.",
             text2: "Quello che vogliamo davvero è semplice: voi lì con noi a ballare al Castello... e un viaggio di nozze da urlo.",
             text3: "Non compreremo niente di utile: solo tramonti in posti sperduti, capanne sul mare e avventure nel deserto.",
-            bankButton: "Per chi vuole partecipare, ecco le coordinate della sposa. Il conto comune è in arrivo, ma siamo già operativi e, come al solito, abbiamo le valigie già pronte.",
-            bankLater: "I dati bancari saranno aggiunti più avanti. Grazie per la vostra pazienza e generosità."
+            bankButton: "Per chi desidera partecipare, ecco le coordinate bancarie della sposa, in attesa di avere il nostro conto comune.",
+            bankLater: "Fidalma INTINI\nIBAN: IT81T0306941323100000004134\nBIC/SWIFT: BCITITMM"
           },
-          nav: { home: 'Home', wedding: 'Wedding', location: 'PUGLIA', info: 'Informazioni', registry: 'Lista nozze', rsvp: 'Conferma' }
+          nav: { home: 'Home', wedding: 'Wedding', location: 'Puglia', info: 'Informazioni', registry: 'Lista nozze', rsvp: 'Conferma' }
         },
         en: {
           registry: {
@@ -108,10 +108,10 @@
             text: 'Spoiler: there isn’t one. No lists, no registries, no “third set of plates we will never use”.',
             text2: 'What we truly want is simple: you there with us, dancing at the castle... and an epic honeymoon.',
             text3: 'We will not buy anything useful: only sunsets in remote places, huts by the sea, and adventures in the desert.',
-            bankButton: 'For anyone who would like to contribute, here are the bride’s bank details. The joint account is on its way, but we are already operational and, as usual, our suitcases are already packed.',
-            bankLater: 'Bank details will be added later. Thank you for your patience and generosity.'
+            bankButton: 'For anyone who would like to contribute, here are the bride’s bank details while we wait to have our joint account.',
+            bankLater: 'Fidalma INTINI\nIBAN: IT81T0306941323100000004134\nBIC/SWIFT: BCITITMM'
           },
-          nav: { home: 'Home', wedding: 'Wedding', location: 'PUGLIA', info: 'Info', registry: 'Wedding list', rsvp: 'RSVP' }
+          nav: { home: 'Home', wedding: 'Wedding', location: 'Puglia', info: 'Info', registry: 'Wedding list', rsvp: 'RSVP' }
         }
       };
       const SUPPORTED_LANGS = Object.keys(I18N);
